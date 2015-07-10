@@ -19,12 +19,24 @@ To answer this question, read, but express the ideas in your own words. If somet
 
 1. What's hoisting in JavaScript?
 
-YOUR ANSWER GOES HERE
+It’s Javascript’s behavior of moving declarations to the top. This means you can declare a variable, lets say ‘x = 5’ at the top of your program. But then you initialize x as ‘var x’ at the very bottom of your program and you will still get a functioning program. It’s a better practice to declare your variables at the beginning of the program but this is just one of many interesting default behavior of javascript.
 
 2. What's the difference between calling a function directly and calling it with call or apply?
 
-YOUR ANSWER GOES HERE
+Calling a function directly is common but not good practice. When you call a function directly you are making the function not aware of the scope. Example:
+
+var person = {name: ‘Tim’}
+var person2 = {name: ‘Jared’};
+var myFunction = function { return this.name; }
+
+myFunction();
+
+
+While on the other hand calling a function with call or apply they execute the function in  the scope of the first argument you pass to them. Example:
+
+myFunction.call(person);
+myFunction.apply(person2);
 
 3. When would you use call vs. apply?
 
-YOUR ANSWER GOES HERE
+Lets say you have more than one argument being passed into a function but know what the type is and how many there will be. You would use call in this case. If you have a function that requires an array of passed data you would use apply.
