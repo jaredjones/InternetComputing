@@ -23,7 +23,7 @@ In javascript your are allowed to create and use variables before they have been
 
 2. What's the difference between calling a function directly and calling it with call or apply?
 
-Calling a function using either 'call' or 'apply' allows you to replace the container object of a called function. This works by passing in the first argument to call/apply as the new parent to the function you are calling. From this point the function is then able to reference its new parent object by using the "this" operator. While 'call' and 'apply' are both very similar, they differ in one simple area. The 2nd parameter passed contains either a list of arguments seperated by a comma or an array of arguments passed to the function. Call takes in the former while apply takes in the ladder; call takes in a list of elements, and apply takes in an array of elements. 
+Calling a function using either 'call' or 'apply' allows you to replace the container object of a called function. This works by passing in the first argument to call/apply as the new container to the function you are calling. From this point the function is then able to reference its container object by using the "this" operator. While 'call' and 'apply' are both very similar, they differ in one simple area. The 2nd parameter passed contains either a list of arguments seperated by a comma or an array of arguments passed to the function. Call takes in the former while apply takes in the ladder; call takes in a list of elements, and apply takes in an array of elements. 
 
 
 3. When would you use call vs. apply?
