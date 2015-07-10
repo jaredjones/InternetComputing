@@ -19,24 +19,13 @@ To answer this question, read, but express the ideas in your own words. If somet
 
 1. What's hoisting in JavaScript?
 
-It’s Javascript’s behavior of moving declarations to the top. This means you can declare a variable, lets say ‘x = 5’ at the top of your program. But then you initialize x as ‘var x’ at the very bottom of your program and you will still get a functioning program. It’s a better practice to declare your variables at the beginning of the program but this is just one of many interesting default behavior of javascript.
+In javascript your are allowed to create and use variables before they have been instantiated as a variable. This means you can declare a variable, lets say ‘x = 5’ at the top of your program, but then you can initialize x as ‘var x’ at the very bottom of your program and you will still get a functioning program. This happens due to the JavaScript preprocessor in the interpretter. The JSC will first run through your code and grab out all variables and assigned function names before it actually creates any memory for the program to run in. It’s a better practice to declare your variables at the beginning of the program but this is just one of many interesting default behavior of javascript. However hoisting also has major benefits when you are returning a function pointer and that function uses a variable that was declared as an argument from the calling function. This variable is pushed onto the stack and is hoisted whenever the function is called; however after the full function call has ended the memory falls off the stack.
 
 2. What's the difference between calling a function directly and calling it with call or apply?
 
-Calling a function directly is common but not good practice. When you call a function directly you are making the function not aware of the scope. Example:
+Calling a function using either 'call' or 'apply' allows you to replace the container object of a called function. This works by passing in the first argument to call/apply as the new parent to the function you are calling. From this point the function is then able to reference its new parent object by using the "this" operator. While 'call' and 'apply' are both very similar, they differ in one simple area. The 2nd parameter passed contains either a list of arguments seperated by a comma or an array of arguments passed to the function. Call takes in the former while apply takes in the ladder; call takes in a list of elements, and apply takes in an array of elements. 
 
-var person = {name: ‘Tim’}
-var person2 = {name: ‘Jared’};
-var myFunction = function { return this.name; }
-
-myFunction();
-
-
-While on the other hand calling a function with call or apply they execute the function in  the scope of the first argument you pass to them. Example:
-
-myFunction.call(person);
-myFunction.apply(person2);
 
 3. When would you use call vs. apply?
 
-Lets say you have more than one argument being passed into a function but know what the type is and how many there will be. You would use call in this case. If you have a function that requires an array of passed data you would use apply.
+As stated in the answer to the prior question, a programmer should use call when they want to take over the scope of a function and have a list of arguments seperated by a comma that they want to pass into a function. On the other hand, a programmer should call apply whenever they have an array of arguments that they are passing to a function. Both call and apply take over the scope of the function by setting this to the caller of the function.
