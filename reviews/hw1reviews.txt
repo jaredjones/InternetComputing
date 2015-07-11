@@ -1,0 +1,21 @@
+[Venkat 07/11/15 05:01 AM CDT]
+review: revisit 1, improve 2 and 3
+
+1. Need to fix a few terminologies.
+<https://groups.google.com/forum/#!msg/uhcsu15ic/K7xlIdAUsII/eqH_xSC2YxoJ>
+Rework with these terms.
+
+Also, discuss this term first for variables. Then discuss this for functions and how that may be different in some ways. Write in short paragraphs.
+
+2. What's a container object (context object?)? What's the purpose of such a context object?
+ladder to latter
+
+3.
+"As stated in the answer to the prior question, " - remove, noise words, does not add value.
+"want to take over the scope of a function" what does taking over scope mean?
+
+Remove some noise words "A programmer should use call when" to "use call when"
+
+spell check the document.
+
+------------------------------------------------------------------------------
