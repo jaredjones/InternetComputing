@@ -19,27 +19,15 @@ To answer this question, read, but express the ideas in your own words. If somet
 
 1. What's hoisting in JavaScript?
 
-JavaScript allows for the ability to instantiate and use variables before they have been declared, this is done through hoisting. This means you can instantiate a variable, let's say ‘x = 5’ [//Venkat: This is assignment, not initialization] at the top of your program, but then you can declare x as ‘var x’ at the very bottom of your program and you will still get a functioning program. This happens due to the JavaScript preprocessor running before code is executed in the interpreter. The JSC will first run through your code and grab out all variables and assigned function names before it actually creates any memory for the program to run in. 
+Hoisting is the ability to assign a value to an object before it has been declared. For instance, a variable may be assigned to ‘x=10’ without the variable having been defined as long as the variable is defined later on in the program. This all works because the JavaScript preprocessor scans through the document looking for variable definitions before the code is executed and moves them to the top, this is called hoisting.
 
-However, hoisting also has major benefits when you are returning a function pointer and that function uses a variable that was declared as an argument from the calling function. This variable is pushed onto the stack and is hoisted whenever the function is called; however, after the full function call has ended the memory falls off the stack. Hoisting in a nested function is useful because in the case of returning a function pointer, it allows an argument to be passed into a function that is held in stack memory that can be used when that nested function is executed. This is particularly useful when using predicates, and you need to pass a parameter into the predicate definition. 
-
-//Venkat: Complete rewrite part 1.
-=====
-First tell us in one sentence what hoisting is. Then only focus on variables, don't mention anything about function. Tell us what
-happens is a variable is used, but it is initialized (see the terminology I used in the email var x = 5 is initialization, but x = 5
-is not initialization, it is assignment) later on in the code. After telling us what happens, tell why that happens (relating this
-behavior back to the first sentence where hoisting is defined).
-
-Then, in a second paragraph, tell us about function (not nested functions, not returning function, just defining functions). Tell us
-what happens if we call a function and then define a function only after it is called. Explain how this behavior is different from how
-what was discussed in the previous paragraph about variables.
-=====
+Hoisting may also be used by calling a function before before it has been defined; however, this behavior only works with functions that are declared without having been assigned to a variable. This differs from variable hoisting above, because if a function is called before it has been assigned to a variable, the interpreter will throw an “undefined function” error.
 
 2. What's the difference between calling a function directly and calling it with call or apply?
 
-Calling a function using either 'call' or 'apply' allows you to replace the object’s context of the called function. This works by passing into the first argument of either call/apply a context argument for the function you are calling. From this point the function is then able to reference its changed context object by using the "this" keyword. [//Venkat: Remove this part, q3 is for this: While 'call' and 'apply' are both very similar, they differ in one simple area. The 2nd parameter passed contains either a list of arguments separated by a comma or an array of arguments passed to the function. Call takes in the former while apply takes in the latter; call takes in a list of elements, and apply takes in an array of elements.] Changing the context of a function can be particularly useful when the function needs to modify or make changes on an object.
+Calling a function using 'call' or 'apply' allows the ability to change an object’s context for the called function. This works by passing into the first argument of either call/apply a context object for the function you are calling. From this point the function is then able to reference its changed context object by using the "this" keyword. Changing the context of a function can be particularly useful when we need to take over the scope of the function that was called.
 
 3. When would you use call vs. apply?
 
-[//Venkat: Remove this line: Use either call or apply when you want to change the context of a function.] Call should be used when you have a list of arguments separated by a comma that you want to pass into a function. On the other hand, [//Venkat: remove this part a programmer should] use ‘apply’ whenever [//Venkat: change 'they have' to  'you are passing'] an array of arguments [//Venkat: remove this part that they are passing] to a function. [//Venkat: remove this part Both ‘call’ and ‘apply’ change the context of the function by setting ‘this’ to the first argument passed into call/apply.]
+Call should be used when you have a list of arguments separated by a comma that you want to pass into a function. On the other hand, use ‘apply’ whenever you are passing an array of arguments to a function.
 
