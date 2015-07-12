@@ -1,3 +1,15 @@
+[Venkat 07/12/15 05:24 AM CDT]
+review: address suggestions
+
+1.
+See suggestion in text.
+
+2. See suggestions.
+The last sentence does not help, what's the reason to use a context object - it is not to change something, why do we need a context?
+
+3. Remove duplicated items from previous question. see suggestion in text.
+
+------------------------------------------------------------------------------
 [Venkat 07/11/15 05:01 AM CDT]
 review: revisit 1, improve 2 and 3
 
