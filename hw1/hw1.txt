@@ -21,7 +21,7 @@ To answer this question, read, but express the ideas in your own words. If somet
 
 Hoisting is the ability to assign a value to an object before it has been declared. For instance, a variable may be assigned to ‘x=10’ without the variable having been defined as long as the variable is defined later on in the program. This all works because the JavaScript preprocessor scans through the document looking for variable definitions before the code is executed and moves them to the top, this is called hoisting.
 
-Hoisting may also be used by calling a function before before it has been defined; however, this behavior only works with functions that are declared without having been assigned to a variable. This differs from variable hoisting above, because if a function is called before it has been assigned to a variable, the interpreter will throw an “undefined function” error.
+Hoisting may also be used by calling a function before before it has been defined; however, this behavior only works with functions that are declared without having been assigned to a variable. This differs from variable hoisting above, because if a function is called before it has been assigned to a variable, the interpreter will throw an “undefined function” error. Function declarations are hoisted first before variable declarations, but not over variable assignments, this is how function hoisting differs from variable hoisting.
 
 2. What's the difference between calling a function directly and calling it with call or apply?
 
