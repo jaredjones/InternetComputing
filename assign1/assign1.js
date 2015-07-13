@@ -61,6 +61,8 @@ var fileData = fs.readFileSync(__dirname + '/input.txt', 'utf8');
 var WOEIDArray = fileData.split('\n');
 WOEIDArray.pop();
 
+console.log("Please Wait (Getting Weather Data)...");
+
 var cityArray = new Array();
 WOEIDArray.forEach(function(e)
 {
