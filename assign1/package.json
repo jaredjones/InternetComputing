@@ -1,0 +1,24 @@
+{
+  "name": "weatherapp",
+  "version": "0.1.0",
+  "description": "An application for retreiving weather information using Yahoo WOEIDs",
+  "main": "weather.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-nodeunit": "^0.4.1",
+    "http-sync": "^0.1.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "svn",
+    "url": "https://agile.cs.uh.edu/svn/u15_ic/dickson_jones"
+  },
+  "author": "Jared Jones & Timothy Dickson",
+  "license": "ISC"
+}
