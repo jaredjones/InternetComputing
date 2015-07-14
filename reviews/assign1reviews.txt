@@ -1,3 +1,19 @@
+[Venkat 07/14/15 07:38 AM CDT]
+review: embrace asynchrony
+
+Don't put more than one independent assert in a single test.
+Instead write multiple tests, each focusing on one logic.
+
+Embrace asynchrony. Use asynchronous (normal) functions instead of
+synchronous versions.
+
+Build in small steps. First tests to read WOEIDs from a file.
+Then to get data for one WOEID. Then tests to parse and extract
+the data. Build, step by step. Reading through tests should nicely
+give a flow of these steps to know the steps in how we designed 
+the code incrementally.
+
+------------------------------------------------------------------------------
 [Venkat 07/13/15 06:13 AM CDT]
 review: take small steps
 
