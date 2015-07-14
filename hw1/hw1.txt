@@ -31,3 +31,4 @@ Calling a function using 'call' or 'apply' allows the ability to change an objec
 
 Call should be used when you have a list of arguments separated by a comma that you want to pass into a function. On the other hand, use ‘apply’ whenever you are passing an array of arguments to a function. Both of these functions are used when changing the context of a function.
 
+Total [10]: 10
