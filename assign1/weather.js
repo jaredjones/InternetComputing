@@ -9,7 +9,7 @@ var sanatizeArray = function(a){
     return a.filter(isNotEmptyPredicate);
 }
 
-var GetWeatherData = function(woeid){
+var getWeatherData = function(woeid){
     var request = httpSync.request({
         method:     'GET',
         protocol:   'http',
@@ -20,17 +20,17 @@ var GetWeatherData = function(woeid){
     return request.end().body.toString();
 }
 
-var WeatherXMLKeyToValue = function(s, key){
+var weatherXMLKeyToValue = function(s, key){
     var beginTag = "=\"";
     var index = s.indexOf(key + beginTag) + key.length + beginTag.length;
     var end = s.indexOf("\"", index);
     return s.slice(index, end);
 }
 
-var WeatherXMLToTuple = function(s){
-    var city = WeatherXMLKeyToValue(s, "city");
-    var region = WeatherXMLKeyToValue(s, "region");
-    var temp = WeatherXMLKeyToValue(s, "temp");
+var weatherXMLToTuple = function(s){
+    var city = weatherXMLKeyToValue(s, "city");
+    var region = weatherXMLKeyToValue(s, "region");
+    var temp = weatherXMLKeyToValue(s, "temp");
     return [city, region, temp];
 }
 
@@ -40,11 +40,12 @@ var WOEIDArray = sanatizeArray(fileData.split('\n'));
 console.log('Please Wait (Getting Weather Data)...');
 
 WOEIDArray.forEach(function(e){
-    var weatherXMLString = GetWeatherData(e);
-    var weatherTuple = WeatherXMLToTuple(weatherXMLString);
+    var weatherXMLString = getWeatherData(e);
+    var weatherTuple = weatherXMLToTuple(weatherXMLString);
     console.log(weatherTuple[0] + " " + weatherTuple[1] + " " + weatherTuple[2]);
 });
 
 exports.isNotEmptyPredicate = isNotEmptyPredicate;
 exports.sanatizeArray = sanatizeArray;
-
+exports.weatherXMLKeyToValue = weatherXMLKeyToValue;
+exports.weatherXMLToTuple = weatherXMLToTuple;
