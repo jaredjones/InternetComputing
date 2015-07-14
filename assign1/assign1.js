@@ -35,7 +35,6 @@ var GetWeatherData = function(woeid)
 	var request = httpSync.request({
 	    method: 'GET',
 	    headers: {},
-	    body: '',
 	    protocol: 'http',
 	    host: 'weather.yahooapis.com',
 	    port: 80,
