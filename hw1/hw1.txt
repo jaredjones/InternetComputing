@@ -19,7 +19,7 @@ To answer this question, read, but express the ideas in your own words. If somet
 
 1. What's hoisting in JavaScript?
 
-Hoisting is the ability to assign a value to an object before it has been declared. For instance, a variable may be assigned to ‘x=10’ without the variable having been defined as long as the variable is defined later on in the program. This all works because the JavaScript preprocessor scans through the document looking for variable definitions before the code is executed and moves them to the top, this is called hoisting.
+Hoisting is the ability to assign a value to an object before it has been declared. For instance, a variable may be assigned to ‘x=10’ without the variable having been defined as long as the variable is defined later on in the program. It is also interesting to note that if a variable is redefined later on in the program, the previous declaration will be overwritten. This all works because the JavaScript preprocessor scans through the document looking for variable definitions before the code is executed and moves them to the top, this is called hoisting.
 
 Hoisting may also be used by calling a function before before it has been defined; however, this behavior only works with functions that are declared without having been assigned to a variable. This differs from variable hoisting above, because when a function is assigned to a variable and it has been called before it has been declared, the interpreter will throw an “undefined function” error. It is important to remember that function declarations are hoisted first before variable declarations, but not over variable assignments, this is how function hoisting differs from variable hoisting.
 
@@ -29,5 +29,5 @@ Calling a function using 'call' or 'apply' allows the ability to change an objec
 
 3. When would you use call vs. apply?
 
-Call should be used when you have a list of arguments separated by a comma that you want to pass into a function. On the other hand, use ‘apply’ whenever you are passing an array of arguments to a function.
+Call should be used when you have a list of arguments separated by a comma that you want to pass into a function. On the other hand, use ‘apply’ whenever you are passing an array of arguments to a function. Both of these functions are used when changing the context of a function.
 
