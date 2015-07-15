@@ -1,3 +1,15 @@
+[Venkat 07/15/15 08:48 AM CDT]
+review: Fix and move forward.
+
+Check the coverage.
+
+Move console.log(); to a driver program.
+
+Revisit test cases and code quality.
+
+Fix and move forward.
+
+------------------------------------------------------------------------------
 [Venkat 07/14/15 07:38 AM CDT]
 review: embrace asynchrony
 
