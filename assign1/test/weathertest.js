@@ -57,7 +57,7 @@ exports.testRemoveEmptyOrInvalidDataFromArrayCorrectLength = function(test){
     test.done();
 }
 
-exports.testWeatherXMLKeyToValue = function(test){
+exports.testExtractDataFromXML = function(test){
     var xml = "<rss><blarg city=\"Houston\"</blarg><region=\"TX\"></region><temp=\"68\"></temp></rss>";
     test.strictEqual("Houston", weather.weatherXMLKeyToValue(xml, "city"));
     test.strictEqual("TX", weather.weatherXMLKeyToValue(xml, "region"));
@@ -65,7 +65,7 @@ exports.testWeatherXMLKeyToValue = function(test){
     test.done();
 }
 
-exports.testWeatherXMLToTuple = function(test){
+exports.testTurnCityDataIntoTuple = function(test){
     var xml = "<rss><blarg city=\"Houston\"</blarg><region=\"TX\"></region><temp=\"68\"></temp></rss>";
     var t = weather.weatherXMLToTuple(xml);
     test.strictEqual("Houston", t[0]);
