@@ -1,18 +1,49 @@
 var weather = require('../src/weather');
 
-exports.testIsNotEmptyPredicate = function(test){
+exports.testCanReadWOEIDsFromFile = function(test){
+    test.done();
+}
+
+exports.testIsNotEmptyPredicateString = function(test){
     test.ok(weather.isNotEmptyPredicate("hiya"));
+    test.done();
+}
+
+exports.testIsNotEmptyPredicateStringNum = function(test){
     test.ok(weather.isNotEmptyPredicate("1"));
+    test.done();
+}
+
+exports.testIsNotEmptyPredicateEmptyString = function(test){
     test.ok(!weather.isNotEmptyPredicate(""));
+    test.done();
+}
+
+exports.testIsNotEmptyPredicateUndefined = function(test){
     test.ok(!weather.isNotEmptyPredicate(undefined));
     test.done();
 }
 
-exports.testSanatizeArray = function(test){
+exports.testRemoveEmptyOrInvalidDataFromArrayPosZero = function(test){
     var a = weather.removeEmptyOrInvalidDataFromArray(["hiya", "", 125, "", undefined, "262"]);
     test.strictEqual(a[0], "hiya", "First element in array is incorrect!");
+    test.done();
+}
+
+exports.testRemoveEmptyOrInvalidDataFromArrayPosOne = function(test){
+    var a = weather.removeEmptyOrInvalidDataFromArray(["hiya", "", 125, "", undefined, "262"]);
     test.strictEqual(a[1], 125, "Second element in array is incorrect!");
+    test.done();
+}
+
+exports.testRemoveEmptyOrInvalidDataFromArrayPosTwo = function(test){
+    var a = weather.removeEmptyOrInvalidDataFromArray(["hiya", "", 125, "", undefined, "262"]);
     test.strictEqual(a[2], "262", "Third element in array is incorrect!");
+    test.done();
+}
+
+exports.testRemoveEmptyOrInvalidDataFromArrayCorrectLength = function(test){
+    var a = weather.removeEmptyOrInvalidDataFromArray(["hiya", "", 125, "", undefined, "262"]);
     test.strictEqual(3, a.length, "Your array is of invalid length");
     test.done();
 }
