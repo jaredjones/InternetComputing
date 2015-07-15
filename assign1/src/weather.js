@@ -1,7 +1,7 @@
 var fs = require('fs');
 var http = require('http');
 
-var main = function(){
+var readWOEIDFile = function(){
     fs.readFile(__dirname + '/WOEIDS.txt', 'utf8', fileReceivedCallback);
 }
 
@@ -15,25 +15,28 @@ var fileReceivedCallback = function(err, data){
 
 var outputWeatherDataGivenArray = function (woeidArray){
     console.log('Please Wait (Getting Weather Data)...');
-    getWeatherData(woeidArray[0]);
+    getWeatherData(woeidArray[0], weatherDataXMLReceived);
 }
 
-var getWeatherData = function(woeid){
+var getWeatherData = function(woeid, callback){
+    var weatherDataCallback = function(res){
+        var data = '';
+        res.on('data', function (chunk){
+            data += chunk;
+        });
+        res.on('end', function (){
+            callback(data);
+        });
+    }
     var req = http.get({
         host: 'weather.yahooapis.com',
         path: '/forecastrss?w=' + woeid
     }, weatherDataCallback);
 }
 
-var weatherDataCallback = function(res){
-    var data = '';
-    res.on('data', function (chunk){
-        data += chunk;
-    });
-    res.on('end', function (){
-        var cityTuple = weatherXMLToTuple(data);
-        printCityTuple(cityTuple);
-    });
+var weatherDataXMLReceived = function(data){
+    var cityTuple = weatherXMLToTuple(data);
+    printCityTuple(cityTuple);
 }
 
 var isNotEmptyPredicate = function(n){
@@ -62,8 +65,10 @@ var weatherXMLKeyToValue = function(s, key){
     return s.slice(index, end);
 }
 
-if (require.main === module){main();}
+if (require.main === module){ readWOEIDFile() }
 
+exports.readWOEIDFile = readWOEIDFile;
+exports.getWeatherData = getWeatherData;
 exports.isNotEmptyPredicate = isNotEmptyPredicate;
 exports.removeEmptyOrInvalidDataFromArray = removeEmptyOrInvalidDataFromArray;
 exports.weatherXMLKeyToValue = weatherXMLKeyToValue;

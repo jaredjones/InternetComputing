@@ -1,7 +1,16 @@
 var weather = require('../src/weather');
 
 exports.testCanReadWOEIDsFromFile = function(test){
+    test.doesNotThrow(weather.readWOEIDFile, Error, 'File reading has failed!');
     test.done();
+}
+
+exports.testRequestValidXMLURL = function(test){
+    var resp = function(data){
+        test.ok(data.indexOf('<?xml') >= 0);
+        test.done();
+    }
+    weather.getWeatherData(12791557, resp);    
 }
 
 exports.testIsNotEmptyPredicateString = function(test){
