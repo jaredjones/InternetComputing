@@ -34,16 +34,23 @@ var weatherXMLToTuple = function(s){
     return [city, region, temp];
 }
 
-var fileData = fs.readFileSync(__dirname + '/WOEIDS.txt', 'ascii');
-var WOEIDArray = sanatizeArray(fileData.split('\n'));
+var main = function(){
 
-console.log('Please Wait (Getting Weather Data)...');
+    var fileData = fs.readFileSync(__dirname + '/WOEIDS.txt', 'ascii');
+    var WOEIDArray = sanatizeArray(fileData.split('\n'));
 
-WOEIDArray.forEach(function(e){
-    var weatherXMLString = getWeatherData(e);
-    var weatherTuple = weatherXMLToTuple(weatherXMLString);
-    console.log(weatherTuple[0] + " " + weatherTuple[1] + " " + weatherTuple[2]);
-});
+    console.log('Please Wait (Getting Weather Data)...');
+
+    WOEIDArray.forEach(function(e){
+        var weatherXMLString = getWeatherData(e);
+        var weatherTuple = weatherXMLToTuple(weatherXMLString);
+        console.log(weatherTuple[0] + " " + weatherTuple[1] + " " + weatherTuple[2]);
+    });
+}
+
+if (require.main === module){
+    main();
+}
 
 exports.isNotEmptyPredicate = isNotEmptyPredicate;
 exports.sanatizeArray = sanatizeArray;
