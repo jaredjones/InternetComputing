@@ -5,7 +5,7 @@ exports.testCanReadWOEIDsFromFile = function(test){
     test.done();
 }
 
-exports.testRequestValidXMLURL = function(test){
+exports.testRequestValidXMLURLFromWOEID = function(test){
     var resp = function(data){
         test.ok(data.indexOf('<?xml') >= 0);
         test.done();
