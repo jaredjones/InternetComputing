@@ -1,9 +1,12 @@
 var weather = require('../src/weather');
 
+//Venkat: Instead of dow not throw write a test to check what it should really do if file was valid
 exports.testCanReadWOEIDsFromFile = function(test){
     test.doesNotThrow(weather.readWOEIDFile, Error, 'File reading has failed!');
     test.done();
 }
+
+//Venkat: Write a test for invalid file.
 
 exports.testRequestValidXMLURLFromWOEID = function(test){
     var resp = function(data){
@@ -12,6 +15,8 @@ exports.testRequestValidXMLURLFromWOEID = function(test){
     }
     weather.getWeatherData(12791557, resp);    
 }
+
+//Venkat: Write a test for invalid WOEID.
 
 exports.testIsNotEmptyPredicateString = function(test){
     test.ok(weather.isNotEmptyPredicate("hiya"));
@@ -57,6 +62,7 @@ exports.testRemoveEmptyOrInvalidDataFromArrayCorrectLength = function(test){
     test.done();
 }
 
+//Venkat: Don't put multiple independent asserts in one test. Separare this to three tests.
 exports.testExtractDataFromXML = function(test){
     var xml = "<rss><blarg city=\"Houston\"</blarg><region=\"TX\"></region><temp=\"68\"></temp></rss>";
     test.strictEqual("Houston", weather.weatherXMLKeyToValue(xml, "city"));
@@ -65,6 +71,7 @@ exports.testExtractDataFromXML = function(test){
     test.done();
 }
 
+//Venkat: Use better variable names than meaningless variable names like t.
 exports.testTurnCityDataIntoTuple = function(test){
     var xml = "<rss><blarg city=\"Houston\"</blarg><region=\"TX\"></region><temp=\"68\"></temp></rss>";
     var t = weather.weatherXMLToTuple(xml);

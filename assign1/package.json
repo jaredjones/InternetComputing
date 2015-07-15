@@ -8,10 +8,13 @@
   },
   "dependencies": {
     "grunt": "^0.4.5",
-    "grunt-contrib-nodeunit": "^0.4.1",
-    "http-sync": "^0.1.2"
+    "grunt-contrib-nodeunit": "^0.4.1"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "grunt-install-dependencies": "^0.2.0",
+    "grunt-exec": "^0.4.6",
+    "istanbul": "^0.3.13"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

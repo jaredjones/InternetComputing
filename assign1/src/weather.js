@@ -1,8 +1,11 @@
 var fs = require('fs');
 var http = require('http');
 
+
+//Venkat: there should be no console.log(); in this file
+
 var readWOEIDFile = function(){
-    fs.readFile(__dirname + '/WOEIDS.txt', 'utf8', fileReceivedCallback);
+    fs.readFile(__dirname + '/WOEIDS.txt', 'utf8', fileReceivedCallback); //Venkat: Don't hard code the file name here.
 }
 
 var fileReceivedCallback = function(err, data){
@@ -51,6 +54,7 @@ var printCityTuple = function(t){
     console.log(t[0] + " " + t[1] + " " + t[2]);
 }
 
+//Venkat: Give good names for variables. What does s mean?
 var weatherXMLToTuple = function(s){
     var city = weatherXMLKeyToValue(s, "city");
     var region = weatherXMLKeyToValue(s, "region");
