@@ -1,4 +1,4 @@
-var weather = require('../weather');
+var weather = require('../src/weather');
 
 exports.testIsNotEmptyPredicate = function(test){
     test.ok(weather.isNotEmptyPredicate("hiya"));
@@ -9,7 +9,7 @@ exports.testIsNotEmptyPredicate = function(test){
 }
 
 exports.testSanatizeArray = function(test){
-    var a = weather.sanatizeArray(["hiya", "", 125, "", undefined, "262"]);
+    var a = weather.removeEmptyOrInvalidDataFromArray(["hiya", "", 125, "", undefined, "262"]);
     test.strictEqual(a[0], "hiya", "First element in array is incorrect!");
     test.strictEqual(a[1], 125, "Second element in array is incorrect!");
     test.strictEqual(a[2], "262", "Third element in array is incorrect!");
