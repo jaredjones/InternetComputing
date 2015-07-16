@@ -28,12 +28,12 @@ var getWeatherData = function(woeid, callback){
     }, weatherDataCallback);
 }
 
-var isNotEmptyPredicate = function(n){
-    return (n && n.length != 0);
+var isNotEmptyPredicate = function(str){
+    return (str && str.length != 0);
 }
 
-var removeEmptyOrInvalidDataFromArray = function(a){
-    return a.filter(isNotEmptyPredicate);
+var removeEmptyOrInvalidDataFromArray = function(arr){
+    return arr.filter(isNotEmptyPredicate);
 }
 
 var weatherXMLToTuple = function(xmlData){
