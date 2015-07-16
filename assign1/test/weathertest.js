@@ -1,6 +1,6 @@
 var weather = require('../src/weather');
 
-exports.testDoesInvalidFileFireCallback = function(test){
+exports.testDoesInvalidFileThrowException = function(test){
     var resp = function(data, err){}
     test.throws(weather.readWOEIDFile("invalidfile.txt", resp));
     test.done();
