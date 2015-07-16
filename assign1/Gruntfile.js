@@ -9,7 +9,10 @@ module.exports = function(grunt) {
       }
     },
     exec: {
-      coverage: 'node "node_modules/istanbul/lib/cli.js" cover "node_modules/nodeunit/bin/nodeunit" -- test'
+      coverage: 'node "node_modules/istanbul/lib/cli.js" cover "node_modules/nodeunit/bin/nodeunit" -- test',
+      run_driver:{
+        cmd: 'node src/driver.js'
+      }
     }
   });
 
@@ -18,5 +21,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-exec');
   
   grunt.registerTask('coverage', 'exec:coverage');
-  grunt.registerTask('default', ['install-dependencies', 'nodeunit', 'coverage']);
+  grunt.registerTask('run_driver', 'exec:run_driver');
+  grunt.registerTask('default', ['install-dependencies', 'nodeunit', 'coverage','run_driver']);
 }
