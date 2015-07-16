@@ -1,12 +1,19 @@
 var weather = require('../src/weather');
 
-//Venkat: Instead of dow not throw write a test to check what it should really do if file was valid
-exports.testCanReadWOEIDsFromFile = function(test){
-    test.doesNotThrow(weather.readWOEIDFile, Error, 'File reading has failed!');
+exports.testIsAValidFile = function(test){
+    var resp = function(data, err){}
+    test.throws(weather.readWOEIDFile("invalidfile.txt", resp));
     test.done();
 }
 
-//Venkat: Write a test for invalid file.
+exports.testAValidWOEIDFile = function(test){
+    var resp = function(data, err){
+        var array = data.split('\n');
+        test.ok(array[0] != undefined && array[0] != "");
+        test.done();        
+    }
+    weather.readWOEIDFile("WOEIDS.txt", resp);
+}
 
 exports.testRequestValidXMLURLFromWOEID = function(test){
     var resp = function(data){
