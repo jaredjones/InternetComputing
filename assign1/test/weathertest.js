@@ -1,12 +1,12 @@
 var weather = require('../src/weather');
 
-exports.testIsAValidFile = function(test){
+exports.testDoesInvalidFileFireCallback = function(test){
     var resp = function(data, err){}
     test.throws(weather.readWOEIDFile("invalidfile.txt", resp));
     test.done();
 }
 
-exports.testAValidWOEIDFile = function(test){
+exports.testIsWOEIDFileValid = function(test){
     var resp = function(data, err){
         var array = data.split('\n');
         test.ok(array[0] != undefined && array[0] != "");
@@ -22,8 +22,6 @@ exports.testRequestValidXMLURLFromWOEID = function(test){
     }
     weather.getWeatherData(12791557, resp);    
 }
-
-//Venkat: Write a test for invalid WOEID.
 
 exports.testIsNotEmptyPredicateString = function(test){
     test.ok(weather.isNotEmptyPredicate("hiya"));
@@ -69,21 +67,29 @@ exports.testRemoveEmptyOrInvalidDataFromArrayCorrectLength = function(test){
     test.done();
 }
 
-//Venkat: Don't put multiple independent asserts in one test. Separare this to three tests.
-exports.testExtractDataFromXML = function(test){
+exports.testExtractCityFromXML = function(test){
     var xml = "<rss><blarg city=\"Houston\"</blarg><region=\"TX\"></region><temp=\"68\"></temp></rss>";
     test.strictEqual("Houston", weather.weatherXMLKeyToValue(xml, "city"));
+    test.done();
+}
+
+exports.testExtractRegionFromXML = function(test){
+    var xml = "<rss><blarg city=\"Houston\"</blarg><region=\"TX\"></region><temp=\"68\"></temp></rss>";
     test.strictEqual("TX", weather.weatherXMLKeyToValue(xml, "region"));
+    test.done();
+}
+
+exports.testExtractTemperatureFromXML = function(test){
+    var xml = "<rss><blarg city=\"Houston\"</blarg><region=\"TX\"></region><temp=\"68\"></temp></rss>";
     test.strictEqual("68", weather.weatherXMLKeyToValue(xml, "temp"));
     test.done();
 }
 
-//Venkat: Use better variable names than meaningless variable names like t.
 exports.testTurnCityDataIntoTuple = function(test){
     var xml = "<rss><blarg city=\"Houston\"</blarg><region=\"TX\"></region><temp=\"68\"></temp></rss>";
-    var t = weather.weatherXMLToTuple(xml);
-    test.strictEqual("Houston", t[0]);
-    test.strictEqual("TX", t[1]);
-    test.strictEqual("68", t[2]);
+    var cityTuple = weather.weatherXMLToTuple(xml);
+    test.strictEqual("Houston", cityTuple[0]);
+    test.strictEqual("TX", cityTuple[1]);
+    test.strictEqual("68", cityTuple[2]);
     test.done();
 }
