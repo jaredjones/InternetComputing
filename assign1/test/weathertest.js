@@ -8,11 +8,35 @@ exports.testDoesInvalidFileThrowException = function(test){
 
 exports.testIsWOEIDFileValid = function(test){
     var resp = function(data, err){
-        var array = data.split('\n');
+        var array = weather.fileStringToWOEIDArray(data);
         test.ok(array[0] != undefined && array[0] != "");
         test.done();        
     }
     weather.readWOEIDFile("WOEIDS.txt", resp);
+}
+
+exports.testRemoveEmptyOrInvalidDataFromWOEIDArrayPosZero = function(test){
+    var cleanedArray = weather.removeEmptyOrInvalidDataFromArray(["hiya", "", 125, "", undefined, "262"]);
+    test.strictEqual(cleanedArray[0], "hiya", "First element in array is incorrect!");
+    test.done();
+}
+
+exports.testRemoveEmptyOrInvalidDataFromWOEIDArrayPosOne = function(test){
+    var cleanedArray = weather.removeEmptyOrInvalidDataFromArray(["hiya", "", 125, "", undefined, "262"]);
+    test.strictEqual(cleanedArray[1], 125, "Second element in array is incorrect!");
+    test.done();
+}
+
+exports.testRemoveEmptyOrInvalidDataFromWOEIDArrayPosTwo = function(test){
+    var cleanedArray = weather.removeEmptyOrInvalidDataFromArray(["hiya", "", 125, "", undefined, "262"]);
+    test.strictEqual(cleanedArray[2], "262", "Third element in array is incorrect!");
+    test.done();
+}
+
+exports.testRemoveEmptyOrInvalidDataFromWOEIDArrayCorrectLength = function(test){
+    var cleanedArray = weather.removeEmptyOrInvalidDataFromArray(["hiya", "", 125, "", undefined, "262"]);
+    test.strictEqual(3, cleanedArray.length, "Your array is of invalid length");
+    test.done();
 }
 
 exports.testRequestValidXMLURLFromWOEID = function(test){
@@ -43,30 +67,6 @@ exports.testIsNotEmptyPredicateUndefined = function(test){
     test.done();
 }
 
-exports.testRemoveEmptyOrInvalidDataFromArrayPosZero = function(test){
-    var a = weather.removeEmptyOrInvalidDataFromArray(["hiya", "", 125, "", undefined, "262"]);
-    test.strictEqual(a[0], "hiya", "First element in array is incorrect!");
-    test.done();
-}
-
-exports.testRemoveEmptyOrInvalidDataFromArrayPosOne = function(test){
-    var a = weather.removeEmptyOrInvalidDataFromArray(["hiya", "", 125, "", undefined, "262"]);
-    test.strictEqual(a[1], 125, "Second element in array is incorrect!");
-    test.done();
-}
-
-exports.testRemoveEmptyOrInvalidDataFromArrayPosTwo = function(test){
-    var a = weather.removeEmptyOrInvalidDataFromArray(["hiya", "", 125, "", undefined, "262"]);
-    test.strictEqual(a[2], "262", "Third element in array is incorrect!");
-    test.done();
-}
-
-exports.testRemoveEmptyOrInvalidDataFromArrayCorrectLength = function(test){
-    var a = weather.removeEmptyOrInvalidDataFromArray(["hiya", "", 125, "", undefined, "262"]);
-    test.strictEqual(3, a.length, "Your array is of invalid length");
-    test.done();
-}
-
 exports.testExtractCityFromXML = function(test){
     var xml = "<rss><blarg city=\"Houston\"</blarg><region=\"TX\"></region><temp=\"68\"></temp></rss>";
     test.strictEqual("Houston", weather.weatherXMLKeyToValue(xml, "city"));
@@ -85,11 +85,24 @@ exports.testExtractTemperatureFromXML = function(test){
     test.done();
 }
 
-exports.testTurnCityDataIntoTuple = function(test){
+exports.testTurnCityDataIntoTupleForCity = function(test){
     var xml = "<rss><blarg city=\"Houston\"</blarg><region=\"TX\"></region><temp=\"68\"></temp></rss>";
     var cityTuple = weather.weatherXMLToTuple(xml);
     test.strictEqual("Houston", cityTuple[0]);
+    test.done();
+}
+
+exports.testTurnCityDataIntoTupleForRegion = function(test){
+    var xml = "<rss><blarg city=\"Houston\"</blarg><region=\"TX\"></region><temp=\"68\"></temp></rss>";
+    var cityTuple = weather.weatherXMLToTuple(xml);
     test.strictEqual("TX", cityTuple[1]);
+    test.done();
+}
+
+exports.testTurnCityDataIntoTupleForTemperature = function(test){
+    var xml = "<rss><blarg city=\"Houston\"</blarg><region=\"TX\"></region><temp=\"68\"></temp></rss>";
+    var cityTuple = weather.weatherXMLToTuple(xml);
     test.strictEqual("68", cityTuple[2]);
     test.done();
 }
+

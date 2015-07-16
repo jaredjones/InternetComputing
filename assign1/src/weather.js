@@ -8,6 +8,10 @@ var readWOEIDFile = function(filename, callback){
     fs.readFile(__dirname + '/' + filename, 'utf8', fileReceivedCallback);
 }
 
+var fileStringToWOEIDArray = function(fileString){
+    return fileString.split('\n');
+}
+
 var getWeatherData = function(woeid, callback){
     var weatherDataCallback = function(res){
         var data = '';
@@ -47,6 +51,7 @@ var weatherXMLKeyToValue = function(s, key){
 }
 
 exports.readWOEIDFile = readWOEIDFile;
+exports.fileStringToWOEIDArray = fileStringToWOEIDArray;
 exports.getWeatherData = getWeatherData;
 exports.isNotEmptyPredicate = isNotEmptyPredicate;
 exports.removeEmptyOrInvalidDataFromArray = removeEmptyOrInvalidDataFromArray;
