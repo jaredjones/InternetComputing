@@ -6,20 +6,20 @@ var getWeatherForCities = function(filename, responseFunction, errorFunction){
         if(err){
             return errorFunction(data, err);
         }
-        var WOEIDArray = removeEmptyOrInvalidDataFromArray(fileStringToWOEIDArray(data));
-        var NumberOfWOEIDS = WOEIDArray.length; //Venkat: variable names should start with lowercase (also in the above line)
+        var woeidArray = removeEmptyOrInvalidDataFromArray(fileStringToWOEIDArray(data));
+        var numberOfWOEIDS = woeidArray.length;
         
         var weatherTupleArray = [];
         var weatherDataReceived = function(xmlData){
             var cityTuple = weatherXMLToTuple(xmlData);
             weatherTupleArray.push(cityTuple);
-            NumberOfWOEIDS--;
+            numberOfWOEIDS--;
            
-            if(NumberOfWOEIDS == 0){
+            if(numberOfWOEIDS == 0){
                 responseFunction(weatherTupleArray);
             }
         }
-        WOEIDArray.forEach(function(id){
+        woeidArray.forEach(function(id){
             getWeatherData(id, weatherDataReceived);
         });
     }
