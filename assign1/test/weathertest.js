@@ -16,6 +16,26 @@ exports.testIsWOEIDFileValid = function(test){
     weather.readWOEIDFile("WOEIDS.txt", resp);
 }
 
+exports.testGetWeatherForCities = function(test){
+    var resp = function(weatherTupleArray){
+        test.ok(weatherTupleArray.length > 0);
+        test.done();
+    }
+    weather.getWeatherForCities("WOEIDS.txt", resp);
+}
+
+exports.testGetWeatherForCitiesWithBadFile = function(test){
+    var err = function(data, error){
+        test.ok(true);  
+        test.done();
+    }
+    var resp = function(data){
+        test.ok(false, "You receieved a response, when an error should of been thrown!");
+        test.done();
+    }
+    weather.getWeatherForCities("invalidfile.txt", resp, err);
+}
+
 exports.testRemoveEmptyOrInvalidDataFromWOEIDArrayPosZero = function(test){
     var cleanedArray = weather.removeEmptyOrInvalidDataFromArray(["hiya", "", 125, "", undefined, "262"]);
     test.strictEqual(cleanedArray[0], "hiya", "First element in array is incorrect!");

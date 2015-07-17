@@ -1,6 +1,17 @@
 var weather = require('../src/weather');
 
-weather.readWOEIDFile("WOEIDS.txt", function(data, error){
+var errorCallback = function(err){
+    console.log(err);
+}
+
+var responseCallback = function(weatherTupleArray){
+    console.log(weatherTupleArray);
+}
+
+weather.getWeatherForCities("WOEIDS.txt", responseCallback, errorCallback); 
+
+
+/*weather.readWOEIDFile("WOEIDS.txt", function(data, error){
     if (error){
         return console.log('Error Reading File!');
     }
@@ -18,7 +29,7 @@ var outputWeatherDataGivenArray = function(woeidArray){
 var weatherDataXMLReceived = function(data){
     var cityTuple = weather.weatherXMLToTuple(data);
     console.log(cityTuple[0] + " " + cityTuple[1] + " " + cityTuple[2]);
-}
+}*/
 
 
 //Venkat: Can we refactor this further to the following?

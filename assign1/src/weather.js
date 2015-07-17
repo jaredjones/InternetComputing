@@ -1,6 +1,31 @@
 var fs = require('fs');
 var http = require('http');
 
+var getWeatherForCities = function(filename, responseFunction, errorFunction){
+    var buildWeatherData = function(data, err){
+        if(err){
+            return errorFunction(data, err);
+        }
+        var WOEIDArray = removeEmptyOrInvalidDataFromArray(fileStringToWOEIDArray(data));
+        var NumberOfWOEIDS = WOEIDArray.length;
+        
+        var weatherTupleArray = [];
+        var weatherDataReceived = function(xmlData){
+            var cityTuple = weatherXMLToTuple(xmlData);
+            weatherTupleArray.push(cityTuple);
+            NumberOfWOEIDS--;
+           
+            if(NumberOfWOEIDS == 0){
+                responseFunction(weatherTupleArray);
+            }
+        }
+        WOEIDArray.forEach(function(id){
+            getWeatherData(id, weatherDataReceived);
+        });
+    }
+    readWOEIDFile(filename, buildWeatherData);
+}
+
 var readWOEIDFile = function(filename, callback){
     var fileReceivedCallback = function(err, data){
         callback(data, err);
@@ -50,6 +75,7 @@ var weatherXMLKeyToValue = function(s, key){
     return s.slice(index, end);
 }
 
+exports.getWeatherForCities = getWeatherForCities;
 exports.readWOEIDFile = readWOEIDFile;
 exports.fileStringToWOEIDArray = fileStringToWOEIDArray;
 exports.getWeatherData = getWeatherData;
