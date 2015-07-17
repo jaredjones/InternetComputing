@@ -1,6 +1,6 @@
 var weather = require('../src/weather');
 
-exports.testDoesInvalidFileThrowException = function(test){
+exports.testIsInvalidFileDataUndefined = function(test){
     var resp = function(data, err){
         test.strictEqual(undefined, data, "The file is invalid and the data should be undefined!");
         test.done();
