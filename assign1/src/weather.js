@@ -7,7 +7,7 @@ var getWeatherForCities = function(filename, responseFunction, errorFunction){
             return errorFunction(data, err);
         }
         var WOEIDArray = removeEmptyOrInvalidDataFromArray(fileStringToWOEIDArray(data));
-        var NumberOfWOEIDS = WOEIDArray.length;
+        var NumberOfWOEIDS = WOEIDArray.length; //Venkat: variable names should start with lowercase (also in the above line)
         
         var weatherTupleArray = [];
         var weatherDataReceived = function(xmlData){
