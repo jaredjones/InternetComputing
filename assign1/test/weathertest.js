@@ -1,10 +1,11 @@
 var weather = require('../src/weather');
 
-//Venkat: This test passes even if a valid file name is given.
 exports.testDoesInvalidFileThrowException = function(test){
-    var resp = function(data, err){}
-    test.throws(weather.readWOEIDFile("invalidfile.txt", resp));
-    test.done();
+    var resp = function(data, err){
+        test.strictEqual(undefined, data, "The file is invalid and the data should be undefined!");
+        test.done();
+    }
+    weather.readWOEIDFile("invalidfile.txt", resp);
 }
 
 exports.testIsWOEIDFileValid = function(test){
