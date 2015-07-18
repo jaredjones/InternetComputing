@@ -16,6 +16,7 @@ var getWeatherForCities = function(filename, responseFunction, errorFunction){
             numberOfWOEIDS--;
            
             if(numberOfWOEIDS == 0){
+                sortWeatherTuple(weatherTupleArray);
                 responseFunction(weatherTupleArray);
             }
         }
@@ -53,6 +54,24 @@ var getWeatherData = function(woeid, callback){
     }, weatherDataCallback);
 }
 
+var sortWeatherTuple = function(weatherTupleArray){
+    weatherTupleArray.sort(function(a,b){
+        var firstCity = a[0];
+        var firstRegion = a[1];
+        var secondCity = b[0];
+        var secondRegion = b[1];
+        if (firstCity < secondCity)
+            return -1;
+        if (firstCity > secondCity)
+            return 1;
+        if (firstRegion < secondRegion)
+            return -1;
+        if (firstRegion > secondRegion)
+            return 1;
+        return 0;
+    });
+}
+
 var isNotEmptyPredicate = function(str){
     return (str && str.length != 0);
 }
@@ -79,6 +98,7 @@ exports.getWeatherForCities = getWeatherForCities;
 exports.readWOEIDFile = readWOEIDFile;
 exports.fileStringToWOEIDArray = fileStringToWOEIDArray;
 exports.getWeatherData = getWeatherData;
+exports.sortWeatherTuple = sortWeatherTuple;
 exports.isNotEmptyPredicate = isNotEmptyPredicate;
 exports.removeEmptyOrInvalidDataFromArray = removeEmptyOrInvalidDataFromArray;
 exports.weatherXMLKeyToValue = weatherXMLKeyToValue;

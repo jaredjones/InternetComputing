@@ -37,6 +37,34 @@ exports.testGetWeatherForCitiesWithBadFile = function(test){
     weather.getWeatherForCities("invalidfile.txt", resp, err);
 }
 
+exports.testSortWeatherTupleNormal = function(test){
+    var tuple = [["Houston","TX","99"],["Beaumont","TX","95"]];
+    weather.sortWeatherTuple(tuple);
+    test.strictEqual("Beaumont", (tuple[0])[0], "City's not sorted");
+    test.done(); 
+}
+
+exports.testSortWeatherTupleMatchingCityRegionOrderCorrect = function(test){
+    var tuple = [["Houston","TX","99"],["Houston","WA","95"]];
+    weather.sortWeatherTuple(tuple);
+    test.strictEqual("TX", (tuple[0])[1], "Region's not sorted, given already correct order.");
+    test.done(); 
+}
+
+exports.testSortWeatherTupleMatchingCityRegionOrderBad = function(test){
+    var tuple = [["Houston","WA","99"],["Houston","TX","95"]];
+    weather.sortWeatherTuple(tuple);
+    test.strictEqual("TX", (tuple[0])[1], "Region's not sorted, given already correct order.");
+    test.done(); 
+}
+
+exports.testSortWeatherTupleIdentical = function(test){
+    var tuple = [["Houston","TX","99"],["Houston","TX","95"]];
+    weather.sortWeatherTuple(tuple);
+    test.strictEqual("Houston", (tuple[0])[0], "City state changes, when it should not have.");
+    test.done(); 
+}
+
 exports.testRemoveEmptyOrInvalidDataFromWOEIDArrayPosZero = function(test){
     var cleanedArray = weather.removeEmptyOrInvalidDataFromArray(["hiya", "", 125, "", undefined, "262"]);
     test.strictEqual(cleanedArray[0], "hiya", "First element in array is incorrect!");
