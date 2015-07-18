@@ -1,4 +1,4 @@
-weather = require('../src/weather')
+weather = require('../src/include')
 
 errorCallback = (err) ->
   console.log err

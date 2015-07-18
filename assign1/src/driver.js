@@ -1,4 +1,4 @@
-var weather = require('../src/weather');
+var weather = require('../src/include');
 
 var errorCallback = function(err){
     console.log(err);
