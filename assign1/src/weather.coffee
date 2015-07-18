@@ -1,8 +1,6 @@
 fs = require('fs')
 http = require('http')
 
-console.log 'CODE GENERATED FROM COFFEE!'
-
 getWeatherForCities = (filename, responseFunction, errorFunction) ->
   buildWeatherData = (data, err) ->
     if err
