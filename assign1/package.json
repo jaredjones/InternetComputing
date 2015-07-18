@@ -9,7 +9,8 @@
   "dependencies": {
     "grunt": "^0.4.5",
     "nodeunit": "^0.9.1",
-    "grunt-contrib-nodeunit": "^0.4.1"
+    "grunt-contrib-nodeunit": "^0.4.1",
+    "coffee": "^1.1.0"
   },
   "devDependencies": {
     "grunt-install-dependencies": "^0.2.0",
