@@ -1,3 +1,18 @@
+[Venkat 07/18/15 10:15 AM CDT]
+review: watch out for old habits when adopting another languge
+
+In coffeescript we don't need return.
+
+Remove lines with empty return.
+
+Change 
+return something
+to 
+something
+
+No need for semicolons in CoffeeScript, remove them.
+
+------------------------------------------------------------------------------
 [Venkat 07/17/15 05:46 AM CDT]
 review: Almost done
 
