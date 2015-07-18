@@ -2,10 +2,10 @@ fs = require('fs')
 http = require('http')
 
 getWeatherForCities = (filename, responseFunction, errorFunction) ->
-
   buildWeatherData = (data, err) ->
     if err
       return errorFunction(data, err)
+  
     woeidArray = removeEmptyOrInvalidDataFromArray(fileStringToWOEIDArray(data))
     numberOfWOEIDS = woeidArray.length
     weatherTupleArray = []
@@ -14,7 +14,9 @@ getWeatherForCities = (filename, responseFunction, errorFunction) ->
       cityTuple = weatherXMLToTuple(xmlData)
       weatherTupleArray.push cityTuple
       numberOfWOEIDS--
+  
       if numberOfWOEIDS == 0
+        sortWeatherTuple weatherTupleArray
         responseFunction weatherTupleArray
       return
 
@@ -27,7 +29,6 @@ getWeatherForCities = (filename, responseFunction, errorFunction) ->
   return
 
 readWOEIDFile = (filename, callback) ->
-
   fileReceivedCallback = (err, data) ->
     callback data, err
     return
@@ -39,7 +40,6 @@ fileStringToWOEIDArray = (fileString) ->
   fileString.split '\n'
 
 getWeatherData = (woeid, callback) ->
-
   weatherDataCallback = (res) ->
     data = ''
     res.on 'data', (chunk) ->
@@ -56,6 +56,23 @@ getWeatherData = (woeid, callback) ->
   }, weatherDataCallback)
   return
 
+sortWeatherTuple = (weatherTupleArray) ->
+  weatherTupleArray.sort (a, b) ->
+    firstCity = a[0]
+    firstRegion = a[1]
+    secondCity = b[0]
+    secondRegion = b[1]
+    if firstCity < secondCity
+      return -1
+    if firstCity > secondCity
+      return 1
+    if firstRegion < secondRegion
+      return -1
+    if firstRegion > secondRegion
+      return 1
+    return 0
+  return
+
 isNotEmptyPredicate = (str) ->
   str and str.length != 0
 
@@ -66,11 +83,7 @@ weatherXMLToTuple = (xmlData) ->
   city = weatherXMLKeyToValue(xmlData, 'city')
   region = weatherXMLKeyToValue(xmlData, 'region')
   temp = weatherXMLKeyToValue(xmlData, 'temp')
-  [
-    city
-    region
-    temp
-  ]
+  [city,region,temp]
 
 weatherXMLKeyToValue = (s, key) ->
   beginTag = '="'
@@ -82,6 +95,7 @@ exports.getWeatherForCities = getWeatherForCities
 exports.readWOEIDFile = readWOEIDFile
 exports.fileStringToWOEIDArray = fileStringToWOEIDArray
 exports.getWeatherData = getWeatherData
+exports.sortWeatherTuple = sortWeatherTuple
 exports.isNotEmptyPredicate = isNotEmptyPredicate
 exports.removeEmptyOrInvalidDataFromArray = removeEmptyOrInvalidDataFromArray
 exports.weatherXMLKeyToValue = weatherXMLKeyToValue
