@@ -28,5 +28,5 @@ module.exports = function(grunt) {
   grunt.registerTask('weathercoffee_to_files', 'exec:weathercoffee_to_files');
   grunt.registerTask('remove_include_temp', 'exec:remove_include_js');
   grunt.registerTask('run_driver_coffee','exec:run_driver_coffee');
-  grunt.registerTask('default', ['install-dependencies', 'weatherjs_to_include', 'nodeunit', 'coverage','run_driver','weathercoffee_to_files','run_driver_coffee']);
+  grunt.registerTask('default', ['install-dependencies', 'weatherjs_to_include', 'nodeunit', 'coverage','run_driver','weathercoffee_to_files','nodeunit','run_driver_coffee']);
 }
