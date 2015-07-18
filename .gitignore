@@ -1,5 +1,7 @@
 node_modules
 coverage
+src/include.js
+src/driver-coffee.js
 *.log
 *.swp
 *.swo
