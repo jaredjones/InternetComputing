@@ -1,4 +1,4 @@
-var weather = require('../src/weather');
+var weather = require('../src/include');
 
 exports.testIsInvalidFileDataUndefined = function(test){
     var resp = function(data, err){

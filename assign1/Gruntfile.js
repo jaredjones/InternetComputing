@@ -9,6 +9,8 @@ module.exports = function(grunt) {
       }
     },
     exec: {
+      remove_include_js: 'rm src/include.js',
+      weatherjs_to_include: 'cp src/weather.js src/include.js',
       coverage: 'node "node_modules/istanbul/lib/cli.js" cover "node_modules/nodeunit/bin/nodeunit" -- test',
       run_driver: 'node src/driver.js'
     }
@@ -20,5 +22,7 @@ module.exports = function(grunt) {
   
   grunt.registerTask('coverage', 'exec:coverage');
   grunt.registerTask('run_driver', 'exec:run_driver');
-  grunt.registerTask('default', ['install-dependencies', 'nodeunit', 'coverage','run_driver']);
+  grunt.registerTask('weatherjs_to_include', 'exec:weatherjs_to_include');
+  grunt.registerTask('remove_include_js', 'exec:remove_include_js');
+  grunt.registerTask('default', ['install-dependencies', 'weatherjs_to_include', 'nodeunit', 'coverage','run_driver']);
 }
