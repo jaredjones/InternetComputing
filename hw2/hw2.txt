@@ -2,20 +2,20 @@ HW 2. Due 11:59PM July 21st
 
 1. What language are you most familiar with?
 
-The language that I'm the most familiar with is Objective-C.
+The language that I'm the most familiar with is Objective-C. **While the language my partner is most familiar with is C++.**
 
 2. From that language point of view, how is JavaScript similar or different?
 
 JavaScript supports nested functions and also deals with memory management for the software writer. Objective-C on the other hand uses automatic reference counting for memory management through the utilization of strong and weak pointers. JavaScript also uses more of a Java syntax while Objective-C's programming style is based off of smalltalk and utilizes brackets for method calls. Another major difference is how both languages are intended to be written, JavaScript is written as is and contains prototypal inheritance. Objective-C strongly emphasizes the usage of classes and the MVC (Model View Controller) paradigm.
-Both languages are similar in that they support closures and have callbacks; one instance of this is how Objective-C deals with asynchronous functions. When the programmer attempts to call an asynchronous function they pass in a callback that is ran after the function finishes execution. In general, JavaScript is used as a multi-paradigm language that can be used for both imperative and declarative programming styles, while Objective-C strongly encourages the imperative style, and provides limited support for functional declarative design.
+Both languages are similar in that they support closures and have callbacks; one instance of this is how Objective-C deals with asynchronous functions. When the programmer attempts to call an asynchronous function they pass in a callback that is ran after the function finishes execution. In general, JavaScript is used as a multi-paradigm language that can be used for both imperative and declarative programming styles, while Objective-C strongly encourages the imperative style, and provides limited support for functional declarative design.** <— Just this paragraph since he wants it shorter. Maybe take a few things from the top paragraph?**
 
 3. What are some of the things that excited you as you learn JavaScript?
 
-The language provides support for nested functions and prototypal inheritance. A lot of the languages that I've been exposed to over the years lack supports for these two implementations. JavaScript also seems to be the "goto" language that many applications use as a scripting language. In a similar fashion as Lua, a lot of software interfaces have scripting done through the JSC. The primary reason for this is that the JavaScript V8 engine is open source and easily implemented into existing codebases.
+The language provides support for nested functions and prototypal inheritance. A lot of the languages that **we have** I’ve been exposed to over the years lack supports for these two implementations. JavaScript also seems to be the "goto" language that many applications use as a scripting language. In a similar fashion as Lua, a lot of software interfaces have scripting done through the JSC. The primary reason for this is that the JavaScript V8 engine is open source and easily implemented into existing codebases.
 
 4. What are some of the things that concerns you with JavaScript?
 
-The type system ships with Undefined, String, Number, Boolean, Null, and Object; however in general there are actually only four types because both undefined and null are their own unique value. Another major issue with JavaScript is that the Number type is always stored as a 64-bit floating pointer number (Double). This means that 9999999999999===10000000000000 due to rounding errors with the exponent that is stored in the IEEE 754 format. Another concerning issue with JavaScript are global variables, at first one thinks that as long as they use "var" then they are okay. However consider the following:
+The type system ships with Undefined, String, Number, Boolean, Null, and Object; however in general there are actually only four types because both undefined and null are their own unique value. Another major issue with JavaScript is that the Number type is always stored as a 64-bit floating pointer number (Double). This means that 9999999999999===10000000000000 due to rounding errors with the exponent that is stored in the IEEE 754 format. Another concerning issue with JavaScript are global variables, at first one thinks that as long as they use "var" then they are okay.**  <- Maybe just stop here and make the paragraph shorter?**However consider the following:
 var foo;
 fou = 18;
 
