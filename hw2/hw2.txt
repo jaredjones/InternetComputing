@@ -2,13 +2,13 @@ HW 2. Due 11:59PM July 21st
 
 1. What language are you most familiar with?
 
-The language that I'm the most familiar with is Objective-C. While the language Tim is most familiar with is C++.
+The language that we're both familiar with is Objective-C.
 
 2. From that language point of view, how is JavaScript similar or different?
 
 Both languages are similar in that they support closures and have callbacks; one instance of this is how Objective-C deals with asynchronous functions. When the programmer attempts to call an asynchronous function they pass in a callback that is ran after the function finishes execution. 
 
-In general, JavaScript is used as a multi-paradigm language that can be used for both imperative and declarative programming styles, while Objective-C and C++ strongly encourage the imperative style, and provides limited support for functional declarative design.
+In general, JavaScript is used as a multi-paradigm language that can be used for both imperative and declarative programming styles, while Objective-C strongly encourage the imperative style, and provides limited support for functional declarative design.
 
 3. What are some of the things that excited you as you learn JavaScript?
 
@@ -20,4 +20,4 @@ In a similar fashion as Lua, a lot of software interfaces have scripting done th
 
 Both of us have concerns over how the JavaScript claims to ship with the types: Undefined, String, Number, Boolean, Null, and Object; however in general there are actually only four types because both undefined and null are their own unique value. Another major issue with JavaScript is that the Number type is always stored as a 64-bit floating pointer number (Double). This means that 9999999999999===10000000000000 due to rounding errors with the exponent that is stored in the IEEE 754 format. 
 
-Another concerning issue with JavaScript are global variables, at first one thinks that as long as they use "var" then they are okay. But as in the case of our programming assignment a simple typo can cause a global variable to be declared and this can can cause major issues and headaches when debugging.
+Another concerning issue with JavaScript are global variables, at first one thinks that as long as they use "var" then they are okay. But as in the case of our programming assignment a simple typo can cause a global variable to be declared and this can can cause major issues and headaches while debugging.
