@@ -18,6 +18,6 @@ In a similar fashion as Lua, a lot of software interfaces have scripting done th
 
 4. What are some of the things that concerns you with JavaScript?
 
-Jared and I have concerns over the type system ships with Undefined, String, Number, Boolean, Null, and Object; however in general there are actually only four types because both undefined and null are their own unique value. Another major issue with JavaScript as Jared pointed out to me was that the Number type is always stored as a 64-bit floating pointer number (Double). This means that 9999999999999===10000000000000 due to rounding errors with the exponent that is stored in the IEEE 754 format. 
+Both of us have concerns over how the JavaScript claims to ship with the types: Undefined, String, Number, Boolean, Null, and Object; however in general there are actually only four types because both undefined and null are their own unique value. Another major issue with JavaScript as Jared pointed out to me was that the Number type is always stored as a 64-bit floating pointer number (Double). This means that 9999999999999===10000000000000 due to rounding errors with the exponent that is stored in the IEEE 754 format. 
 
 Another concerning issue with JavaScript are global variables, at first one thinks that as long as they use "var" then they are okay. But as in the case of our programming assignment a simple typo can cause a global variable to be declared and this can can cause major issues and headaches when debugging.
