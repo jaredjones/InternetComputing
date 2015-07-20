@@ -53,13 +53,13 @@ sortWeatherTuple = (weatherTupleArray) ->
     secondCity = b[0]
     secondRegion = b[1]
     if firstCity < secondCity
-      -1
+      return -1
     if firstCity > secondCity
-      1
+      return 1
     if firstRegion < secondRegion
-      -1
+      return -1
     if firstRegion > secondRegion
-      1
+      return 1
     0
 
 isNotEmptyPredicate = (str) ->
