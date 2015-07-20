@@ -1,3 +1,7 @@
 HW 3. Due 11:59PM July 24th
 
 Mention a few JavaScript engines available today. Discuss their key strengths and limitations.
+
+V8 is Google’s open source JavaScript engine for Chrome written in C++. It can run standalone or easily be embedded into any C++ application. Some cool key features are that it can automatically compile and execute javascript source code, handle memory allocations for objects, and that it garbage collects objects that are no longer needed. One limitation of V8 is it’s 1.4GB heap limit in Node.js. 
+
+Another engine is Duktape. This embeddable javascript engine is more focused on portability and a smaller foot print than performance. It can be easily integrated into any C/C++ project. Duktape can run on platforms with 256kB flash, includes a built-in debugger, and built-in regular expression engine with no platform dependencies. A couple limitations are that only one C/C++ thread can call Duktape API’s at a time for a particular Duktape heap. There are also known String, buffer, and array limits at 2*31-1(0x7fffffff) bytes.
