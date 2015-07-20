@@ -13,7 +13,7 @@ module.exports = function(grunt) {
       weathercoffee_to_files: 'coffee -o src/temp -c src/weather.coffee',
       weathercoffee_to_include:'',
       coverage: 'node "node_modules/istanbul/lib/cli.js" cover "node_modules/nodeunit/bin/nodeunit" -- test',
-      run_driver: 'node src/driver.js; rm -rf src/temp',
+      run_driver: 'node src/driver.js',
     }
   });
 
