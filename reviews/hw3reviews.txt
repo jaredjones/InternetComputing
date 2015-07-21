@@ -1,0 +1,8 @@
+[Venkat 07/21/15 07:15 AM CDT]
+review: good details
+
+Good details.
+
+Anything targeted at server side, anything targeted for JVM or CLR?
+
+------------------------------------------------------------------------------
