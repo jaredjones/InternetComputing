@@ -1,0 +1,36 @@
+
+section#header{
+	height: 110px;	
+	text-align: center;
+	overflow: hidden;	
+	color:#FFFFFF;
+	font-weight: bold;
+	font-size: larger;
+}
+
+section#copyRight{
+	text-align: center;
+	color:#FFFFFF;
+}
+
+section#navigation{
+	float: left;
+	display:block;
+	background-color: #54545A;
+	margin-right: 25px;
+	padding-top: 4px;
+	padding-bottom: 4px;
+	padding-left: 1px;
+	padding-right: 1px;
+	border: 1px solid;
+	border-color: black;
+	border-radius: 8px;
+	font-family: "Arial", "Verdana";
+	font-size: 16px;
+	color:#FFFFFF;
+}
+body{
+	margin: 0 !important;
+	padding: 0 !important;
+	background-image: url('images/chromeBackground.gif');
+}
