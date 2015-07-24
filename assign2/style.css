@@ -1,12 +1,18 @@
 section#coolTaxi{
 	position: relative;
 }
+
+section#contact{
+	color: white;
+	text-align: center;
+}
+
 section#coolTaxi img{
 	position: absolute;
 	right: 0px;
 	bottom: 0px;
-	
-	
+	padding-top: 0 !important;
+	padding-right: 50px;	
 }
 section#header{
 	height: 110px;	
@@ -28,6 +34,8 @@ section#copyRight p{
 	border-color:black;
 	background-color: #0066FF;
 	border-radius: 10px;
+	margin-right: 20px;
+	margin-left: 20px;
 }
 
 section#stuffEnter{
@@ -43,8 +51,18 @@ section#stuffEnter label{
 h1{
 	border: 1px solid;
 	border-color: black;
-	background-color: #54545A;
-	border-radius: 10px;	
+	background-color: #0066FF;
+	border-radius: 10px;
+	margin-right: 20px;
+	margin-left: 20px;
+}
+h2{
+	border: 1px solid;
+	border-color: black;
+	background-color: #0066FF;
+	border-radius: 10px;
+	margin-right: 20px;
+	margin-left: 20px;
 }
 section#innerBody{
 	background-color: black;
@@ -69,7 +87,18 @@ section#navigation{
 	border-radius: 8px;
 	font-family: "Arial", "Verdana";
 	font-size: 16px;
-	color: #FFFFFF;
+	color: #0066FF;
+}
+section#contactContent a{
+	color: white;
+	text-decoration: underline;
+}
+section#contactContent{
+	border: 1px;
+	padding-top: 20px;
+	padding-bottom: 100px;
+	padding-left: 1px;
+	padding-right: 10px;
 }
 body{
 	margin: 0 !important;
