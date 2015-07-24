@@ -1,4 +1,13 @@
-
+section#coolTaxi{
+	position: relative;
+}
+section#coolTaxi img{
+	position: absolute;
+	right: 0px;
+	bottom: 0px;
+	
+	
+}
 section#header{
 	height: 110px;	
 	text-align: center;
