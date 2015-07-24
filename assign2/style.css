@@ -25,6 +25,7 @@ section#stuffEnter{
 	color: #FFFFFF;
 	padding-bottom: 50px;
 	padding-top: 30px;
+	font-family: "Arial", "Verdana";
 }
 section#stuffEnter label{
 	display:block;
