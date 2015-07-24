@@ -1,0 +1,11 @@
+[Venkat 07/24/15 06:27 AM MDT]
+review: good start
+
+Nice image and styling!
+
+uppercase in html file name is generally a bad idea.
+Also change html file name to index.html for easy access of main page.
+
+Provide a submit button (rename Go to submit).
+
+------------------------------------------------------------------------------
