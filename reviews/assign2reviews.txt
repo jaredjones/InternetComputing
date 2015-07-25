@@ -1,3 +1,10 @@
+[Venkat 07/25/15 06:06 AM MDT]
+review: form action?
+
+Clicking on Submit does nothing (see email for recommended action).
+No validation is happening right now due to that as well.
+
+------------------------------------------------------------------------------
 [Venkat 07/24/15 06:27 AM MDT]
 review: good start
 
