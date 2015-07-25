@@ -1,12 +1,23 @@
+var latField = document.getElementById("lat");
+var lngField = document.getElementById("lng");
 
-var x = document.getElementById('stuffEnter');
-function getLocation(){
-	if(navigator.geolocation){
-		navigator.geolocation.getCurrentPosition(showPosition);
-	}else{
-		x.innerHTML = "Geolocation is not supported by this browser."
-	}
+var locationInfo = function(position){
+	var latitude = position.coords.latitude;
+	var longitude = position.coords.longitude;
+	
+	latField.value = latitude;
+	lngField.value = longitude;
 }
-function showPosition(position){
-	x.innerHTML = "Latitude: " + position.coords.latitude + "<br>Longitude: " + 					position.coords.longitude;
+
+var locationInfoError = function(error){
+	var errorMessage =['',
+	'Permission Denied',
+	'Position Unavailable',
+	'Timeout'
+	];
+	alert("Error Receiving Location: " + errorMessage[error.code]);
+}
+
+getLocationButton.onclick = function(){
+	navigator.geolocation.getCurrentPosition(locationInfo, locationInfoError);
 }
