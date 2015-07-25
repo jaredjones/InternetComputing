@@ -1,3 +1,9 @@
+body{
+	min-width:800px; /* suppose you want minimun width of 1000px */
+	width: auto !important;  /* Firefox will set width as auto */
+	width:800px;             /* As IE ignores !important it will set width as 1000px; */
+}
+
 section#coolTaxi{
 	position: relative;
 }
@@ -38,16 +44,21 @@ section#copyRight p{
 	margin-left: 20px;
 }
 
-section#stuffEnter{
+form#stuffEnter{
 	color: #FFFFFF;
 	padding-bottom: 50px;
 	padding-top: 30px;
 	font-family: "Arial", "Verdana";
 }
-section#stuffEnter label{
+form#stuffEnter label{
 	display:block;
-	
+	font-weight: bold;
 }
+
+#position-field input{
+	width:32px;
+}
+
 h1{
 	border: 1px solid;
 	border-color: black;
