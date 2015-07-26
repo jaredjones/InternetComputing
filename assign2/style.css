@@ -18,7 +18,8 @@ section#coolTaxi img{
 	right: 0px;
 	bottom: 0px;
 	padding-top: 0 !important;
-	padding-right: 50px;	
+	padding-right: 50px;
+	padding-bottom: 50px;	
 }
 section#header{
 	height: 110px;	
@@ -44,15 +45,17 @@ section#copyRight p{
 	margin-left: 20px;
 }
 
+
 form#stuffEnter{
 	color: #FFFFFF;
 	padding-bottom: 50px;
-	padding-top: 30px;
+	padding-top: 0px;
 	font-family: "Arial", "Verdana";
 }
 form#stuffEnter label{
 	display:block;
 	font-weight: bold;
+	
 }
 
 #position-field input{
@@ -103,7 +106,7 @@ section#navigation li{
 	padding-left: 5px;
 }
 section#navigation{
-	height: 100px;
+	height: 120px;
 	float: left;
 	display:block;
 	background-color: #54545A;
