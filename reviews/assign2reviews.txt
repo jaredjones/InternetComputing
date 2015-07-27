@@ -1,3 +1,12 @@
+[Venkat 07/26/15 18:58 PM MDT]
+review: fix submit to actually submit
+
+Give a cue to the user that their request for get location is being worked on.
+On chrome the location text box is editable, make it non-editable.
+
+When Submit is clicked display the data submitted (see email for how to).
+
+------------------------------------------------------------------------------
 [Venkat 07/25/15 06:06 AM MDT]
 review: form action?
 
