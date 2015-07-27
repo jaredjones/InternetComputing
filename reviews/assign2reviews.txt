@@ -1,3 +1,11 @@
+[Venkat 07/27/15 05:48 AM MDT]
+review: resolve incompatible feature
+
+Avoid using textfield for goelocation since that's editable on Chrome on OS X.
+
+Good job on get location.
+
+------------------------------------------------------------------------------
 [Venkat 07/26/15 18:58 PM MDT]
 review: fix submit to actually submit
 
