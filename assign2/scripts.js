@@ -8,6 +8,8 @@ var locationInfo = function(position){
 	
 	latField.value = latitude;
 	lngField.value = longitude;
+	getLocationButton.innerHTML = "Get Location";
+	//getLocationButton.disabled = false;
 }
 
 var locationInfoError = function(error){
@@ -16,9 +18,14 @@ var locationInfoError = function(error){
 	'Position Unavailable',
 	'Timeout'
 	];
+	
 	alert("Error Receiving Location: " + errorMessage[error.code]);
+	//getLocationButton.disabled = false;
+	getLocationButton.innerHTML = "Get Location";
 }
 
 getLocationButton.onclick = function(){
+	getLocationButton.innerHTML = "Please Wait...";
+	//getLocationButton.disabled = true;
 	navigator.geolocation.getCurrentPosition(locationInfo, locationInfoError);
 }

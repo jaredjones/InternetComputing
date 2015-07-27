@@ -17,7 +17,7 @@
 			<li><a href="#aboutUs">About Us</a><br></li>
 		</section>
 	
-		<form id="stuffEnter" action="index.html" method="post">
+		<form id="stuffEnter" action="http://httpbin.org/post" method="post">
 			<label>First Name</label>
 			<input type="input" name="firstName" required="true"/>
 			<label>Last Name</label>
@@ -30,8 +30,13 @@
 			<input type="input" name="destination" placeholder="street, city, state zip" required="true"/>
 			<label>Current Location</label>
 			<section id="position-field">
+<<<<<<< .mine
+				Lng: <input type="text" id="lng" name="long" required="true" readonly/> Lat: <input type="text" id="lat" name="lat" required="true" readonly/>
+				<button type="button" id="getLocationButton"disabled>Get Location</button>
+=======
 				Lng: <input type="text" id="lng" name="long" required="true" readonly/> Lat: <input type="text" id="lat" name="lat" required="true" readonly/>
 				<button type="button" id="getLocationButton">Get Location</button>
+>>>>>>> .r1814
 			</section>	
 			<button type="submit">Submit</button>
 			<section id="coolTaxi">
