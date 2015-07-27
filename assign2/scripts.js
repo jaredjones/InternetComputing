@@ -2,6 +2,7 @@ var latField = document.getElementById("lat");
 var lngField = document.getElementById("lng");
 
 var locationInfo = function(position){
+	alert("Getting your position now.");
 	var latitude = position.coords.latitude;
 	var longitude = position.coords.longitude;
 	

@@ -12,7 +12,25 @@ section#contact{
 	color: white;
 	text-align: center;
 }
-
+section#jaredContent label{
+	border:1px solid;
+	border-color:black;
+	background-color: #0066FF;
+	border-radius: 5px;
+}
+section#jaredBoxContent p{
+	border:1px solid;
+	border-color:black;
+	background-color: #54545A;
+	border-radius: 5px;
+	
+}
+section#timBoxContent p{
+	border:1px solid;
+	border-color:black;
+	background-color: #54545A;
+	border-radius: 5px;
+}
 section#coolTaxi img{
 	position: absolute;
 	right: 0px;
@@ -132,6 +150,10 @@ section#contactContent a{
 section#contactContent label{
 	display: inline;
 	padding: 10px 40px;
+	border:1px solid;
+	border-color:black;
+	background-color: #54545A;
+	border-radius: 5px;
 }
 section#contactContent{
 	border: 1px;
