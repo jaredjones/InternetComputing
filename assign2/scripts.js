@@ -1,12 +1,13 @@
-var latField = document.getElementById("lat");
-var lngField = document.getElementById("lng");
+var latField = document.getElementById("lat-field");
+var lngField = document.getElementById("lng-field");
 
 var locationInfo = function(position){
 	var latitude = position.coords.latitude;
 	var longitude = position.coords.longitude;
-	
-	latField.value = latitude;
-	lngField.value = longitude;
+	lat.value = latitude;
+	lng.value = longitude;
+	latField.innerHTML = latitude;
+	lngField.innerHTML = longitude;
 	getLocationButton.innerHTML = "Get Location";
 	//getLocationButton.disabled = false;
 }
