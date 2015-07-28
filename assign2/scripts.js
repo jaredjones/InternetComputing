@@ -30,6 +30,7 @@ getLocationButton.onclick = function(){
 	navigator.geolocation.getCurrentPosition(locationInfo, locationInfoError);
 }
 
+var source;
 var registerDragDrop = function(){
 	var dragSource = document.getElementById('canDrag');
 	dragSource.ondragstart = function(event){
@@ -38,5 +39,22 @@ var registerDragDrop = function(){
 		return true;
 	};
 	
-	var dropTarget = document.getElementById('the-url')
+	var dropTarget = document.getElementById('listMe');
+	dropTarget.ondrop = function(event){
+		this.value = event.dataTransfer.getData('Text');
+		event.preventDefault();
+		source.innerHTML = 'Text';
+		return false;
+	};
+	
+	dropTarget.ondragover = function(event){
+		event.preventDefault();
+		return false;
+	};
+	
+	dropTarget.ondragend = function(event){
+		event.preventDefault();
+		return false;
+	};
 }
+registerDragDrop();

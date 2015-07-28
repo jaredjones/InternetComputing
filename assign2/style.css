@@ -160,6 +160,7 @@ section#carListDragDrop{
 	margin-right: 0px;
 	float: right;
 	padding-bottom: 1px;
+	
 }
 section#carListDragDrop h5{
 	text-align: center;
@@ -182,6 +183,7 @@ section#carListDragDrop li{
 	border-color:black;
 	background-color: #0066FF;
 	border-radius: 5px;
+	cursor: move;
 }
 section#navigation{
 	float: left;
