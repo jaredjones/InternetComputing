@@ -1,3 +1,13 @@
+[Venkat 07/28/15 10:14 AM CDT]
+review: drag-drop?
+
+Good work on the location feedback.
+
+Did not find the drag-drop area.
+
+I did not review JavaScript since there were no tests.
+
+------------------------------------------------------------------------------
 [Venkat 07/27/15 05:48 AM MDT]
 review: resolve incompatible feature
 
