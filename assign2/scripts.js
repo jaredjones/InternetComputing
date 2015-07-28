@@ -29,3 +29,14 @@ getLocationButton.onclick = function(){
 	//getLocationButton.disabled = true;
 	navigator.geolocation.getCurrentPosition(locationInfo, locationInfoError);
 }
+
+var registerDragDrop = function(){
+	var dragSource = document.getElementById('canDrag');
+	dragSource.ondragstart = function(event){
+		var dataToCopy = this.getAttribute('data-company');
+		event.dataTransfer.setData('Text', dataToCopy);
+		return true;
+	};
+	
+	var dropTarget = document.getElementById('the-url')
+}

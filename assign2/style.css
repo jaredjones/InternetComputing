@@ -12,7 +12,15 @@ section#coolTaxi img{
     height: 159.5px;
     width: 281px;
 }
-
+selection#carSelectDragDrop{
+	list-style-type: none;
+	margin:0;
+	padding:0;
+	background: #eee;
+	padding: 5px;
+	border: 1px solid black;
+	width: 200px;
+}
 section#contact{
 	color: white;
 	text-align: center;
@@ -30,6 +38,14 @@ section#jaredBoxContent p{
 	border-radius: 5px;
 	
 }
+section#dragDropBox{
+	float: right;
+	padding-bottom: 0px;
+	padding-top: 150px;
+	padding-right: 10px;
+	color:white;
+
+}
 section#timBoxContent p{
 	border:1px solid;
 	border-color:black;
@@ -40,9 +56,9 @@ section#coolTaxi img{
 	position: absolute;
 	right: 0px;
 	bottom: 0px;
-	padding-top: 0 !important;
-	padding-right: 50px;
-	padding-bottom: 50px;	
+	#padding-top: 0 !important;
+	padding-right: 1px;
+	#padding-bottom: 130px;	
 }
 section#header{
 	height: 110px;	
@@ -54,7 +70,6 @@ section#header{
 }
 
 section#copyRight{
-	
 	text-align: center;
 	color:#FFFFFF;
 }
@@ -72,6 +87,7 @@ section#copyRight p{
 form#stuffEnter{
 	color: #FFFFFF;
 	padding-bottom: 50px;
+	padding-left: 200px;
 	padding-top: 0px;
 	font-family: "Arial", "Verdana";
 }
@@ -110,6 +126,9 @@ h3{
 	margin-left: 20px;
 
 }
+section#stuffInput{
+	padding-left: 
+}
 section#aboutUs{
 	text-align: center;
 	font-size: 20px 
@@ -133,19 +152,40 @@ section#navigation a{
 section#navigation li{
 	padding-left: 5px;
 }
+
+section#carListDragDrop{
+	text-align: center;
+	margin-right: 0px;
+	float: right;
+	padding-bottom: 100px;
+}
+section#carListDragDrop h5{
+	text-align: center;
+}
+section#carListDragDrop ul{
+	list-style-type: none;
+}
+section#carListDragDrop li{
+	display: inline;
+	padding: 5px 20px;
+	border:1px solid;
+	border-color:black;
+	background-color: #54545A;
+	border-radius: 5px;
+}
 section#navigation{
 	float: left;
 	display:block;
 	background-color: #54545A;
 	margin-left: 10px;
-	margin-right: 50px;
+	margin-right: 0px;
 	height: 0px;
-	margin-bottom: 160px;
+	margin-bottom: 0px;
 	margin-top: 0px;
-	padding-top: 10px;
-	padding-bottom: 100px;
+	padding-top: 0px;
+	padding-bottom: 120px;
 	padding-left: 1px;
-	padding-right: 10px;
+	padding-right: 5px;
 	border: 1px solid;
 	border-color: #0066FF;
 	border-radius: 8px;
