@@ -17,34 +17,46 @@
 			<li><a href="#aboutUs">About Us</a><br></li>
 		</section>
 		<section id="dragDropBox">
-			<h5>Car Selection</h5>
-			
+					<section id="coolTaxi">
+					<img src="images/audi.png">
+					</section>
+					<section id="carListDragDrop">
+						<ul>
+							<h5>Car Select </h5>
+							<li id="canDrag" data-company="Normal Car">Car</li>
+							<li id="canDrag" data-company="Suburban">Suburban</li>
+							<li id="canDrag" data-company="Sports Car">Sports Car</li>	
+						</ul>
+					</section>
+					<section id="carSelectDragDrop">
+						<ul id="listBlock"></ul>
+					</section>
 		</section>
-	
-		<form id="stuffEnter" action="http://httpbin.org/post" method="post">
-			<label>First Name</label>
-			<input type="input" name="firstName" required="true"/>
-			<label>Last Name</label>
-			<input type="input" name="lastName" required="true"/>
-			<label>Phone Number</label>
-			<input type="tel" name="phone" placeholder="123-456-7890" required="true"/> 
-			<label>Email</label>
-			<input type="email" name="theEmail" placeholder="name@example.com" required="true"/>
-			<label>Destination Address</label>
-			<input type="input" class="block" name="destination" placeholder="street, city, state zip" required="true"/>
-			<label class="inline-block fLeft">Current Location</label><button class="inline-block" type="button" id="getLocationButton">Get Location</button>
-			<section id="position-field">
-				Lng: <div class="inline-block" id="lng-field">N/A</div><br>
-				Lat: <div class="inline-block" id="lat-field">N/A</div>
-				<input id="lng" name="lng" type="hidden"></input>
-				<input id="lat" name="lat" type="hidden"></input>
-			</section>	
-			<button type="submit">Submit</button>
-			<section id="coolTaxi">
-				<img src="images/audi.png">
-			</section>	
-		</form>
-	</section>
+		
+		<section id="stuffInput">
+			<form id="stuffEnter" action="http://httpbin.org/post" method="post">
+				<label>First Name</label>
+				<input type="input" name="firstName" required="true"/>
+				<label>Last Name</label>
+				<input type="input" name="lastName" required="true"/>
+				<label>Phone Number</label>
+				<input type="tel" name="phone" placeholder="123-456-7890" required="true"/> 
+				<label>Email</label>
+				<input type="email" name="theEmail" placeholder="name@example.com" required="true"/>
+				<label>Destination Address</label>
+				<input type="input" class="block" name="destination" placeholder="street, city, state zip" required="true"/>
+				<label class="inline-block fLeft">Current Location</label><button class="inline-block" type="button" id="getLocationButton">Get Location</button>
+				<section id="position-field">
+					Lng: <div class="inline-block" id="lng-field">N/A</div><br>
+					Lat: <div class="inline-block" id="lat-field">N/A</div>
+					<input id="lng" name="lng" type="hidden"></input>
+					<input id="lat" name="lat" type="hidden"></input>
+				</section>	
+				<button type="submit">Submit</button>	
+			</form>
+		</section>
+		
+		</section>
 	
 	<section id="contact">
 		<h2>Contact Us</h2>
