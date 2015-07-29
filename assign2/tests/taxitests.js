@@ -95,8 +95,9 @@ describe('Drop and Drop Test', function(){
         var droptarget = {}; 
         registerDragDrop(this.document, [], droptarget);
     
-        this.document.getElementById("somecarexample").value = ",nissna,civic,toyta";
+        this.document.getElementById("somecarexample").value = ",nissan,civic,toyota";
         droptarget.ondrop(this.event);
+        expect(this.document.getElementById("somecarexample").value).to.be.eql("nissan,civic,toyota,blargness");
     });
 
 });

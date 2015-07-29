@@ -20,9 +20,12 @@ var locationInfoError = function(error){
 	//getLocationButton.innerHTML = "Get Location";
 }
 
-getLocationButton.onclick = function(){
-	//getLocationButton.innerHTML = "Please Wait...";
-	navigator.geolocation.getCurrentPosition(locationInfo, locationInfoError);
+var setupMouseEvents = function(documentModifier){
+		var getLocationButton = documentModifier.getElementById("getLocationButton");
+		getLocationButton.onclick = function(){
+		getLocationButton.innerHTML = "Please Wait...";
+		navigator.geolocation.getCurrentPosition(locationInfo, locationInfoError);
+	}
 }*/
 
 var registerDragDrop = function(documentModifier, carIDList, dropElement){
