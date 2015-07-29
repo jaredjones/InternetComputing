@@ -25,13 +25,13 @@ getLocationButton.onclick = function(){
 	navigator.geolocation.getCurrentPosition(locationInfo, locationInfoError);
 }*/
 
-var registerDragDrop = function(carList, dropElement){
+var registerDragDrop = function(documentModifier, carList, dropElement){
 	var whenDropped = function(event){
 		event.preventDefault();
 		var data = event.dataTransfer.getData("text");
-		event.target.appendChild(document.getElementById(data));
+		event.target.appendChild(documentModifier.getElementById(data));
 		
-		carList.value = carList.value + "," + document.getElementById(data).innerHTML.trim();
+		carList.value = carList.value + "," + documentModifier.getElementById(data).innerHTML.trim();
 		if (carList.value.charAt(0) == ',')
 			carList.value = carList.value.slice(1);
 	}
