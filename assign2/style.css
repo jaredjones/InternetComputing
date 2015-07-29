@@ -154,7 +154,7 @@ section#carListDragDrop{
     vertical-align: middle;
 }
 
-content#carBox{
+.carBox{
 	height:12px;
 	background-color: green;
 	margin-left: 4px;
