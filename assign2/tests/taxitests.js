@@ -1,43 +1,80 @@
-describe('Drop and Drop Test', function(){
-    beforeEach(function() {
-        this.copyData = 'foo';
-        this.targetID = 0;
+beforeEach(function() {
+    this.copyData = 'foo';
+    this.targetID = 0;
 
-        var testContext = this;
-        
-        this.element = {
-            innerHTML: "blargness",
-            value: "nissan,toyota,honda"
-        };
-
-        this.document = {
-            getElementById: function(id) {
-                return testContext.element;
-            }
-        };
-
-        this.event = {
-            preventDefault: function() {
-                this.preventDefaultCalled = true;
-            },
-            dataTransfer: {
-                getData: function(property) {
-                    return testContext.copyData;
-                },
-                setData: function(property, id) {
-                    testContext.copyData = property;
-                    testContext.targetID = id;
+    var testContext = this;
+   
+    this.navigator = {
+        geolocation: {
+            position: {
+                coords: {
+                    latitude: 0,
+                    longitude: 0
                 }
             },
+            PositionError: {
+                code: 1              
+            },
+            fireError: 0,
+            getCurrentPosition: function(callback, errorcallback, doc){
+                if (this.fireError != 0)
+                    errorcallback(this.PositionError, doc);
+                else{
+                    var lat = {}; 
+                    callback(this.position, doc);
+                }
+            }
+        }
+    };
+
+    /*
+    this.element = {
+        innerHTML: "blargness",
+        value: "nissan,toyota,honda",
+    };
+
+    this.document = {
+        getElementById: function(id) {
+            return testContext.element;
+        }
+    };*/
+
+    this.document = {
+        eMap: {},
+        getElementById: function(id) {
+            if (this.eMap[id] == null)
+                this.eMap[id] = {
+                    innerHTML: "",
+                    value: ""
+                }
+            return this.eMap[id];
+        },
+    }
+
+    this.event = {
+        preventDefault: function() {
+            this.preventDefaultCalled = true;
+        },
+        dataTransfer: {
+            getData: function(property) {
+                return testContext.copyData;
+            },
+            setData: function(property, id) {
+                testContext.copyData = property;
+                testContext.targetID = id;
+            }
+        },
             target: {
-                id: function(property) {
-                    return targetID;
-                },
-                appendChild: function(element) {
-                }
+            id: function(property) {
+                return targetID;
+            },
+            appendChild: function(element) {
             }
-        };
-    }); 
+        }
+    };
+}); 
+
+describe('Drop and Drop Test', function(){
     
     it('DropTarget has ondragover', function(){
         var droptarget = {};
@@ -86,7 +123,6 @@ describe('Drop and Drop Test', function(){
         var droptarget = {};
 
         registerDragDrop(this.document,[], droptarget);
-
         droptarget.ondrop(this.event);
         expect(this.event.preventDefaultCalled).to.be.eql(true);
     });
@@ -94,10 +130,48 @@ describe('Drop and Drop Test', function(){
     it('ondrop implements Car List Builder, with comma prepender', function(){
         var droptarget = {}; 
         registerDragDrop(this.document, [], droptarget);
-    
-        this.document.getElementById("somecarexample").value = ",nissan,civic,toyota";
+        this.document.getElementById("foo").innerHTML = "honda";
+        this.document.getElementById("carList").value = ",nissan,civic,toyota";
         droptarget.ondrop(this.event);
-        expect(this.document.getElementById("somecarexample").value).to.be.eql("nissan,civic,toyota,blargness");
+
+        expect(this.document.getElementById("carList").value).to.be.eql("nissan,civic,toyota,honda");
+    });
+    
+    it('ondrop implements Car List Builder, with normal formatting', function(){
+        var droptarget = {}; 
+        registerDragDrop(this.document, [], droptarget);
+        this.document.getElementById("foo").innerHTML = "honda";
+        this.document.getElementById("carList").value = "nissan,civic,toyota";
+        droptarget.ondrop(this.event);
+
+        expect(this.document.getElementById("carList").value).to.be.eql("nissan,civic,toyota,honda");
+    });
+});
+
+describe('Location Services Test', function(){
+    it('Mouse Events sets up onClick Event', function(){
+        setupMouseEvents(this.document);
+        
+        var button = this.document.getElementById("getLocationButton");
+        
+        expect(typeof(button.onclick)).to.be.eql("function");
     });
 
+    it('Geolocation Button Text Changed on Click', function(){
+
+        setupMouseEvents(this.document, this.navigator);
+        var button = this.document.getElementById("getLocationButton");
+        button.onclick();
+        
+        expect(button.innerHTML).to.be.eql("Please Wait...");
+    });
+
+    it('Geolocation error messages fires position unavailable', function(){
+        
+        setupMouseEvents(this.document, this.navigator);
+        var button = this.document.getElementById("getLocationButton");
+        this.navigator.geolocation.fireError = 1;
+        this.navigator.geolocation.PositionError.code = 2;
+        button.onclick();
+    });
 });

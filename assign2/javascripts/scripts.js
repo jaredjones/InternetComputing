@@ -1,12 +1,13 @@
-/*var locationInfo = function(position){
+var locationInfo = function(position){
 	var latitude = position.coords.latitude;
 	var longitude = position.coords.longitude;
-	lat.value = latitude;
-	lng.value = longitude;
 	
-	document.getElementById("lng-field").innerHTML = longitude;
-	document.getElementById("lat-field").innerHTML = latitude;
-	getLocationButton.innerHTML = "Get Location";
+	locationInfo.documentModifier.getElementById("lat").value = latitude;
+	locationInfo.documentModifier.getElementById("lng").value = longitude;
+	
+	locationInfo.documentModifier.getElementById("lng-field").innerHTML = longitude;
+	locationInfo.documentModifier.getElementById("lat-field").innerHTML = latitude;
+	//getLocationButton.innerHTML = "Get Location";
 }
 
 var locationInfoError = function(error){
@@ -18,15 +19,18 @@ var locationInfoError = function(error){
 	
 	alert("Error Receiving Location: " + errorMessage[error.code]);
 	//getLocationButton.innerHTML = "Get Location";
+	return errorMessage;
 }
 
-var setupMouseEvents = function(documentModifier){
-		var getLocationButton = documentModifier.getElementById("getLocationButton");
-		getLocationButton.onclick = function(){
+var setupMouseEvents = function(documentModifier, nav){
+	var getLocationButton = documentModifier.getElementById("getLocationButton");
+	locationInfo.documentModifier = documentModifier;
+
+	getLocationButton.onclick = function(){
 		getLocationButton.innerHTML = "Please Wait...";
-		navigator.geolocation.getCurrentPosition(locationInfo, locationInfoError);
+		nav.geolocation.getCurrentPosition(locationInfo, locationInfoError);
 	}
-}*/
+}
 
 var registerDragDrop = function(documentModifier, carIDArray, dropElement){
 	
@@ -34,6 +38,7 @@ var registerDragDrop = function(documentModifier, carIDArray, dropElement){
 		event.preventDefault();
 		
 		var data = event.dataTransfer.getData("text");
+		
 		event.target.appendChild(documentModifier.getElementById(data));
 		
 		var carList = documentModifier.getElementById("carList");
