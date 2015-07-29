@@ -1,5 +1,4 @@
-
-var locationInfo = function(position){
+/*var locationInfo = function(position){
 	var latitude = position.coords.latitude;
 	var longitude = position.coords.longitude;
 	lat.value = latitude;
@@ -8,7 +7,6 @@ var locationInfo = function(position){
 	document.getElementById("lng-field").innerHTML = longitude;
 	document.getElementById("lat-field").innerHTML = latitude;
 	getLocationButton.innerHTML = "Get Location";
-	//getLocationButton.disabled = false;
 }
 
 var locationInfoError = function(error){
@@ -19,17 +17,15 @@ var locationInfoError = function(error){
 	];
 	
 	alert("Error Receiving Location: " + errorMessage[error.code]);
-	//getLocationButton.disabled = false;
-	getLocationButton.innerHTML = "Get Location";
+	//getLocationButton.innerHTML = "Get Location";
 }
 
 getLocationButton.onclick = function(){
-	getLocationButton.innerHTML = "Please Wait...";
-	//getLocationButton.disabled = true;
+	//getLocationButton.innerHTML = "Please Wait...";
 	navigator.geolocation.getCurrentPosition(locationInfo, locationInfoError);
-}
+}*/
 
-var registerDragDrop = function(){
+var registerDragDrop = function(carList, dropElement){
 	var whenDropped = function(event){
 		event.preventDefault();
 		var data = event.dataTransfer.getData("text");
@@ -44,14 +40,10 @@ var registerDragDrop = function(){
 	}
 	var allowDrop = function(event){
 		event.preventDefault();
-		
 	}
-	document.getElementById("carBox1").ondragstart = whenDragged;
-	document.getElementById("carBox2").ondragstart = whenDragged;
-	document.getElementById("carBox3").ondragstart = whenDragged;
-	document.getElementById("carPlaceDragDrop").ondragover = allowDrop;
-	document.getElementById("carPlaceDragDrop").ondrop = whenDropped;
-	
+	carList.forEach(function(element){
+		element.ondragstart = whenDragged;
+	});
+	dropElement.ondragover = allowDrop;
+	dropElement.ondrop = whenDropped;
 }
-
-registerDragDrop();
