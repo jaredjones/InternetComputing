@@ -153,7 +153,7 @@ describe('Location Services Test', function(){
                 }
             }
         };
-        setupMouseEvents(this.document, this.navigator);
+        setupMouseEvents(this.document, nav);
         var button = this.document.getElementById("getLocationButton");
         button.onclick();
         expect(button.innerHTML).to.be.eql("Please Wait...");
@@ -166,5 +166,26 @@ describe('Location Services Test', function(){
         this.navigator.geolocation.fireError = 1;
         this.navigator.geolocation.PositionError.code = 2;
         button.onclick();
+
+    });
+    
+    it('Geolcation verify coordinate position latitude', function(){
+        this.navigator.geolocation.position.coords.latitude = 28.28581;
+        setCallbackDocumentModifier(this.document);
+        locationInfo(this.navigator.geolocation.position);
+       
+        var lat = this.document.getElementById("lat").value;
+      
+        expect(lat).to.be.eql(28.28581);
+    });
+    
+    it('Geolcation verify coordinate position data', function(){
+        this.navigator.geolocation.position.coords.longitude = 12.3892;
+        setCallbackDocumentModifier(this.document);
+        locationInfo(this.navigator.geolocation.position);
+       
+        var lng = this.document.getElementById("lng").value;
+      
+        expect(lng).to.be.eql(12.3892);
     });
 });
