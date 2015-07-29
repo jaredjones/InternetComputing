@@ -8,7 +8,7 @@ var locationInfo = function(position){
 	locationInfo.documentModifier.getElementById("lng-field").innerHTML = longitude;
 	locationInfo.documentModifier.getElementById("lat-field").innerHTML = latitude;
 	
-	//locationInfo.documentModifier.getElementById("getLocationButton").innerHTML = "Get Location";
+	locationInfo.documentModifier.getElementById("getLocationButton").innerHTML = "Get Location";
 }
 
 var locationInfoError = function(error){
@@ -20,7 +20,7 @@ var locationInfoError = function(error){
 	
 	alert("Error Receiving Location: " + errorMessage[error.code]);
 	
-	//locationInfo.documentModifier.getElementById("getLocationButton").innerHTML = "Get Location";
+	locationInfo.documentModifier.getElementById("getLocationButton").innerHTML = "Get Location";
 	return errorMessage;
 }
 

@@ -146,8 +146,14 @@ describe('Location Services Test', function(){
     });
 
     it('Geolocation Button Text Changed on Click', function(){
-
-        setupMouseEvents(this.document, this.navigator);
+        var nav = {
+            geolocation:{
+                getCurrentPosition: function(callback, error){
+                    return null;                  
+                }
+            }
+        };
+        setupMouseEvents(this.document, nav);
         var button = this.document.getElementById("getLocationButton");
         button.onclick();
         
