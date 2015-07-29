@@ -161,12 +161,11 @@ describe('Location Services Test', function(){
 
     it('Geolocation error messages fires position unavailable', function(){
         
-        setupMouseEvents(this.document, this.navigator);
-        var button = this.document.getElementById("getLocationButton");
         this.navigator.geolocation.fireError = 1;
         this.navigator.geolocation.PositionError.code = 2;
-        button.onclick();
 
+        var err = locationInfoError(this.navigator.geolocation.PositionError);
+        expect(err).to.be.eql("Position Unavailable");
     });
     
     it('Geolcation verify coordinate position latitude', function(){

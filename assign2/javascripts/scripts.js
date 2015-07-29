@@ -26,7 +26,7 @@ var locationInfoError = function(error){
 	alert("Error Receiving Location: " + errorMessage[error.code]);
 	
 	locationInfo.documentModifier.getElementById("getLocationButton").innerHTML = "Get Location";
-	return errorMessage;
+	return errorMessage[error.code];
 }
 
 var setupMouseEvents = function(documentModifier, nav){
