@@ -1,3 +1,18 @@
+[Venkat 07/29/15 11:00 AM CDT]
+review: excellent work
+
+Feature complete.
+
+Tests passing with 100% coverage!
+
+Good variable names, short methods, nice code.
+
+Reducing some dependency on documentModifier would have helped
+reduce the tests.
+
+Avoid alert at all cost, they annoy the users.
+
+------------------------------------------------------------------------------
 [Venkat 07/28/15 10:14 AM CDT]
 review: drag-drop?
 
