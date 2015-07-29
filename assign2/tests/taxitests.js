@@ -27,18 +27,6 @@ beforeEach(function() {
         }
     };
 
-    /*
-    this.element = {
-        innerHTML: "blargness",
-        value: "nissan,toyota,honda",
-    };
-
-    this.document = {
-        getElementById: function(id) {
-            return testContext.element;
-        }
-    };*/
-
     this.document = {
         eMap: {},
         getElementById: function(id) {
