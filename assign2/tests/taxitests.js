@@ -156,7 +156,6 @@ describe('Location Services Test', function(){
         setupMouseEvents(this.document, this.navigator);
         var button = this.document.getElementById("getLocationButton");
         button.onclick();
-        setupMouseEvents(this.document, this.navigator);
         expect(button.innerHTML).to.be.eql("Please Wait...");
     });
 
