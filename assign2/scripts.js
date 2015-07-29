@@ -1,5 +1,3 @@
-var latField = document.getElementById("lat-field");
-var lngField = document.getElementById("lng-field");
 
 var locationInfo = function(position){
 	var latitude = position.coords.latitude;
@@ -30,20 +28,45 @@ getLocationButton.onclick = function(){
 	navigator.geolocation.getCurrentPosition(locationInfo, locationInfoError);
 }
 
-var source;
 var registerDragDrop = function(){
-	var dragSource = document.getElementById('canDrag');
-	dragSource.ondragstart = function(event){
-		var dataToCopy = this.getAttribute('data-company');
-		event.dataTransfer.setData('Text', dataToCopy);
+	var whenDropped = function(event){
+		event.preventDefault();
+	}
+	var whenDragged = function(event){
+		console.log("?");
+		alert('fuck ya');
+		event.dataTransfer.setData("text", ev.target.id);
+	}
+	var whenDropped = function(event){
+		event.preventDefault();
+		
+	}
+	carBox.ondragstart = whenDragged;
+	carPlaceDragDrop.ondrop = whenDropped;
+	
+}
+
+registerDragDrop();
+
+//var idList = ["canDrag","canDrag1", "canDrag2"];
+//var elem;
+/*var registerDragDrop = function(){
+	//var dragSource;
+	
+	/*dragSource.ondragstart = function(event){
+		event.dataTransfer.setData('Text', event.target.id);
+		elem = event.target;
 		return true;
 	};
 	
-	var dropTarget = document.getElementById('listMe');
+	var dropTarget = document.getElementById('listBlock');
 	dropTarget.ondrop = function(event){
 		this.value = event.dataTransfer.getData('Text');
+		//event.addElement(elem);
+		//event.target.copy(elem);
 		event.preventDefault();
-		source.innerHTML = 'Text';
+		//source.innerHTML = event.target.innerHTML;
+		//event.target.innerHTML = event.dataTransfer.getData('Text');
 		return false;
 	};
 	
@@ -55,6 +78,5 @@ var registerDragDrop = function(){
 	dropTarget.ondragend = function(event){
 		event.preventDefault();
 		return false;
-	};
-}
-registerDragDrop();
+	};*/
+//}
