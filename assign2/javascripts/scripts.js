@@ -28,9 +28,11 @@ var setupMouseEvents = function(documentModifier){
 	}
 }*/
 
-var registerDragDrop = function(documentModifier, carIDList, dropElement){
+var registerDragDrop = function(documentModifier, carIDArray, dropElement){
+	
 	var whenDropped = function(event){
 		event.preventDefault();
+		
 		var data = event.dataTransfer.getData("text");
 		event.target.appendChild(documentModifier.getElementById(data));
 		
@@ -45,9 +47,11 @@ var registerDragDrop = function(documentModifier, carIDList, dropElement){
 	var allowDrop = function(event){
 		event.preventDefault();
 	}
-	carIDList.forEach(function(element){
+	
+	carIDArray.forEach(function(element){
 		element.ondragstart = whenDragged;
 	});
+
 	dropElement.ondragover = allowDrop;
 	dropElement.ondrop = whenDropped;
 }
