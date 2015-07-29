@@ -147,16 +147,17 @@ section#carListDragDrop{
 	width: 263px;
 	height: 40px;
 	margin-right: 10px;
-	background-color: darkblue;
+	background-color: #54545A;
 	border-radius: 10px;
-	
 	display: table-cell;
     vertical-align: middle;
+    border: 1px solid;
+    border-color: #0066FF;
 }
 
 .carBox{
 	height:12px;
-	background-color: green;
+	background-color: #0066FF;
 	margin-left: 4px;
 	margin-right: 4px;
 	border-radius: 5px;

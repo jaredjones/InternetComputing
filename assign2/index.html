@@ -21,6 +21,9 @@
 					<img src="images/audi.png">
 					</section>
 					<section id="carListDragDrop">
+						<content id = "carTitle">
+							Car Select:
+						</content>
 						<content id="carBox1" class="carBox" draggable="true">
 							Audi
 						</content>
@@ -32,7 +35,9 @@
 						</content>
 					</section>
 					<section id="carPlaceDragDrop">
-						
+						<content id="car1" draggable="true"></content>
+						<content id="car2" draggable="true"></content>
+						<content id="car3" draggable="true"></content>
 					</section>
 		</section>
 		
@@ -94,6 +99,7 @@
 <script src="javascripts/scripts.js"></script>
 <script>
 	registerDragDrop(document, [carBox1, carBox2, carBox3], carPlaceDragDrop);
+	registerDragDrop(document, [car1, car2, car3], carListDragDrop);
 	setupMouseEvents(document, navigator);
 </script>
 </html>	
