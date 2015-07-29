@@ -7,7 +7,8 @@ var locationInfo = function(position){
 	
 	locationInfo.documentModifier.getElementById("lng-field").innerHTML = longitude;
 	locationInfo.documentModifier.getElementById("lat-field").innerHTML = latitude;
-	//getLocationButton.innerHTML = "Get Location";
+	
+	locationInfo.documentModifier.getElementById("getLocationButton").innerHTML = "Get Location";
 }
 
 var locationInfoError = function(error){
@@ -18,13 +19,16 @@ var locationInfoError = function(error){
 	];
 	
 	alert("Error Receiving Location: " + errorMessage[error.code]);
-	//getLocationButton.innerHTML = "Get Location";
+	
+	locationInfo.documentModifier.getElementById("getLocationButton").innerHTML = "Get Location";
 	return errorMessage;
 }
 
 var setupMouseEvents = function(documentModifier, nav){
-	var getLocationButton = documentModifier.getElementById("getLocationButton");
 	locationInfo.documentModifier = documentModifier;
+	locationInfoError.documentModifier = documentModifier;
+
+	var getLocationButton = documentModifier.getElementById("getLocationButton");
 
 	getLocationButton.onclick = function(){
 		getLocationButton.innerHTML = "Please Wait...";
