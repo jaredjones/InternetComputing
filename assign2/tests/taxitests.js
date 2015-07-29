@@ -6,7 +6,8 @@ describe('Drop and Drop Test', function(){
         var testContext = this;
         
         this.element = {
-            innerHTML: "FUCK"
+            innerHTML: "blargness",
+            value: "nissan,toyota,honda"
         };
 
         this.document = {
@@ -21,7 +22,7 @@ describe('Drop and Drop Test', function(){
             },
             dataTransfer: {
                 getData: function(property) {
-                    return property === 'text' ? testContext.copyData : '';
+                    return testContext.copyData;
                 },
                 setData: function(property, id) {
                     testContext.copyData = property;
@@ -88,6 +89,14 @@ describe('Drop and Drop Test', function(){
 
         droptarget.ondrop(this.event);
         expect(this.event.preventDefaultCalled).to.be.eql(true);
+    });
+
+    it('ondrop implements Car List Builder, with comma prepender', function(){
+        var droptarget = {}; 
+        registerDragDrop(this.document, [], droptarget);
+    
+        this.document.getElementById("somecarexample").value = ",nissna,civic,toyta";
+        droptarget.ondrop(this.event);
     });
 
 });

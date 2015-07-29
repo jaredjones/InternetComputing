@@ -25,12 +25,13 @@ getLocationButton.onclick = function(){
 	navigator.geolocation.getCurrentPosition(locationInfo, locationInfoError);
 }*/
 
-var registerDragDrop = function(documentModifier, carList, dropElement){
+var registerDragDrop = function(documentModifier, carIDList, dropElement){
 	var whenDropped = function(event){
 		event.preventDefault();
 		var data = event.dataTransfer.getData("text");
 		event.target.appendChild(documentModifier.getElementById(data));
 		
+		var carList = documentModifier.getElementById("carList");
 		carList.value = carList.value + "," + documentModifier.getElementById(data).innerHTML.trim();
 		if (carList.value.charAt(0) == ',')
 			carList.value = carList.value.slice(1);
@@ -41,7 +42,7 @@ var registerDragDrop = function(documentModifier, carList, dropElement){
 	var allowDrop = function(event){
 		event.preventDefault();
 	}
-	carList.forEach(function(element){
+	carIDList.forEach(function(element){
 		element.ondragstart = whenDragged;
 	});
 	dropElement.ondragover = allowDrop;
