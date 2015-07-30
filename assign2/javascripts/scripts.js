@@ -23,8 +23,7 @@ var locationInfoError = function(error){
 	'Timeout'
 	];
 	
-	alert("Error Receiving Location: " + errorMessage[error.code]);
-	
+	locationInfo.documentModifier.getElementById("error-box").innerHTML = "Location Error: " + errorMessage[error.code];
 	locationInfo.documentModifier.getElementById("getLocationButton").innerHTML = "Get Location";
 	return errorMessage[error.code];
 }
@@ -36,6 +35,7 @@ var setupMouseEvents = function(documentModifier, nav){
 	var getLocationButton = documentModifier.getElementById("getLocationButton");
 
 	getLocationButton.onclick = function(){
+		locationInfo.documentModifier.getElementById("error-box").innerHTML = "";
 		getLocationButton.innerHTML = "Please Wait...";
 		nav.geolocation.getCurrentPosition(locationInfo, locationInfoError);
 	}

@@ -216,6 +216,10 @@ section#contactContent{
 	padding-left: 1px;
 	padding-right: 10px;
 }
+
+#error-box p{
+	
+}
 .inline-block{
 	display: inline-block;
 }
