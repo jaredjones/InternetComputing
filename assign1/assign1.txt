@@ -22,3 +22,10 @@ City, State		Temperature
 For WOEIDs for different cities, please visit <http://weather.yahoo.com>. For example, the WOEIDs for Houston, TX is 2424766.
 
 When you're done with the program, keep the JavaScript version, but write a version of the program using either CoffeeScript or TypeScript (either one of them).
+
+Total [100]: 95 (I do not see any check in by Timothy, giving 0, please talk to me).
+JavaScript version works [25]:
+CoffeeScript version works [25]:
+Handles invalid WOEID [25]:
+Code quality [25]: -5
+sort can be a lot simpler.
