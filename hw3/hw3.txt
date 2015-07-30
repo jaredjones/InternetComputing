@@ -10,4 +10,4 @@ Another interesting engine is SpiderMonkey, originally developed by Netscape. Th
 
 Nashorn is a JavaScript engine developed entirely in the JVM by Oracle and provided by Mozilla Firefox. It has known limitations with HTML5 canvas, HTML5 audio, WebWorkers, and Websockets. It also does not include a debugger or a browser plug-in API, you will need to download netbeans 8 to support debugging for Nashorn. It’s features include the ability to call javascript directly from a Java8 program, calling java from javascript, and a nice command line interface with tools to support it.
 
-
+Total[10]: 10
