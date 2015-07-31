@@ -106,7 +106,6 @@ var drawFrame = function(){
 		ctx.fillText("move randomly in different directions. As the game", windowStartX + 10, windowStartY + 60 + 16*2);
 		ctx.fillText("progresses the balls moves faster and shrink.", windowStartX + 10, windowStartY +      60 + 16*3);
 		ctx.fillText("So be prepared, have fun, and good luck!", windowStartX + 10, windowStartY +           60 + 16*5);
-		
 	}
 
 	window.requestAnimationFrame(drawFrame);
