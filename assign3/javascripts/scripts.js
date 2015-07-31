@@ -22,11 +22,11 @@ var updateCanvasSizeBasedOnWindow = function()
 	}
 }
 
-var getMousePos = function(canvas, evt) {
+var getMousePos = function(canvas, event) {
     var rect = canvas.getBoundingClientRect();
         return {
-      x: evt.clientX - rect.left,
-      y: evt.clientY - rect.top
+      x: event.clientX - rect.left,
+      y: event.clientY - rect.top
     };
 }
 
@@ -50,18 +50,13 @@ var roundRect = function(x, y, width, height, radius, color, alpha) {
 	ctx.globalAlpha=1.0;
 }
 
-canvas.addEventListener('mousemove', function(event) {
-        var mousePos = getMousePos(canvas, event);
-        mouseX = mousePos.x;
-        mouseY = mousePos.y;
-}, false);
-
 var now, lastUpdate = new Date();
 var fps = 0;
 var drawFrame = function(){
 	updateCanvasSizeBasedOnWindow();
 	
 	ctx.fillStyle = "#ededed";
+	ctx.clearRect( 0, 0, canvas.width, canvas.height );
 	ctx.fillRect( 0, 0, canvas.width, canvas.height );
 
 	ctx.strokeStyle = '#404040';
@@ -106,15 +101,21 @@ var drawFrame = function(){
 		ctx.font="22px Arial";
 		ctx.fillText("Welcome to the Bouncing Ball Game", windowStartX + 20, windowStartY + 22);
 		ctx.font="16px Arial";
-		ctx.fillText("To begin the game click anywhere on the screen to ", windowStartX + 10, windowStartY + 22 + 38);
-		ctx.fillText("spawn three balls at that location. The balls will", windowStartX + 10, windowStartY + 22 + 38 + 16);
-		ctx.fillText("move randomly in different directions. As the game", windowStartX + 10, windowStartY + 22 + 38 + 16*2);
-		ctx.fillText("progresses the balls moves faster and shrink.", windowStartX + 10, windowStartY + 22 + 38 + 16*3);
-		ctx.fillText("So be prepared, have fun, and good luck!", windowStartX + 10, windowStartY + 22 + 38 + 16*5);
+		ctx.fillText("To begin the game click anywhere on the screen to ", windowStartX + 10, windowStartY + 60);
+		ctx.fillText("spawn three balls at that location. The balls will", windowStartX + 10, windowStartY + 60 + 16);
+		ctx.fillText("move randomly in different directions. As the game", windowStartX + 10, windowStartY + 60 + 16*2);
+		ctx.fillText("progresses the balls moves faster and shrink.", windowStartX + 10, windowStartY +      60 + 16*3);
+		ctx.fillText("So be prepared, have fun, and good luck!", windowStartX + 10, windowStartY +           60 + 16*5);
 		
 	}
 
 	window.requestAnimationFrame(drawFrame);
 }
+
+canvas.addEventListener('mousemove', function(event) {
+        var mousePos = getMousePos(canvas, event);
+        mouseX = mousePos.x;
+        mouseY = mousePos.y;
+}, false);
 
 window.requestAnimationFrame(drawFrame);
