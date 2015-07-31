@@ -139,6 +139,12 @@ var drawFrame = function(){
 	ctx.fillText("FPS:" + thisFrameFPS + " : MouseX:" + mouseX + " MouseY:" + mouseY, 10,window.innerHeight - 12);
 
 	if (!gameStarted){
+		startGameMessage();
+	}
+
+	window.requestAnimationFrame(drawFrame);
+}
+var startGameMessage = function(){
 		var launchRectWidth = 400;
 		var launchRectHeight = 160;
 		var windowStartX = window.innerWidth/2 - (launchRectWidth / 2);
@@ -154,9 +160,6 @@ var drawFrame = function(){
 		ctx.fillText("move randomly in different directions. As the game", windowStartX + 10, windowStartY + 60 + 16*2);
 		ctx.fillText("progresses the balls move faster and shrink.", windowStartX + 10, windowStartY +      60 + 16*3);
 		ctx.fillText("So be prepared, have fun, and good luck!", windowStartX + 10, windowStartY +           60 + 16*5);
-	}
-
-	window.requestAnimationFrame(drawFrame);
 }
 
 canvas.addEventListener('mousemove', function(event) {
