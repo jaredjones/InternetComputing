@@ -1,20 +1,25 @@
 var canvas = document.getElementById("ballGameCanvas");
 var ctx = canvas.getContext('2d');
-var mouseX;
-var mouseY;
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+var mouseX = 0;
+var mouseY = 0;
 
-if (window.devicePixelRatio > 1) {
-    var canvasWidth = canvas.width;
-    var canvasHeight = canvas.height;
 
-    canvas.width = canvasWidth * window.devicePixelRatio;
-    canvas.height = canvasHeight * window.devicePixelRatio;
-    canvas.style.width = canvasWidth + "px";
-    canvas.style.height = canvasHeight + "px";
+var updateCanvasSizeBasedOnWindow = function()
+{
+	canvas.width = window.innerWidth;
+	canvas.height = window.innerHeight;
 
-    ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+	if (window.devicePixelRatio > 1) {
+    	var canvasWidth = canvas.width;
+		var canvasHeight = canvas.height;
+
+		canvas.width = canvasWidth * window.devicePixelRatio;
+		canvas.height = canvasHeight * window.devicePixelRatio;
+    	canvas.style.width = canvasWidth + "px";
+		canvas.style.height = canvasHeight + "px";
+
+    	ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+	}
 }
 
 var getMousePos = function(canvas, evt) {
@@ -34,11 +39,12 @@ canvas.addEventListener('mousemove', function(event) {
 var now, lastUpdate = new Date();
 var fps = 0;
 var drawFrame = function(){
+	updateCanvasSizeBasedOnWindow();
 	
-	ctx.fillStyle = "#ff0000";
+	ctx.fillStyle = "#ededed";
 	ctx.fillRect( 0, 0, canvas.width, canvas.height );
 
-	ctx.fillStyle = "#000000";
+	ctx.strokeStyle = '#404040';
 	ctx.lineWidth=15;
 	ctx.beginPath();
 	ctx.moveTo(0,0);
@@ -47,6 +53,16 @@ var drawFrame = function(){
 	ctx.lineTo(window.innerWidth, 0);
 	ctx.stroke();
 	
+	var endBar = mouseX + (window.innerWidth * 0.1);
+	var startBar = mouseX;
+	var size = endBar - startBar;
+	startBar -= (size / 2);
+	endBar -= (size / 2);
+
+	ctx.beginPath();
+	ctx.moveTo(startBar,0);
+	ctx.lineTo(endBar,0);
+	ctx.stroke();
 	
 	var timeDiff = (now = new Date) - lastUpdate;
 	var thisFrameFPS = 1000 / timeDiff;
