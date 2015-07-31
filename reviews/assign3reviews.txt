@@ -1,0 +1,11 @@
+[Venkat 07/31/15 08:06 AM CDT]
+review: modularize
+
+The pad is going past the edges of the box.
+
+Modularize the code. If you keep several vars around, it will become
+hard to manage the complexity that comes out of it.
+
+Keep methods small, focused, create good logical separations.
+
+------------------------------------------------------------------------------
