@@ -23,7 +23,7 @@ For WOEIDs for different cities, please visit <http://weather.yahoo.com>. For ex
 
 When you're done with the program, keep the JavaScript version, but write a version of the program using either CoffeeScript or TypeScript (either one of them).
 
-Total [100]: 90 (I do not see any check in by Timothy, giving 0, please talk to me).
+Total [100]: 90 
 JavaScript version works [25]:
 CoffeeScript version works [25]:
 Handles invalid WOEID [25]: -5
