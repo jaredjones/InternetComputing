@@ -3,6 +3,14 @@ var ctx = canvas.getContext('2d');
 var mouseX = 0;
 var mouseY = 0;
 var gameStarted = false;
+var ballsSpawned = false;
+
+var ball1X = 0;
+var ball1Y = 0;
+var ball2X = 0;
+var ball2Y = 0;
+var ball3X = 0;
+var ball3Y = 0;
 
 var updateCanvasSizeBasedOnWindow = function()
 {
@@ -20,6 +28,10 @@ var updateCanvasSizeBasedOnWindow = function()
 
     	ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
 	}
+}
+
+var getRandomNumberWithBounds = function(min, max) {
+  return Math.random() * (max - min) + min;
 }
 
 var getMousePos = function(canvas, event) {
@@ -79,6 +91,42 @@ var drawFrame = function(){
 	ctx.lineTo(endBar,0);
 	ctx.stroke();
 	
+	if (gameStarted && !ballsSpawned){
+		ball1X = getRandomNumberWithBounds(100, window.innerWidth - 100);
+		ball1Y = getRandomNumberWithBounds(100, window.innerHeight - 100);
+		ball2X = getRandomNumberWithBounds(100, window.innerWidth - 100);
+		ball2Y = getRandomNumberWithBounds(100, window.innerHeight - 100);
+		ball3X = getRandomNumberWithBounds(100, window.innerWidth - 100);
+		ball3Y = getRandomNumberWithBounds(100, window.innerHeight - 100);
+		ballsSpawned = true;
+	}
+	
+	if (ballsSpawned){
+		ctx.beginPath();
+		ctx.arc(ball1X, ball1Y, (window.innerWidth * 0.1) / 2, 0, 2 * Math.PI, false);
+		ctx.fillStyle = 'red';
+		ctx.fill();
+		ctx.lineWidth = 2;
+		ctx.strokeStyle = '#000000';
+		ctx.stroke();
+		
+		ctx.beginPath();
+		ctx.arc(ball2X, ball2Y, (window.innerWidth * 0.1) / 2, 0, 2 * Math.PI, false);
+		ctx.fillStyle = 'green';
+		ctx.fill();
+		ctx.lineWidth = 2;
+		ctx.strokeStyle = '#000000';
+		ctx.stroke();
+		
+		ctx.beginPath();
+		ctx.arc(ball3X, ball3Y, (window.innerWidth * 0.1) / 2, 0, 2 * Math.PI, false);
+		ctx.fillStyle = 'blue';
+		ctx.fill();
+		ctx.lineWidth = 2;
+		ctx.strokeStyle = '#000000';
+		ctx.stroke();
+	}
+	
 	var timeDiff = (now = new Date) - lastUpdate;
 	var thisFrameFPS = 1000 / timeDiff;
 	if (now != lastUpdate){
@@ -115,6 +163,11 @@ canvas.addEventListener('mousemove', function(event) {
         var mousePos = getMousePos(canvas, event);
         mouseX = mousePos.x;
         mouseY = mousePos.y;
+}, false);
+
+canvas.addEventListener('mouseup', function(event) {
+        var mousePos = getMousePos(canvas, event);
+        gameStarted = true;
 }, false);
 
 window.requestAnimationFrame(drawFrame);
