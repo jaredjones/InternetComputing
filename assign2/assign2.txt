@@ -18,3 +18,16 @@ The page should contain the following details and provide the following faciliti
 10. Group the contents logically using HTML5 semantic elements.
 
 Create only one html file, one css file, and one JavaScript file. If you need to use third party javascript files, use a link to them instead of storing them locally.
+
+Total [100]: 90
+Feature Completed [10]: 
+Page layout with links [10]:
+Field validations [10]:
+Validation for car types present [10]: -10
+Goelocation [10]:
+Geolocation feedback to users [5]:
+Goelocation not editable [5]:
+Drag drop [10]:
+Drag drop not editable directly [10]:
+Data sent property [10]:
+Code quality [10]:
