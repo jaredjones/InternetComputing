@@ -6,3 +6,8 @@ html,body{
 	overflow-y: hidden;
 	overflow-x: hidden;
 }
+#canvas{
+	display: block;
+	border: 15px solid red;
+	margin 50px auto;
+}

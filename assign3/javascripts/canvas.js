@@ -1,23 +1,7 @@
 var canvas = document.getElementById("ballGameCanvas");
 var ctx = canvas.getContext('2d');
-var updateCanvasSizeBasedOnWindow = function()
-{
-	canvas.width = window.innerWidth;
-	canvas.height = window.innerHeight;
 
-	if (window.devicePixelRatio > 1) {
-    	var canvasWidth = canvas.width;
-		var canvasHeight = canvas.height;
-
-		canvas.width = canvasWidth * window.devicePixelRatio;
-		canvas.height = canvasHeight * window.devicePixelRatio;
-    	canvas.style.width = canvasWidth + "px";
-		canvas.style.height = canvasHeight + "px";
-
-    	ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
-	}
-}
-var initializeCanvas = function(mouseX){
+var initializeCanvas = function(mouseX , pad){
 	ctx.fillStyle = "#ededed";
 	ctx.clearRect( 0, 0, canvas.width, canvas.height );
 	ctx.fillRect( 0, 0, canvas.width, canvas.height );
@@ -26,21 +10,19 @@ var initializeCanvas = function(mouseX){
 	ctx.lineWidth=15;
 	ctx.beginPath();
 	ctx.moveTo(0,0);
-	ctx.lineTo(0,window.innerHeight);
-	ctx.lineTo(window.innerWidth, window.innerHeight);
-	ctx.lineTo(window.innerWidth, 0);
-	ctx.stroke();
 	
-	var endBar = mouseX + (window.innerWidth * 0.1);
+	
+	var endBar = mouseX + (canvas.width * 0.1);
 	var startBar = mouseX;
 	var size = endBar - startBar;
 	startBar -= (size / 2);
 	endBar -= (size / 2);
-
+	
 	ctx.beginPath();
 	ctx.moveTo(startBar,0);
 	ctx.lineTo(endBar,0);
 	ctx.stroke();
+	
 }
 var roundRect = function(x, y, width, height, radius, color, alpha) {
 	ctx.globalAlpha=alpha;
@@ -69,6 +51,7 @@ var drawFrame = function(){
 	var now, lastUpdate = new Date();
 	var mouseX = 0;
 	var mouseY = 0;
+	var pad;
 	
 	var drawUpdate = function(){
 		
@@ -83,7 +66,7 @@ var drawFrame = function(){
 			mouseY = mousePos.y;
 		}, false);
 		
-		updateCanvasSizeBasedOnWindow();
+		//updateCanvasSizeBasedOnWindow();
 		initializeCanvas(mouseX);
 		
 		if (gameStarted && !ballsSpawned){
@@ -118,8 +101,8 @@ var drawFrame = function(){
 var startGameMessage = function(){
 		var launchRectWidth = 400;
 		var launchRectHeight = 160;
-		var windowStartX = window.innerWidth/2 - (launchRectWidth / 2);
-		var windowStartY = window.innerHeight/2 - (launchRectHeight / 2);
+		var windowStartX = canvas.width/2 - (launchRectWidth / 2);
+		var windowStartY = canvas.height/2 - (launchRectHeight / 2);
 		roundRect(windowStartX, windowStartY, launchRectWidth, launchRectHeight, 10, "#0a0a0a", 0.5);
 		
 		ctx.fillStyle = "#ffffff";
