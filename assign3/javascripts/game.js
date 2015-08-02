@@ -1,43 +1,32 @@
 var canvas = document.getElementById("ballGameCanvas");
 var ctx = canvas.getContext('2d');
-var now, lastUpdate = new Date();
+/*var now, lastUpdate = new Date();
 var fps = 0;
 var mouseX = 0;
 var mouseY = 0;
 var gameStarted = false;
-var ballsSpawned = false;
+var ballsSpawned = false;*/
 
-var ball1X = 0;
+/*var ball1X = 0;
 var ball1Y = 0;
 var ball2X = 0;
 var ball2Y = 0;
 var ball3X = 0;
-var ball3Y = 0;
+var ball3Y = 0;*/
 
-var initializeBalls = function(){
+var Ball = function(color){
+	this.xCord = getRandomNumberWithBounds(100, window.innerWidth - 100);
+	this.yCord = getRandomNumberWithBounds(100, window.innerHeight - 100);
+	this.color = color;
+	this.drawBall = function(){
 		ctx.beginPath();
-		ctx.arc(ball1X, ball1Y, (window.innerWidth * 0.1) / 2, 0, 2 * Math.PI, false);
-		ctx.fillStyle = 'red';
+		ctx.arc(this.xCord, this.yCord, (window.innerWidth * 0.1) / 2, 0, 2 * Math.PI, false);
+		ctx.fillStyle = this.color;
 		ctx.fill();
 		ctx.lineWidth = 2;
 		ctx.strokeStyle = '#000000';
 		ctx.stroke();
-		
-		ctx.beginPath();
-		ctx.arc(ball2X, ball2Y, (window.innerWidth * 0.1) / 2, 0, 2 * Math.PI, false);
-		ctx.fillStyle = 'green';
-		ctx.fill();
-		ctx.lineWidth = 2;
-		ctx.strokeStyle = '#000000';
-		ctx.stroke();
-		
-		ctx.beginPath();
-		ctx.arc(ball3X, ball3Y, (window.innerWidth * 0.1) / 2, 0, 2 * Math.PI, false);
-		ctx.fillStyle = 'blue';
-		ctx.fill();
-		ctx.lineWidth = 2;
-		ctx.strokeStyle = '#000000';
-		ctx.stroke();
+	}
 }
 
 var updateCanvasSizeBasedOnWindow = function()
@@ -57,7 +46,7 @@ var updateCanvasSizeBasedOnWindow = function()
     	ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
 	}
 }
-var initializeCanvas = function(){
+var initializeCanvas = function(mouseX){
 	ctx.fillStyle = "#ededed";
 	ctx.clearRect( 0, 0, canvas.width, canvas.height );
 	ctx.fillRect( 0, 0, canvas.width, canvas.height );
@@ -114,41 +103,76 @@ var roundRect = function(x, y, width, height, radius, color, alpha) {
 	ctx.globalAlpha=1.0;
 }
 
-var drawFrame = function(){
-	updateCanvasSizeBasedOnWindow();
-	initializeCanvas();
-	
-	if (gameStarted && !ballsSpawned){
-		ball1X = getRandomNumberWithBounds(0.1, 0.9);
-		ball1Y = getRandomNumberWithBounds(0.1, 0.9);
-		ball2X = getRandomNumberWithBounds(0.1, 0.9);
-		ball2Y = getRandomNumberWithBounds(0.1, 0.9);
-		ball3X = getRandomNumberWithBounds(0.1, 0.9);
-		ball3Y = getRandomNumberWithBounds(0.1, 0.9);
-		//initializeBalls(ball1X, ball1Y, ball2X, ball2Y, ball3X, ball3Y);
-		//var ballsSpawned = true;
-	}
-	
-	if (ballsSpawned){
-		initializeBalls(ball1X, ball1Y, ball2X, ball2Y, ball3X, ball3Y);
-	}
-	
-	var timeDiff = (now = new Date) - lastUpdate;
+var getFPS = function(lastUpdate, now, fps){
+	this.lastUpdate = lastUpdate;
+	this.now = now;
+	this.fps = fps;
+	var timeDiff = (this.now = new Date) - this.lastUpdate;
 	var thisFrameFPS = 1000 / timeDiff;
-	if (now != lastUpdate){
-    	fps += (thisFrameFPS - fps);
-		lastUpdate = now;
-  	}
-  	
-  	ctx.fillStyle = "#000000";
-	ctx.font="12px Arial";
-	ctx.fillText("FPS:" + thisFrameFPS + " : MouseX:" + mouseX + " MouseY:" + mouseY, 10,window.innerHeight - 12);
-
-	if (!gameStarted){
-		startGameMessage();
+	if(this.now != this.lastUpdate){
+		this.fps += (thisFrameFPS - this.fps);
+		this.lastUpdate = this.now;
 	}
+	return {
+		displayFps: thisFrameFPS,
+		theOldTime: this.lastUpdate,
+		theFps: this.fps
+		};		
+}
 
-	window.requestAnimationFrame(drawFrame);
+var drawFrame = function(){
+	var gameStarted = false;
+	var ballsSpawned = false;
+	var fps = 0;
+	var ball1, ball2, ball3;
+	var now, lastUpdate = new Date();
+	var mouseX = 0;
+	var mouseY = 0;
+	
+	var drawUpdate = function(){
+		
+		canvas.addEventListener('mouseup', function(event) {
+			var mousePos = getMousePos(canvas, event);
+			gameStarted = true;
+		}, false);
+		
+		canvas.addEventListener('mousemove', function(event) {
+        	var mousePos = getMousePos(canvas, event);
+			mouseX = mousePos.x;
+			mouseY = mousePos.y;
+		}, false);
+		
+		updateCanvasSizeBasedOnWindow();
+		initializeCanvas(mouseX);
+		
+		if (gameStarted && !ballsSpawned){
+			ball1 = new Ball('red');
+			ball2 = new Ball('blue');
+			ball3 = new Ball('green');
+			ballsSpawned = true;
+		}
+	
+		if (ballsSpawned){
+			ball1.drawBall();
+			ball2.drawBall();
+			ball3.drawBall();
+		}
+	
+		var newtime = getFPS(lastUpdate, now, fps);
+		lastUpdate = newtime.theOldTime;
+		fps = newtime.theFps;
+		ctx.fillStyle = "#000000";
+		ctx.font="12px Arial";
+		ctx.fillText("FPS:" + newtime.displayFps + " : MouseX:" + mouseX + " MouseY:" + mouseY, 10,window.innerHeight - 12);
+
+		if (!gameStarted){
+			startGameMessage();
+		}
+		
+		window.requestAnimationFrame(drawUpdate);
+	}
+	
+	window.requestAnimationFrame(drawUpdate);
 }
 var startGameMessage = function(){
 		var launchRectWidth = 400;
@@ -168,7 +192,7 @@ var startGameMessage = function(){
 		ctx.fillText("So be prepared, have fun, and good luck!", windowStartX + 10, windowStartY +           60 + 16*5);
 }
 
-canvas.addEventListener('mousemove', function(event) {
+/*canvas.addEventListener('mousemove', function(event) {
         var mousePos = getMousePos(canvas, event);
         mouseX = mousePos.x;
         mouseY = mousePos.y;
@@ -179,4 +203,5 @@ canvas.addEventListener('mouseup', function(event) {
         gameStarted = true;
 }, false);
 
-window.requestAnimationFrame(drawFrame);
+window.requestAnimationFrame(drawFrame);*/
+drawFrame();
