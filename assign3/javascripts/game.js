@@ -119,12 +119,12 @@ var drawFrame = function(){
 	initializeCanvas();
 	
 	if (gameStarted && !ballsSpawned){
-		ball1X = getRandomNumberWithBounds(100, window.innerWidth - 100);
-		ball1Y = getRandomNumberWithBounds(100, window.innerHeight - 100);
-		ball2X = getRandomNumberWithBounds(100, window.innerWidth - 100);
-		ball2Y = getRandomNumberWithBounds(100, window.innerHeight - 100);
-		ball3X = getRandomNumberWithBounds(100, window.innerWidth - 100);
-		ball3Y = getRandomNumberWithBounds(100, window.innerHeight - 100);
+		ball1X = getRandomNumberWithBounds(0.1, 0.9);
+		ball1Y = getRandomNumberWithBounds(0.1, 0.9);
+		ball2X = getRandomNumberWithBounds(0.1, 0.9);
+		ball2Y = getRandomNumberWithBounds(0.1, 0.9);
+		ball3X = getRandomNumberWithBounds(0.1, 0.9);
+		ball3Y = getRandomNumberWithBounds(0.1, 0.9);
 		//initializeBalls(ball1X, ball1Y, ball2X, ball2Y, ball3X, ball3Y);
 		//var ballsSpawned = true;
 	}
