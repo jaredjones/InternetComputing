@@ -1,18 +1,5 @@
 var canvas = document.getElementById("ballGameCanvas");
 var ctx = canvas.getContext('2d');
-/*var now, lastUpdate = new Date();
-var fps = 0;
-var mouseX = 0;
-var mouseY = 0;
-var gameStarted = false;
-var ballsSpawned = false;*/
-
-/*var ball1X = 0;
-var ball1Y = 0;
-var ball2X = 0;
-var ball2Y = 0;
-var ball3X = 0;
-var ball3Y = 0;*/
 
 var Ball = function(color){
 	this.xCord = getRandomNumberWithBounds(100, window.innerWidth - 100);
@@ -191,17 +178,4 @@ var startGameMessage = function(){
 		ctx.fillText("progresses the balls move faster and shrink.", windowStartX + 10, windowStartY +      60 + 16*3);
 		ctx.fillText("So be prepared, have fun, and good luck!", windowStartX + 10, windowStartY +           60 + 16*5);
 }
-
-/*canvas.addEventListener('mousemove', function(event) {
-        var mousePos = getMousePos(canvas, event);
-        mouseX = mousePos.x;
-        mouseY = mousePos.y;
-}, false);
-
-canvas.addEventListener('mouseup', function(event) {
-        var mousePos = getMousePos(canvas, event);
-        gameStarted = true;
-}, false);
-
-window.requestAnimationFrame(drawFrame);*/
 drawFrame();
