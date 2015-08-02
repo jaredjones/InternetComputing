@@ -1,5 +1,7 @@
 var canvas = document.getElementById("ballGameCanvas");
 var ctx = canvas.getContext('2d');
+var now, lastUpdate = new Date();
+var fps = 0;
 var mouseX = 0;
 var mouseY = 0;
 var gameStarted = false;
@@ -11,6 +13,32 @@ var ball2X = 0;
 var ball2Y = 0;
 var ball3X = 0;
 var ball3Y = 0;
+
+var initializeBalls = function(){
+		ctx.beginPath();
+		ctx.arc(ball1X, ball1Y, (window.innerWidth * 0.1) / 2, 0, 2 * Math.PI, false);
+		ctx.fillStyle = 'red';
+		ctx.fill();
+		ctx.lineWidth = 2;
+		ctx.strokeStyle = '#000000';
+		ctx.stroke();
+		
+		ctx.beginPath();
+		ctx.arc(ball2X, ball2Y, (window.innerWidth * 0.1) / 2, 0, 2 * Math.PI, false);
+		ctx.fillStyle = 'green';
+		ctx.fill();
+		ctx.lineWidth = 2;
+		ctx.strokeStyle = '#000000';
+		ctx.stroke();
+		
+		ctx.beginPath();
+		ctx.arc(ball3X, ball3Y, (window.innerWidth * 0.1) / 2, 0, 2 * Math.PI, false);
+		ctx.fillStyle = 'blue';
+		ctx.fill();
+		ctx.lineWidth = 2;
+		ctx.strokeStyle = '#000000';
+		ctx.stroke();
+}
 
 var updateCanvasSizeBasedOnWindow = function()
 {
@@ -29,7 +57,31 @@ var updateCanvasSizeBasedOnWindow = function()
     	ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
 	}
 }
+var initializeCanvas = function(){
+	ctx.fillStyle = "#ededed";
+	ctx.clearRect( 0, 0, canvas.width, canvas.height );
+	ctx.fillRect( 0, 0, canvas.width, canvas.height );
 
+	ctx.strokeStyle = '#404040';
+	ctx.lineWidth=15;
+	ctx.beginPath();
+	ctx.moveTo(0,0);
+	ctx.lineTo(0,window.innerHeight);
+	ctx.lineTo(window.innerWidth, window.innerHeight);
+	ctx.lineTo(window.innerWidth, 0);
+	ctx.stroke();
+	
+	var endBar = mouseX + (window.innerWidth * 0.1);
+	var startBar = mouseX;
+	var size = endBar - startBar;
+	startBar -= (size / 2);
+	endBar -= (size / 2);
+
+	ctx.beginPath();
+	ctx.moveTo(startBar,0);
+	ctx.lineTo(endBar,0);
+	ctx.stroke();
+}
 var getRandomNumberWithBounds = function(min, max) {
   return Math.random() * (max - min) + min;
 }
@@ -62,34 +114,9 @@ var roundRect = function(x, y, width, height, radius, color, alpha) {
 	ctx.globalAlpha=1.0;
 }
 
-var now, lastUpdate = new Date();
-var fps = 0;
 var drawFrame = function(){
 	updateCanvasSizeBasedOnWindow();
-	
-	ctx.fillStyle = "#ededed";
-	ctx.clearRect( 0, 0, canvas.width, canvas.height );
-	ctx.fillRect( 0, 0, canvas.width, canvas.height );
-
-	ctx.strokeStyle = '#404040';
-	ctx.lineWidth=15;
-	ctx.beginPath();
-	ctx.moveTo(0,0);
-	ctx.lineTo(0,window.innerHeight);
-	ctx.lineTo(window.innerWidth, window.innerHeight);
-	ctx.lineTo(window.innerWidth, 0);
-	ctx.stroke();
-	
-	var endBar = mouseX + (window.innerWidth * 0.1);
-	var startBar = mouseX;
-	var size = endBar - startBar;
-	startBar -= (size / 2);
-	endBar -= (size / 2);
-
-	ctx.beginPath();
-	ctx.moveTo(startBar,0);
-	ctx.lineTo(endBar,0);
-	ctx.stroke();
+	initializeCanvas();
 	
 	if (gameStarted && !ballsSpawned){
 		ball1X = getRandomNumberWithBounds(100, window.innerWidth - 100);
@@ -98,33 +125,12 @@ var drawFrame = function(){
 		ball2Y = getRandomNumberWithBounds(100, window.innerHeight - 100);
 		ball3X = getRandomNumberWithBounds(100, window.innerWidth - 100);
 		ball3Y = getRandomNumberWithBounds(100, window.innerHeight - 100);
-		ballsSpawned = true;
+		//initializeBalls(ball1X, ball1Y, ball2X, ball2Y, ball3X, ball3Y);
+		//var ballsSpawned = true;
 	}
 	
 	if (ballsSpawned){
-		ctx.beginPath();
-		ctx.arc(ball1X, ball1Y, (window.innerWidth * 0.1) / 2, 0, 2 * Math.PI, false);
-		ctx.fillStyle = 'red';
-		ctx.fill();
-		ctx.lineWidth = 2;
-		ctx.strokeStyle = '#000000';
-		ctx.stroke();
-		
-		ctx.beginPath();
-		ctx.arc(ball2X, ball2Y, (window.innerWidth * 0.1) / 2, 0, 2 * Math.PI, false);
-		ctx.fillStyle = 'green';
-		ctx.fill();
-		ctx.lineWidth = 2;
-		ctx.strokeStyle = '#000000';
-		ctx.stroke();
-		
-		ctx.beginPath();
-		ctx.arc(ball3X, ball3Y, (window.innerWidth * 0.1) / 2, 0, 2 * Math.PI, false);
-		ctx.fillStyle = 'blue';
-		ctx.fill();
-		ctx.lineWidth = 2;
-		ctx.strokeStyle = '#000000';
-		ctx.stroke();
+		initializeBalls(ball1X, ball1Y, ball2X, ball2Y, ball3X, ball3Y);
 	}
 	
 	var timeDiff = (now = new Date) - lastUpdate;
