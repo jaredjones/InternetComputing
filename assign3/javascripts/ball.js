@@ -21,24 +21,22 @@ var Ball = function(color){
 		ctx.strokeStyle = '#000000';
 		ctx.stroke();
 	}
-	this.moveBall = function(){
 	
-		
+	this.moveBall = function(){		
 		if(this.xCord - this.radius < 0){
-			this.dx *= -1;//dx = dx * -1;
+			this.dx *= -1;
 		}
 		if(this.xCord + this.radius > canvas.rWidth){
 			this.dx *= -1;
 		}
-		if(this.yCord - this.radius >= 10 && this.yCord - this.radius < 20 && this.xCord >= this.mouseX - 80 && this.xCord <= this.mouseX + 80){
-			this.dy *= -1;//dy = dy * -1;
+		if(this.yCord - this.radius < 0){
+			this.dy *= -1;
 		}
 		if(this.yCord + this.radius > canvas.rHeight){
 			this.dy *= -1;
 		}
 		this.xCord += this.dx;
-		this.yCord += this.dy;
-		
+		this.yCord += this.dy;		
 	}
 	//Working on ball 2 ball collision here
 	/*this.detectCollision = function(ball1, ball2){

@@ -4,12 +4,11 @@ var getRandomNumberWithBounds = function(min, max) {
 
 var getMousePos = function(canvas, event) {
     var rect = canvas.getBoundingClientRect();
-        return {
-      x: event.clientX - rect.left,
-      y: event.clientY - rect.top
+    return {
+    	x: event.clientX - rect.left,
+		y: event.clientY - rect.top
     };
 }
-
 
 var getFPS = function(lastUpdate, now, fps){
 	this.lastUpdate = lastUpdate;
@@ -25,5 +24,5 @@ var getFPS = function(lastUpdate, now, fps){
 		displayFps: thisFrameFPS,
 		theOldTime: this.lastUpdate,
 		theFps: this.fps
-		};		
+	};		
 }

@@ -2,8 +2,8 @@ var canvas = document.getElementById("ballGameCanvas");
 var ctx = canvas.getContext('2d');
 
 var enableHiDPIDisplays = function(){
-	canvas.width = 800;
-	canvas.height = 500;
+	canvas.width = 1000;
+	canvas.height = 700;
 	canvas.rWidth = canvas.width;
 	canvas.rHeight = canvas.height;
 	var canvasHeight = canvas.height;
