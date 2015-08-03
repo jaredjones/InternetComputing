@@ -5,6 +5,7 @@ var Ball = function(color){
 	this.radius = (canvas.width * 0.1) / 2;
 	this.prevX;
 	this.prevY;
+	
 	this.dx = 0.01 * canvas.width;
 	this.dy = this.dx;
 	
@@ -22,13 +23,13 @@ var Ball = function(color){
 	
 		
 		if(this.xCord - this.radius < 0){
-			this.dx *= -1;
+			this.dx *= -1;//dx = dx * -1;
 		}
 		if(this.xCord + this.radius > canvas.width){
 			this.dx *= -1;
 		}
-		if(this.yCord  - this.radius < 0){
-			this.dy *= -1;
+		if(this.yCord - this.radius < 0){
+			this.dy *= -1;//dy = dy * -1;
 		}
 		if(this.yCord + this.radius > canvas.height){
 			this.dy *= -1;
@@ -37,5 +38,6 @@ var Ball = function(color){
 		this.yCord += this.dy;
 		
 	}
+	
+	
 }
-

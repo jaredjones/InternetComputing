@@ -23,6 +23,7 @@ var initializeCanvas = function(mouseX){
 	ctx.lineTo(endBar,0);
 	ctx.stroke();
 	
+	
 }
 var roundRect = function(x, y, width, height, radius, color, alpha) {
 	ctx.globalAlpha=alpha;
