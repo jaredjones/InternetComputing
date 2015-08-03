@@ -1,3 +1,17 @@
+[Venkat 08/03/15 04:51 AM MDT]
+review: Avoid long functions
+
+When a ball collides with another ball, they both have to bounce.
+
+Write logic test driven if you plan to write tests. No point doing test
+after, generally (a) it does not get done well, (b) the design does not
+permit that for after.
+
+Remove commented out dead code. Avoid long functions, modularize it.
+
+Don't display mouse location, etc. only display what's needed.
+
+------------------------------------------------------------------------------
 [Venkat 07/31/15 08:06 AM CDT]
 review: modularize
 
