@@ -1,21 +1,39 @@
 var canvas = document.getElementById("ballGameCanvas");
 var ctx = canvas.getContext('2d');
 
+var enableHiDPIDisplays = function(){
+	canvas.width = 800;
+	canvas.height = 500;
+	canvas.rWidth = canvas.width;
+	canvas.rHeight = canvas.height;
+	var canvasHeight = canvas.height;
+	var canvasWidth = canvas.width;
+	if (window.devicePixelRatio > 1) {
+		
+		canvas.width = canvasWidth * window.devicePixelRatio;
+		canvas.height = canvasHeight * window.devicePixelRatio;
+		canvas.style.width = canvasWidth + "px";
+		canvas.style.height = canvasHeight + "px";
+		
+		ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+	}
+}
+
 var initializeCanvas = function(mouseX){
 	ctx.fillStyle = "#ededed";
-	ctx.clearRect( 0, 0, canvas.width, canvas.height );
-	ctx.fillRect( 0, 0, canvas.width, canvas.height );
+	ctx.clearRect( 0, 0, canvas.rWidth, canvas.rHeight );
+	ctx.fillRect( 0, 0, canvas.rWidth, canvas.rHeight );
 
 	ctx.strokeStyle = '#404040';
 	ctx.lineWidth=10;
 	ctx.beginPath();
 	ctx.moveTo(0,0);
-	ctx.lineTo(0, canvas.height);
-	ctx.lineTo(canvas.width, canvas.height);
-	ctx.lineTo(canvas.width, 0);
+	ctx.lineTo(0, canvas.rHeight);
+	ctx.lineTo(canvas.rWidth, canvas.rHeight);
+	ctx.lineTo(canvas.rWidth, 0);
 	ctx.stroke();
 	
-	var endBar = mouseX + (canvas.width * 0.1);
+	var endBar = mouseX + (canvas.rWidth * 0.1);
 	var startBar = mouseX;
 	var size = endBar - startBar;
 	startBar -= (size / 2);
@@ -28,6 +46,7 @@ var initializeCanvas = function(mouseX){
 	
 	return size;
 }
+
 var roundRect = function(x, y, width, height, radius, color, alpha) {
 	ctx.globalAlpha=alpha;
 	ctx.fillStyle = color;
@@ -92,7 +111,7 @@ var drawFrame = function(){
 		fps = newtime.theFps;
 		ctx.fillStyle = "#000000";
 		ctx.font="12px Arial";
-		ctx.fillText("FPS:" + newtime.displayFps + " : Size: " + size + " : MouseX:" + mouseX + " MouseY:" + mouseY, 10,canvas.height - 12);
+		ctx.fillText("FPS:" + newtime.displayFps + " : Size: " + size + " : MouseX:" + mouseX + " MouseY:" + mouseY, 10,canvas.rHeight - 12);
 
 		if (!gameStarted){
 			startGameMessage();
@@ -111,8 +130,8 @@ var drawFrame = function(){
 var startGameMessage = function(){
 		var launchRectWidth = 400;
 		var launchRectHeight = 160;
-		var windowStartX = canvas.width/2 - (launchRectWidth / 2);
-		var windowStartY = canvas.height/2 - (launchRectHeight / 2);
+		var windowStartX = canvas.rWidth/2 - (launchRectWidth / 2);
+		var windowStartY = canvas.rHeight/2 - (launchRectHeight / 2);
 		roundRect(windowStartX, windowStartY, launchRectWidth, launchRectHeight, 10, "#0a0a0a", 0.5);
 		
 		ctx.fillStyle = "#ffffff";
@@ -125,4 +144,5 @@ var startGameMessage = function(){
 		ctx.fillText("progresses the balls move faster and shrink.", windowStartX + 10, windowStartY +      60 + 16*3);
 		ctx.fillText("So be prepared, have fun, and good luck!", windowStartX + 10, windowStartY +           60 + 16*5);
 }
+enableHiDPIDisplays();
 drawFrame();
