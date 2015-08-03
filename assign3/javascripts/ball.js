@@ -41,5 +41,4 @@ var Ball = function(color){
 		
 	}
 	
-	
 }

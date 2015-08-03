@@ -47,7 +47,7 @@ var roundRect = function(x, y, width, height, radius, color, alpha) {
 var drawFrame = function(){
 	var gameStarted = false;
 	var ballsSpawned = false;
-	var padUp = false;
+	var endGame = false;
 	var fps = 0;
 	var ball1, ball2, ball3;
 	var now, lastUpdate = new Date();
@@ -93,6 +93,9 @@ var drawFrame = function(){
 
 		if (!gameStarted){
 			startGameMessage();
+		}
+		if(endGame){
+			endGameMessage();
 		}
 		
 		window.requestAnimationFrame(drawUpdate);

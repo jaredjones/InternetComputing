@@ -8,6 +8,6 @@ html,body{
 }
 #canvas{
 	display: block;
-	border: 15px solid red;
+	border: 15px solid;
 	margin: 0 auto;
 }
