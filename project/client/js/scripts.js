@@ -15,7 +15,7 @@ var wordLengthCounter = function(str){
 var initalizeWorkDescriptionWordLimiter = function(){
 	var descBox = document.getElementById("work-desc");
 	var wordCounter = document.getElementById("remaining-word-counter");
-	var maxNumberOfWords = 10;
+	var maxNumberOfWords = 300;
 	
 	wordCounter.innerHTML = "Remaining Words: " + maxNumberOfWords;
 	
