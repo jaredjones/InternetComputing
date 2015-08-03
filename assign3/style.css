@@ -9,5 +9,5 @@ html,body{
 #canvas{
 	display: block;
 	border: 15px solid red;
-	margin 50px auto;
+	margin: 0 auto;
 }

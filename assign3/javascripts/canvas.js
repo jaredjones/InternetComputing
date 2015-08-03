@@ -1,7 +1,7 @@
 var canvas = document.getElementById("ballGameCanvas");
 var ctx = canvas.getContext('2d');
 
-var initializeCanvas = function(mouseX , pad){
+var initializeCanvas = function(mouseX){
 	ctx.fillStyle = "#ededed";
 	ctx.clearRect( 0, 0, canvas.width, canvas.height );
 	ctx.fillRect( 0, 0, canvas.width, canvas.height );
@@ -46,6 +46,7 @@ var roundRect = function(x, y, width, height, radius, color, alpha) {
 var drawFrame = function(){
 	var gameStarted = false;
 	var ballsSpawned = false;
+	var padUp = false;
 	var fps = 0;
 	var ball1, ball2, ball3;
 	var now, lastUpdate = new Date();
@@ -66,8 +67,8 @@ var drawFrame = function(){
 			mouseY = mousePos.y;
 		}, false);
 		
-		//updateCanvasSizeBasedOnWindow();
 		initializeCanvas(mouseX);
+
 		
 		if (gameStarted && !ballsSpawned){
 			ball1 = new Ball('red');
@@ -98,6 +99,7 @@ var drawFrame = function(){
 	
 	window.requestAnimationFrame(drawUpdate);
 }
+
 var startGameMessage = function(){
 		var launchRectWidth = 400;
 		var launchRectHeight = 160;
