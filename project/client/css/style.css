@@ -39,6 +39,10 @@ section#form-area{
     border-radius: 6px;
 }
 
+#work-desc{
+	width: 100%;
+}
+
 .red-button{
   display: inline-block;
   *display: inline;
@@ -64,6 +68,25 @@ section#form-area{
               0 2px 2px -1px rgba(0, 0, 0, .5),
               0 1px 0 rgba(255, 255, 255, .3) inset;
   text-shadow: 0 1px 0 rgba(205,205,205, .9);  
+}
+
+.red-button:hover{
+  background-color: #ee5f5b;
+}
+
+.red-button:active{
+  background: #c43c35;
+}
+
+.red-button[disabled], .red-button[disabled]:hover, .red-button[disabled]:active{
+  border-color: #eaeaea;
+  background: #fafafa;
+  cursor: default;
+  position: static;
+  color: #999;
+  /* Usually, !important should be avoided but here it's really needed :) */
+  box-shadow: none !important;
+  text-shadow: none !important;
 }
 
 .green-button{
@@ -94,4 +117,23 @@ section#form-area{
   
   background-color: #57a957;
   border-color: #57a957;
+}
+
+.green-button:hover{
+  background-color: #62c462;
+}
+
+.green-button:active{
+  background: #57a957;
+}
+
+.green-button[disabled], .green-button[disabled]:hover, .green-button[disabled]:active{
+  border-color: #eaeaea;
+  background: #fafafa;
+  cursor: default;
+  position: static;
+  color: #999;
+  /* Usually, !important should be avoided but here it's really needed :) */
+  box-shadow: none !important;
+  text-shadow: none !important;
 }
