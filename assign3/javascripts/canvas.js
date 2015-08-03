@@ -101,6 +101,9 @@ var drawFrame = function(){
 		}
 	
 		if (ballsSpawned){
+			detectCollision(ball1, ball2);
+			detectCollision(ball1, ball3);
+			detectCollision(ball2, ball3);
 			ball1.drawBall(mouseX);
 			ball2.drawBall(mouseX);
 			ball3.drawBall(mouseX);
