@@ -1,13 +1,13 @@
 var wordLengthCounter = function(str){
 	if (str === undefined)
 		return 0;
-	var words = str.split(' ');
+	var words = str.split(/\S+\s*/g);
 	var currentWordLength;
 	
 	if (str.length == 0){
 		currentWordLength = 0;
 	}else{
-		currentWordLength = words.length;
+		currentWordLength = words.length - 1;
 	}
 	return currentWordLength;
 }
@@ -15,7 +15,7 @@ var wordLengthCounter = function(str){
 var initalizeWorkDescriptionWordLimiter = function(){
 	var descBox = document.getElementById("work-desc");
 	var wordCounter = document.getElementById("remaining-word-counter");
-	var maxNumberOfWords = 300;
+	var maxNumberOfWords = 10;
 	
 	wordCounter.innerHTML = "Remaining Words: " + maxNumberOfWords;
 	
@@ -23,11 +23,11 @@ var initalizeWorkDescriptionWordLimiter = function(){
 		var wordLength = wordLengthCounter(this.value);
 		if (wordLength > maxNumberOfWords){
 			var finalString = this.value;
-			var words = this.value.split(' ');
-			
+			var words = this.value.split(" ");
+			console.log(words);
 			words.splice(maxNumberOfWords, wordLength - maxNumberOfWords);
 			
-			descBox.value = words.join(' ');
+			descBox.value = words.join(" ");
 			wordLength = maxNumberOfWords;
 		}
 		wordCounter.innerHTML = "Remaining Words: " + (maxNumberOfWords - wordLength);
