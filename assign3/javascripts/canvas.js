@@ -10,7 +10,10 @@ var initializeCanvas = function(mouseX){
 	ctx.lineWidth=10;
 	ctx.beginPath();
 	ctx.moveTo(0,0);
-	
+	ctx.lineTo(0, canvas.height);
+	ctx.lineTo(canvas.width, canvas.height);
+	ctx.lineTo(canvas.width, 0);
+	ctx.stroke();
 	
 	var endBar = mouseX + (canvas.width * 0.1);
 	var startBar = mouseX;
@@ -19,8 +22,8 @@ var initializeCanvas = function(mouseX){
 	endBar -= (size / 2);
 	
 	ctx.beginPath();
-	ctx.moveTo(startBar,10);
-	ctx.lineTo(endBar,10);
+	ctx.moveTo(startBar,0);
+	ctx.lineTo(endBar,0);
 	ctx.stroke();
 	
 	return size;
