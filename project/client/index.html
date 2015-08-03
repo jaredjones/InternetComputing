@@ -17,9 +17,10 @@
 	    
 		<section id="form-area">
 			Your Name:</br>
-			<input type="text" name="fullname"></input>
+			<input type="text" id="fullname" name="fullname"></input>
 			</br>Description:</br>
 			<textarea id="work-desc" name="work-description"></textarea>
+			<div id="remaining-word-counter">Remaining Words: NaN</div>
 		</section>
 		<button class="red-button">
 			Submit
@@ -28,6 +29,8 @@
 			Clear
 		</button>
     </body>
-    <script src="js/scripts.js">
+    <script src="js/scripts.js"></script>
+    <script>
+    	initalizeWorkDescriptionWordLimiter();
     </script>
 </html>
