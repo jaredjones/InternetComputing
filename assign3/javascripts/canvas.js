@@ -89,7 +89,7 @@ var drawFrame = function(){
 		fps = newtime.theFps;
 		ctx.fillStyle = "#000000";
 		ctx.font="12px Arial";
-		ctx.fillText("FPS:" + newtime.displayFps + " : MouseX:" + mouseX + " MouseY:" + mouseY, 10,window.innerHeight - 12);
+		ctx.fillText("FPS:" + newtime.displayFps + " : MouseX:" + mouseX + " MouseY:" + mouseY, 10,canvas.height - 12);
 
 		if (!gameStarted){
 			startGameMessage();
