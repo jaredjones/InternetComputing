@@ -1,14 +1,24 @@
+var wordLengthCounter = function(str){
+	var words = str.split(' ');
+	var currentWordLength;
+	if (str.length == 0){
+		currentWordLength = 0;
+	}else{
+		currentWordLength = words.length;
+	}
+	return currentWordLength;
+}
+
 var initalizeWorkDescriptionWordLimiter = function(){
 	var descBox = document.getElementById("work-desc");
 	var wordCounter = document.getElementById("remaining-word-counter");
-	var remainingWords = 300;
+	var maxNumberOfWords = 300;
 	
-	wordCounter.innerHTML = "Remaining Words: " + remainingWords;
+	wordCounter.innerHTML = "Remaining Words: " + maxNumberOfWords;
 	
 	var checkLength = function(event){
-		var words = this.value.split(' ');
-		var currentWordLength = words.length;
-		wordCounter.innerHTML = "Remaining Words: " + (remainingWords - currentWordLength);
+		var wordLength = wordLengthCounter(this.value);
+		wordCounter.innerHTML = "Remaining Words: " + (maxNumberOfWords - wordLength);
 	}
 	
 	descBox.addEventListener('keydown', checkLength);
