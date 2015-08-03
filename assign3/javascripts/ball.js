@@ -40,5 +40,19 @@ var Ball = function(color){
 		this.yCord += this.dy;
 		
 	}
+	//Working on ball 2 ball collision here
+	/*this.detectCollision = function(ball1, ball2){
+			if(ball1.xCord + ball1.radius + ball2.radius > ball2.xCord && ball1.xCord < ball2.xCord + ball1.radius
+			&& ball1.yCord + ball1.radius + ball2.radius > ball2.yCord && ball1.yCord < ball2.yCord + ball1.radius + ball2.radius){
+				
+				var distance = Math.sqrt(((ball1.xCord - ball2.xCord) * (ball1.xCord - ball2.xCord) + ((ball1.yCord - ball2.yCord) * (ball1.yCord - ball2.yCord)));
+				if(distance < ball1.radius + ball2.radius){
+					var collisionPointX = (ball1.xCord + ball2.xCord) / 2;
+					var collisionPointY = (ball1.yCord + ball2.yCord) / 2;
+					
+				}
+			}
+		
+	}*/
 	
 }

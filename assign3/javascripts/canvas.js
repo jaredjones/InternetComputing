@@ -94,9 +94,10 @@ var drawFrame = function(){
 		if (!gameStarted){
 			startGameMessage();
 		}
-		if(endGame){
+		//if no more balls display end game message.
+		/*if(endGame){
 			endGameMessage();
-		}
+		}*/
 		
 		window.requestAnimationFrame(drawUpdate);
 	}
