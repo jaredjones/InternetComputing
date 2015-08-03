@@ -5,11 +5,13 @@ var Ball = function(color){
 	this.radius = (canvas.width * 0.1) / 2;
 	this.prevX;
 	this.prevY;
+	this.mouseX;
 	
 	this.dx = 0.01 * canvas.width;
 	this.dy = this.dx;
 	
-	this.drawBall = function(){
+	this.drawBall = function(mouseX){
+		this.mouseX = mouseX;
 		this.moveBall();
 		ctx.beginPath();
 		ctx.arc(this.xCord, this.yCord, this.radius, 0, 2 * Math.PI, false);
@@ -28,7 +30,7 @@ var Ball = function(color){
 		if(this.xCord + this.radius > canvas.width){
 			this.dx *= -1;
 		}
-		if(this.yCord - this.radius < 0){
+		if(this.yCord - this.radius >= 10 && this.yCord - this.radius < 20 && this.xCord >= this.mouseX - 80 && this.xCord <= this.mouseX + 80){
 			this.dy *= -1;//dy = dy * -1;
 		}
 		if(this.yCord + this.radius > canvas.height){

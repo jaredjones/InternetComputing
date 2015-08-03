@@ -7,7 +7,7 @@ var initializeCanvas = function(mouseX){
 	ctx.fillRect( 0, 0, canvas.width, canvas.height );
 
 	ctx.strokeStyle = '#404040';
-	ctx.lineWidth=15;
+	ctx.lineWidth=10;
 	ctx.beginPath();
 	ctx.moveTo(0,0);
 	
@@ -19,11 +19,11 @@ var initializeCanvas = function(mouseX){
 	endBar -= (size / 2);
 	
 	ctx.beginPath();
-	ctx.moveTo(startBar,0);
-	ctx.lineTo(endBar,0);
+	ctx.moveTo(startBar,10);
+	ctx.lineTo(endBar,10);
 	ctx.stroke();
 	
-	
+	return size;
 }
 var roundRect = function(x, y, width, height, radius, color, alpha) {
 	ctx.globalAlpha=alpha;
@@ -53,7 +53,7 @@ var drawFrame = function(){
 	var now, lastUpdate = new Date();
 	var mouseX = 0;
 	var mouseY = 0;
-	var pad;
+	var size;
 	
 	var drawUpdate = function(){
 		
@@ -68,7 +68,7 @@ var drawFrame = function(){
 			mouseY = mousePos.y;
 		}, false);
 		
-		initializeCanvas(mouseX);
+		size = initializeCanvas(mouseX);
 
 		
 		if (gameStarted && !ballsSpawned){
@@ -79,9 +79,9 @@ var drawFrame = function(){
 		}
 	
 		if (ballsSpawned){
-			ball1.drawBall();
-			ball2.drawBall();
-			ball3.drawBall();
+			ball1.drawBall(mouseX);
+			ball2.drawBall(mouseX);
+			ball3.drawBall(mouseX);
 		}
 	
 		var newtime = getFPS(lastUpdate, now, fps);
@@ -89,7 +89,7 @@ var drawFrame = function(){
 		fps = newtime.theFps;
 		ctx.fillStyle = "#000000";
 		ctx.font="12px Arial";
-		ctx.fillText("FPS:" + newtime.displayFps + " : MouseX:" + mouseX + " MouseY:" + mouseY, 10,canvas.height - 12);
+		ctx.fillText("FPS:" + newtime.displayFps + " : Size: " + size + " : MouseX:" + mouseX + " MouseY:" + mouseY, 10,canvas.height - 12);
 
 		if (!gameStarted){
 			startGameMessage();
