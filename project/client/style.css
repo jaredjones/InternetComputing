@@ -1,0 +1,97 @@
+html,body{
+	margin: 0 !important;
+    padding: 0 !important;
+	height: 100%;
+	font-size: 100%;
+	background-color: #fafafa;
+}
+section#nav-bar{
+	height: 50pt;
+	width: 100%;
+	background-color: #1fa7e6;
+	text-align: center;
+	
+	#background-image:-moz-linear-gradient(top, #469bed 2%, #469bed 51%,#469bed 97%);
+	#background-image:linear-gradient(top, #459cef 2%, #000000 51%,#469bed 97%);
+
+	box-shadow: 0 2px 3px rgba(0, 0, 0, 0.5);
+}
+#title{
+	display: inline-block;
+	margin: 0 auto;
+	position: relative;
+	top: 50%;
+	transform: translateY(-50%);
+	font-family: "Helvetica Neue";
+	font-size: 1.8em;
+	color: white;
+	#text-shadow: 1px 1px 2px #1a1a1a;
+}
+
+section#form-area{
+	margin-top:10pt;
+	margin-left: 5pt;
+	margin-right: 5pt;
+	background-color: #ffffff;
+	border-color: #e4e4e4;
+	border-style: solid;
+    border-width: 2px;
+    border-radius: 6px;
+}
+
+.red-button{
+  display: inline-block;
+  *display: inline;
+  zoom: 1;
+  padding: 6px 20px;
+  margin: 0;
+  cursor: pointer;
+  border: 1px solid #bbb;
+  overflow: visible;
+  font: bold 13px arial, helvetica, sans-serif;
+  text-decoration: none;
+  white-space: nowrap;
+  color: #fafafa;
+  background-color: #c43c35;
+  border-color: #c43c35;
+  background-image: linear-gradient(top, rgba(255,255,255,1),
+                                         rgba(255,255,255,0)),
+                    url(data:image/png;base64,iVBORw0KGg[...]QmCC); 
+  transition: background-color .2s ease-out;
+  background-clip: padding-box; /* Fix bleeding */
+  border-radius: 3px;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, .3),
+              0 2px 2px -1px rgba(0, 0, 0, .5),
+              0 1px 0 rgba(255, 255, 255, .3) inset;
+  text-shadow: 0 1px 0 rgba(205,205,205, .9);  
+}
+
+.green-button{
+  display: inline-block;
+  *display: inline;
+  zoom: 1;
+  padding: 6px 20px;
+  margin: 0;
+  cursor: pointer;
+  border: 1px solid #bbb;
+  overflow: visible;
+  font: bold 13px arial, helvetica, sans-serif;
+  text-decoration: none;
+  white-space: nowrap;
+  color: #fafafa;
+  background-color: #c43c35;
+  border-color: #c43c35;
+  background-image: linear-gradient(top, rgba(255,255,255,1),
+                                         rgba(255,255,255,0)),
+                    url(data:image/png;base64,iVBORw0KGg[...]QmCC); 
+  transition: background-color .2s ease-out;
+  background-clip: padding-box; /* Fix bleeding */
+  border-radius: 3px;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, .3),
+              0 2px 2px -1px rgba(0, 0, 0, .5),
+              0 1px 0 rgba(255, 255, 255, .3) inset;
+  text-shadow: 0 1px 0 rgba(205,205,205, .9);
+  
+  background-color: #57a957;
+  border-color: #57a957;
+}
