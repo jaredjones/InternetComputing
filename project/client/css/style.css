@@ -32,6 +32,10 @@ section#form-area{
 	margin-top:10pt;
 	margin-left: 5pt;
 	margin-right: 5pt;
+	padding-left: 5pt;
+	padding-right: 5pt;
+	padding-top: 5pt;
+	padding-bottom: 5pt;
 	background-color: #ffffff;
 	border-color: #e4e4e4;
 	border-style: solid;
@@ -41,6 +45,10 @@ section#form-area{
 
 #work-desc{
 	width: 100%;
+}
+
+#remaining-word-counter{
+	text-align: right;
 }
 
 .red-button{
