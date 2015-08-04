@@ -1,5 +1,6 @@
 var canvas = document.getElementById("ballGameCanvas");
 var ctx = canvas.getContext('2d');
+var balls = [];
 
 var enableHiDPIDisplays = function(){
 	canvas.width = 1000;
@@ -95,19 +96,24 @@ var drawFrame = function(){
 		
 		if (gameStarted && !ballsSpawned){
 			ball1 = new Ball('red');
+			balls.push(ball1);
 			ball2 = new Ball('blue');
+			balls.push(ball2);
 			ball3 = new Ball('green');
+			balls.push(ball3);
 			ballsSpawned = true;
 		}
 	
 		if (ballsSpawned){
-			detectCollision(ball1, ball2);
-			detectCollision(ball1, ball3);
-			detectCollision(ball2, ball3);
-			ball1.drawBall(mouseX);
-			ball2.drawBall(mouseX);
-			ball3.drawBall(mouseX);
+			drawScreen();
+			//collide();
+			//for(var i = 0; i < balls.length; i++){
+				//balls[i].drawBall();
+			//}
+			
+			
 		}
+		
 	
 		var newtime = getFPS(lastUpdate, now, fps);
 		lastUpdate = newtime.theOldTime;

@@ -3,60 +3,119 @@ var Ball = function(color){
 	this.yCord = getRandomNumberWithBounds(100, canvas.rHeight - 100);
 	this.color = color;
 	this.radius = (canvas.rWidth * 0.1) / 2;
-	this.prevX;
-	this.prevY;
+	this.nextX;
+	this.nextY;
 	this.mouseX;
-	//this.speed = 0.1 * canvas.rWidth;
 	this.dx = 0.01 * canvas.rWidth;
 	this.dy = this.dx;
 	
-	this.drawBall = function(mouseX){
-		this.mouseX = mouseX;
-		this.moveBall();
+}
+var drawScreen = function(){
+	update();
+	testWall();
+	collide();
+	render();
+}
+var update = function(){
+	var ball;
+	for(var i = 0; i < balls.length; i++){
+		ball = balls[i];
+		ball.nextX = (ball.xCord += ball.dx);
+		ball.nextY = (ball.yCord += ball.dy);
+	}
+}
+var testWall = function(){
+	var ball;
+	for(var i = 0; i < balls.length; i++){
+		ball = balls[i];
+		if(ball.nextX + ball.radius > canvas.rWidth){
+			ball.dx *= -1;
+			ball.nextX = canvas.rWidth - ball.radius;
+		}
+		else if(ball.nextX - ball.radius < 0){
+			ball.dx *= -1;
+			ball.nextX = ball.radius;
+			
+		}
+		else if(ball.nextY + ball.radius > canvas.rHeight){
+			ball.dy *= -1;
+			ball.nextY = canvas.rHeight - ball.radius;
+		}
+		else if(ball.nextY - ball.radius < 0){
+			ball.dy *= -1;
+			ball.nextY = ball.radius;
+			
+		}
+	}
+}
+var render = function(){
+	var ball;
+	for(var i = 0; i < balls.length; i++){
+		ball = balls[i];
+		ball.xCord = ball.nextX;
+		ball.yCord = ball.nextY;
 		ctx.beginPath();
-		ctx.arc(this.xCord, this.yCord, this.radius, 0, 2 * Math.PI, false);
-		ctx.fillStyle = this.color;
+		ctx.arc(ball.xCord, ball.yCord, ball.radius, 0, 2*Math.PI, true);
+		ctx.fillStyle = ball.color;
 		ctx.fill();
 		ctx.lineWidth = 2;
 		ctx.strokeStyle = '#000000';
 		ctx.stroke();
 	}
+}
+var hitTestCollision = function(ball1, ball2){
+	var retval = false;
+	var cx = ball1.nextX - ball2.nextX;
+	var cy = ball1.nextY - ball2.nextY;
+	var distance = (cx * cx + cy * cy);
+	if(distance <= (ball1.radius + ball2.radius) * (ball1.radius + ball2.radius)){
+		retval = true;
+	}
+	return retval;
+}
+var collide = function(){
+	var ball;
+	var testBall;
 	
-	this.moveBall = function(){		
-		if(this.xCord - this.radius < 0){
-			this.dx *= -1;
+	for(var i = 0; i < balls.length; i++){
+		ball = balls[i];
+		for(var j = i+1; j < balls.length; j++){
+			testBall = balls[j];
+			if(hitTestCollision(ball, testBall)){
+				collideBalls(ball, testBall);
+			}
 		}
-		if(this.xCord + this.radius > canvas.rWidth){
-			this.dx *= -1;
-		}
-		if(this.yCord - this.radius < 0){
-			this.dy *= -1;
-		}
-		if(this.yCord + this.radius > canvas.rHeight){
-			this.dy *= -1;
-		}
-		this.xCord += this.dx;
-		this.yCord += this.dy;		
 	}
 }
-var detectCollision = function(ball1, ball2){
-		if(ball1.xCord + ball1.radius + ball2.radius > ball2.xCord && ball1.xCord < ball2.xCord + ball1.radius && ball1.yCord + ball1.radius + ball2.radius > ball2.yCord && ball1.yCord < ball2.yCord + ball1.radius + ball2.radius){
-				
-			var distance = Math.sqrt((ball1.xCord - ball2.xCord) * (ball1.xCord - ball2.xCord) + ((ball1.yCord - ball2.yCord) * (ball1.yCord - ball2.yCord)));
-			if(distance < ball1.radius + ball2.radius){
-				var collisionPointX = (ball1.xCord + ball2.xCord) / 2;
-				var collisionPointY = (ball1.yCord + ball2.yCord) / 2;
-				var newVelX1 = (ball1.dx * (ball1.radius - ball2.radius) + (2 * ball2.radius * ball2.dx)) / (ball1.radius + ball2.radius);
-				var newVelY1 = (ball1.dy * (ball1.radius - ball2.radius) + (2 * ball2.radius * ball2.dy)) / (ball1.radius + ball2.radius);
-				var newVelX2 = (ball2.dx * (ball2.radius - ball1.radius) + (2 * ball1.radius * ball1.dx)) / (ball1.radius + ball2.radius);
-				var newVelY2 = (ball2.dy * (ball2.radius - ball1.radius) + (2 * ball1.radius * ball1.dy)) / (ball1.radius + ball2.radius);
-					
-				ball1.xCord = ball1.xCord + newVelX1;
-				ball1.yCord = ball1.yCord + newVelY1;
-				ball2.xCord = ball2.xCord + newVelX2;
-				ball2.yCord = ball2.yCord + newVelY2; 
-					
-				}
-			}
+var collideBalls = function(ball1, ball2){
+	var cx = ball1.nextX - ball2.nextX;
+	var cy = ball1.nextY - ball2.nextY;
+	var collisionAngle = Math.atan2(cy, cx);
+	var speed1 = Math.sqrt(ball1.dx * ball1.dx + ball1.dy * ball1.dy);
+	var speed2 = Math.sqrt(ball2.dx * ball2.dx + ball2.dy * ball2.dy);
+	var direction1 = Math.atan2(ball1.dy, ball1.dx);
+	var direction2 = Math.atan2(ball2.dy, ball2.dx);
+	var velocityx_1 = speed1 * Math.cos(direction1 - collisionAngle);
+	var velocityy_1 = speed1 * Math.sin(direction1 - collisionAngle);
+	var velocityx_2 = speed2 * Math.cos(direction2 - collisionAngle);
+	var velocityy_2 = speed2 * Math.sin(direction2 - collisionAngle);
+	var final_velocityx_1 = ((ball1.radius - ball2.radius) * velocityx_1 + (ball2.radius + ball2.radius) * velocityx_2) / (ball1.radius + ball2.radius);
+	var final_velocityx_2 = ((ball1.radius + ball1.radius) * velocityx_1 + (ball2.radius - ball1.radius) * velocityx_2) / (ball1.radius + ball2.radius);
+	
+	var final_velocityy_1 = velocityy_1;
+	var final_velocityy_2 = velocityy_2;
+	
+	ball1.dx = Math.cos(collisionAngle) * final_velocityx_1 + Math.cos(collisionAngle + Math.PI/2) * final_velocityy_1;
+	ball1.dy = Math.sin(collisionAngle) * final_velocityx_1 + Math.sin(collisionAngle + Math.PI/2) * final_velocityy_1;
+	ball2.dx = Math.cos(collisionAngle) * final_velocityx_2 + Math.cos(collisionAngle + Math.PI/2) * final_velocityy_2;
+	ball2.dy = Math.sin(collisionAngle) * final_velocityx_2 + Math.sin(collisionAngle + Math.PI/2) * final_velocityy_2;
+	
+	ball1.nextX = (ball1.nextX += ball1.dx);
+	ball1.nextY = (ball1.nextY += ball1.dy);
+	ball2.nextX = (ball2.nextX += ball2.dx);
+	ball2.nextY = (ball2.yCord += ball2.dy);
+}
+			
+			
+			
 		
-	}
