@@ -94,7 +94,7 @@ var drawFrame = function(){
 		size = initializeCanvas(mouseX);
 
 		
-		if (gameStarted && !ballsSpawned){
+		if(gameStarted && !ballsSpawned){
 			ball1 = new Ball('red');
 			balls.push(ball1);
 			ball2 = new Ball('blue');
@@ -104,14 +104,11 @@ var drawFrame = function(){
 			ballsSpawned = true;
 		}
 	
-		if (ballsSpawned){
+		if(ballsSpawned){
 			drawScreen();
-			//collide();
-			//for(var i = 0; i < balls.length; i++){
-				//balls[i].drawBall();
-			//}
-			
-			
+			if(balls.length == 0){
+				endGame = true;
+			}		
 		}
 		
 	
@@ -120,22 +117,34 @@ var drawFrame = function(){
 		fps = newtime.theFps;
 		ctx.fillStyle = "#000000";
 		ctx.font="12px Arial";
-		ctx.fillText("FPS:" + newtime.displayFps + " : Size: " + size + " : MouseX:" + mouseX + " MouseY:" + mouseY, 10,canvas.rHeight - 12);
+		ctx.fillText("FPS:" + newtime.displayFps, 10,canvas.rHeight - 12);
 
 		if (!gameStarted){
 			startGameMessage();
+			
 		}
-		//if no more balls display end game message.
-		/*if(endGame){
+		if(endGame){
 			endGameMessage();
-		}*/
+		}
 		
 		window.requestAnimationFrame(drawUpdate);
 	}
 	
 	window.requestAnimationFrame(drawUpdate);
 }
-
+var endGameMessage = function(){
+		var launchRectWidth = 400;
+		var launchRectHeight = 160;
+		var windowStartX = canvas.rWidth/2 - (launchRectWidth / 2);
+		var windowStartY = canvas.rHeight/2 - (launchRectHeight / 2);
+		roundRect(windowStartX, windowStartY, launchRectWidth, launchRectHeight, 10, "#0a0a0a", 0.5);
+		
+		ctx.fillStyle = "#ffffff";
+		ctx.font="22px Arial";
+		ctx.fillText("DEFEAT!", windowStartX + 20, windowStartY + 22);
+		ctx.font="16px Arial";
+		ctx.fillText("Refresh page to try again!", windowStartX + 10, windowStartY + 60);
+}
 var startGameMessage = function(){
 		var launchRectWidth = 400;
 		var launchRectHeight = 160;
