@@ -1,7 +1,7 @@
 var canvas = document.getElementById("ballGameCanvas");
 var ctx = canvas.getContext('2d');
 var balls = [];
-
+var pad;
 var enableHiDPIDisplays = function(){
 	canvas.width = 1000;
 	canvas.height = 700;
@@ -45,7 +45,13 @@ var initializeCanvas = function(mouseX){
 	ctx.lineTo(endBar,0);
 	ctx.stroke();
 	
-	return size;
+	return {
+		theEnd: endBar,
+		theStart: startBar,
+		theSize: size,
+		theMouseX: mouseX,
+		theWidth: 10
+		};
 }
 
 var roundRect = function(x, y, width, height, radius, color, alpha) {
@@ -76,7 +82,7 @@ var drawFrame = function(){
 	var now, lastUpdate = new Date();
 	var mouseX = 0;
 	var mouseY = 0;
-	var size;
+	var initPad;
 	
 	var drawUpdate = function(){
 		
@@ -91,7 +97,8 @@ var drawFrame = function(){
 			mouseY = mousePos.y;
 		}, false);
 		
-		size = initializeCanvas(mouseX);
+		initPad = initializeCanvas(mouseX);
+		pad = new Pad(initPad.theStart, initPad.theEnd, initPad.theSize, initPad.theMouseX, initPad.theWidth);
 
 		
 		if(gameStarted && !ballsSpawned){
@@ -110,14 +117,6 @@ var drawFrame = function(){
 				endGame = true;
 			}		
 		}
-		
-	
-		var newtime = getFPS(lastUpdate, now, fps);
-		lastUpdate = newtime.theOldTime;
-		fps = newtime.theFps;
-		ctx.fillStyle = "#000000";
-		ctx.font="12px Arial";
-		ctx.fillText("FPS:" + newtime.displayFps, 10,canvas.rHeight - 12);
 
 		if (!gameStarted){
 			startGameMessage();
