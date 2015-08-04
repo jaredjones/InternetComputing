@@ -1,3 +1,13 @@
+[Venkat 08/04/15 04:32 AM MDT]
+review: modularize extensively
+
+The balls are not escaping on the top when not blocked by the pad.
+
+Still quite a few long functions. Break them into smaller functions.
+Move functions into classes where they should belong. Keep global functions
+as minimum as possible.
+
+------------------------------------------------------------------------------
 [Venkat 08/03/15 04:51 AM MDT]
 review: Avoid long functions
 
