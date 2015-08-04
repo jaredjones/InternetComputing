@@ -41,11 +41,6 @@ var testWall = function(){
 			ball.dy *= -1;
 			ball.nextY = canvas.rHeight - ball.radius;
 		}
-		//working on for bouncing off pad
-		/*else if(){
-			ball.dy *= -1;
-			ball.nextY = ball.radius;
-		}*/
 		else if(ball.nextY - ball.radius < 0){
 			ball.dy *= -1;
 			ball.nextY = ball.radius;
