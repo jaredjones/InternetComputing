@@ -1,3 +1,9 @@
+[Venkat 08/05/15 05:08 AM CDT]
+review: Display time
+
+Display the time, so user can see how long they lasted on the game.
+
+------------------------------------------------------------------------------
 [Venkat 08/04/15 04:32 AM MDT]
 review: modularize extensively
 
