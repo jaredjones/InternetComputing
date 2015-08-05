@@ -4,6 +4,7 @@ html,body{
 	height: 100%;
 	font-size: 100%;
 	background-color: #fafafa;
+	font-family: "Helvetica Neue";
 }
 section#nav-bar{
 	height: 50pt;
@@ -49,6 +50,14 @@ section#form-area{
 
 #remaining-word-counter{
 	text-align: right;
+}
+
+#lat-field{
+	display: inline-block;
+}
+
+#lng-field{
+	display: inline-block;
 }
 
 .red-button{

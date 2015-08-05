@@ -16,18 +16,22 @@
 	    </header>
 	    
 		<section id="form-area">
-			Your Name:</br>
+			<b>Your Name:</b></br>
 			<input type="text" id="fullname" name="fullname"></input>
-			</br>Severity:</br>
+			</br><b>Severity:</b></br>
 			<select>
 				<option value="minor">Minor</option>
 				<option value="major">Major</option>
 				<option value="urgent">Urgent</option>
 			</select>
-			</br>Description:</br>
+			</br><b>Description:</b></br>
 			<textarea id="work-desc" name="work-description"></textarea>
 			<div id="remaining-word-counter">Remaining Words: NaN</div>
-			Test
+			<b>Location:</b></br>
+			Latitude : <div id="lat-field"></div>
+			</br>Longitude: <div id="lng-field"></div>
+			</p><b>Date of Creation:</b></br>
+			<div id="creation-date"></div>
 		</section>
 		<button class="red-button">
 			Submit
@@ -42,5 +46,7 @@
     <script src="js/scripts.js"></script>
     <script>
     	initalizeWorkDescriptionWordLimiter();
+    	initalizeLocation(document, navigator);
+    	getCreationDate();
     </script>
 </html>

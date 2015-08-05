@@ -35,3 +35,41 @@ var initalizeWorkDescriptionWordLimiter = function(){
 	descBox.addEventListener('keydown', checkAndLimitLength);
 	descBox.addEventListener('keyup', checkAndLimitLength);
 }
+
+var getCreationDate = function(){
+	var dateField = document.getElementById("creation-date");
+	var d = new Date();
+	dateField.innerHTML = d;
+}
+
+var locationInfo = function(position){
+	var latitude = position.coords.latitude;
+	var longitude = position.coords.longitude;
+
+	//locationInfo.documentModifier.getElementById("lat").value = latitude;
+	//locationInfo.documentModifier.getElementById("lng").value = longitude;
+
+	locationInfo.documentModifier.getElementById("lng-field").innerHTML = longitude;
+	locationInfo.documentModifier.getElementById("lat-field").innerHTML = latitude;
+}
+
+var locationInfoError = function(error){
+	var errorMessage =['',
+	'Permission Denied',
+	'Position Unavailable',
+	'Timeout'
+	];
+
+	locationInfo.documentModifier.getElementById("lng-field").innerHTML = errorMessage[error.code];
+	locationInfo.documentModifier.getElementById("lat-field").innerHTML = errorMessage[error.code];
+	return errorMessage[error.code];
+}
+
+var initalizeLocation = function(documentModifier, nav){
+	locationInfo.documentModifier = documentModifier;
+	locationInfoError.documentModifier = documentModifier;
+	
+	documentModifier.getElementById("lng-field").innerHTML = "(Grabbing Location)";
+	documentModifier.getElementById("lat-field").innerHTML = "(Grabbing Location)";
+	nav.geolocation.getCurrentPosition(locationInfo, locationInfoError);
+}
