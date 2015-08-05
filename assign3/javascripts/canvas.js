@@ -131,35 +131,5 @@ var drawFrame = function(){
 	
 	window.requestAnimationFrame(drawUpdate);
 }
-var endGameMessage = function(){
-		var launchRectWidth = 400;
-		var launchRectHeight = 160;
-		var windowStartX = canvas.rWidth/2 - (launchRectWidth / 2);
-		var windowStartY = canvas.rHeight/2 - (launchRectHeight / 2);
-		roundRect(windowStartX, windowStartY, launchRectWidth, launchRectHeight, 10, "#0a0a0a", 0.5);
-		
-		ctx.fillStyle = "#ffffff";
-		ctx.font="22px Arial";
-		ctx.fillText("DEFEAT!", windowStartX + 20, windowStartY + 22);
-		ctx.font="16px Arial";
-		ctx.fillText("Refresh page to try again!", windowStartX + 10, windowStartY + 60);
-}
-var startGameMessage = function(){
-		var launchRectWidth = 400;
-		var launchRectHeight = 160;
-		var windowStartX = canvas.rWidth/2 - (launchRectWidth / 2);
-		var windowStartY = canvas.rHeight/2 - (launchRectHeight / 2);
-		roundRect(windowStartX, windowStartY, launchRectWidth, launchRectHeight, 10, "#0a0a0a", 0.5);
-		
-		ctx.fillStyle = "#ffffff";
-		ctx.font="22px Arial";
-		ctx.fillText("Welcome to the Bouncing Ball Game", windowStartX + 20, windowStartY + 22);
-		ctx.font="16px Arial";
-		ctx.fillText("To begin the game click anywhere on the screen to ", windowStartX + 10, windowStartY + 60);
-		ctx.fillText("spawn three balls at random locations. The balls will", windowStartX + 10, windowStartY + 60 + 16);
-		ctx.fillText("move randomly in different directions. As the game", windowStartX + 10, windowStartY + 60 + 16*2);
-		ctx.fillText("progresses the balls move faster and shrink.", windowStartX + 10, windowStartY +      60 + 16*3);
-		ctx.fillText("So be prepared, have fun, and good luck!", windowStartX + 10, windowStartY +           60 + 16*5);
-}
 enableHiDPIDisplays();
 drawFrame();

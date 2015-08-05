@@ -12,7 +12,7 @@ var collidePad = function(){
 		if(ball.nextY - ball.radius > 0 && ball.nextY - ball.radius <= 20 && ball.nextX >= pad.mouseX - (pad.size / 2) && ball.nextX <= pad.mouseX + (pad.size / 2) && ball.dy < 0){
 				ball.dy *= -1;
 				ball.nextY = ball.radius;
-				ball[1] = ball;
+				ball[i] = ball;
 			}
 	}
 }

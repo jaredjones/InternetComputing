@@ -43,8 +43,7 @@ var testWall = function(){
 			ball.nextY = canvas.rHeight - ball.radius;
 		}
 		else if(ball.nextY - ball.radius < 0){
-			//ball.dy *= -1;
-			//ball.nextY = ball.radius;
+			balls.splice(i,1);
 		}
 	}
 }
@@ -87,35 +86,3 @@ var collide = function(){
 		}
 	}
 }
-var collideBalls = function(ball1, ball2){
-	var cx = ball1.nextX - ball2.nextX;
-	var cy = ball1.nextY - ball2.nextY;
-	var collisionAngle = Math.atan2(cy, cx);
-	var speed1 = Math.sqrt(ball1.dx * ball1.dx + ball1.dy * ball1.dy);
-	var speed2 = Math.sqrt(ball2.dx * ball2.dx + ball2.dy * ball2.dy);
-	var direction1 = Math.atan2(ball1.dy, ball1.dx);
-	var direction2 = Math.atan2(ball2.dy, ball2.dx);
-	var velocityx_1 = speed1 * Math.cos(direction1 - collisionAngle);
-	var velocityy_1 = speed1 * Math.sin(direction1 - collisionAngle);
-	var velocityx_2 = speed2 * Math.cos(direction2 - collisionAngle);
-	var velocityy_2 = speed2 * Math.sin(direction2 - collisionAngle);
-	
-	var final_velocityx_1 = ((ball1.radius - ball2.radius) * velocityx_1 + (ball2.radius + ball2.radius) * velocityx_2) / (ball1.radius + ball2.radius);
-	var final_velocityx_2 = ((ball1.radius + ball1.radius) * velocityx_1 + (ball2.radius - ball1.radius) * velocityx_2) / (ball1.radius + ball2.radius);	
-	var final_velocityy_1 = velocityy_1;
-	var final_velocityy_2 = velocityy_2;
-	
-	ball1.dx = Math.cos(collisionAngle) * final_velocityx_1 + Math.cos(collisionAngle + Math.PI/2) * final_velocityy_1;
-	ball1.dy = Math.sin(collisionAngle) * final_velocityx_1 + Math.sin(collisionAngle + Math.PI/2) * final_velocityy_1;
-	ball2.dx = Math.cos(collisionAngle) * final_velocityx_2 + Math.cos(collisionAngle + Math.PI/2) * final_velocityy_2;
-	ball2.dy = Math.sin(collisionAngle) * final_velocityx_2 + Math.sin(collisionAngle + Math.PI/2) * final_velocityy_2;
-	
-	ball1.nextX = (ball1.nextX += ball1.dx);
-	ball1.nextY = (ball1.nextY += ball1.dy);
-	ball2.nextX = (ball2.nextX += ball2.dx);
-	ball2.nextY = (ball2.yCord += ball2.dy);
-}
-			
-			
-			
-		
