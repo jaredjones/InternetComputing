@@ -1,0 +1,12 @@
+CACHE MANIFEST
+#VERSION 3
+
+CACHE:
+index.html
+js/scripts.js
+css/style.css
+
+FALLBACK:
+
+NETWORK:
+*

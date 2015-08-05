@@ -73,3 +73,17 @@ var initalizeLocation = function(documentModifier, nav){
 	documentModifier.getElementById("lat-field").innerHTML = "(Grabbing Location)";
 	nav.geolocation.getCurrentPosition(locationInfo, locationInfoError);
 }
+
+var invokeIfConnected = function(callback){
+	var xhr = new XMLHttpRequest();
+	var handler = function() {
+		if (xhr.readyState === 4) {
+			if (xhr.status === 200) {
+				callback();
+			}
+		}
+	}
+	xhr.onreadystatechange = handler;
+	xhr.open("GET", "http://jaredjones.co/?q=" + Math.random());
+	xhr.send();
+}
