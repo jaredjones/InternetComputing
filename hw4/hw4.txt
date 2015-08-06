@@ -3,7 +3,7 @@ There will be no reviews for this homework.
 
 1. What are some of the things you learned new in this course?
 
-We both learned a lot about javascript and JQuery and how powerful they are when making interactive and fluid websites, client and server side applications. 
+We both learned a lot about javascript and JQuery and how powerful they are when making interactive and fluid websites.
 
 2. What's was the most exciting thing you learned?
 
