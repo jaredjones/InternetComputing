@@ -8,6 +8,7 @@ var Ball = function(color){
 	this.mouseX;
 	this.dx = 0.01 * canvas.rWidth;
 	this.dy = this.dx;
+	this.hitCount = 0;
 	
 }
 var drawScreen = function(){

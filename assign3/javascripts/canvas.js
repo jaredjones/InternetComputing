@@ -102,6 +102,8 @@ var drawFrame = function(){
 
 		
 		if(gameStarted && !ballsSpawned){
+			show();
+			startTheClock();
 			ball1 = new Ball('red');
 			balls.push(ball1);
 			ball2 = new Ball('blue');
@@ -123,6 +125,7 @@ var drawFrame = function(){
 			
 		}
 		if(endGame){
+			stop();
 			endGameMessage();
 		}
 		
