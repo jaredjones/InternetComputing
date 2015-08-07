@@ -34,8 +34,21 @@ var initializeCanvas = function(mouseX){
 	ctx.lineTo(canvas.rWidth, 0);
 	ctx.stroke();
 	
+	
 	var endBar = mouseX + (canvas.rWidth * 0.1);
 	var startBar = mouseX;
+	if (mouseX < ((canvas.rWidth * 0.1) / 2))
+	{
+		startBar = 0;
+		endBar = (canvas.rWidth * 0.1) * 2;
+	}
+	
+	if (mouseX > (canvas.rWidth - (canvas.rWidth * 0.1) / 2) - 5)
+	{
+		startBar = (canvas.rWidth - ((canvas.rWidth * 0.1) / 2));
+		endBar = (canvas.rWidth) + (canvas.rWidth * 0.20)/ 2;
+	}
+	
 	var size = endBar - startBar;
 	startBar -= (size / 2);
 	endBar -= (size / 2);
