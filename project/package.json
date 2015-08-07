@@ -1,0 +1,28 @@
+{
+  "name": "publicworksystem",
+  "version": "0.1.0",
+  "description": "An application for receiving work orders.",
+  "main": "workserver.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "grunt": "^0.4.5",
+    "nodeunit": "^0.9.1",
+    "grunt-contrib-nodeunit": "^0.4.1"
+  },
+  "devDependencies": {
+    "grunt-install-dependencies": "^0.2.0",
+    "grunt-exec": "^0.4.6",
+    "istanbul": "^0.3.13"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "svn",
+    "url": "https://agile.cs.uh.edu/svn/u15_ic/dickson_jones"
+  },
+  "author": "Jared Jones & Timothy Dickson",
+  "license": "ISC"
+}
