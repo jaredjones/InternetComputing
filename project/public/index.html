@@ -15,34 +15,38 @@
         	</section>
 	    </header>
 	    
-		<section id="form-area">
-			<b>Your Name:</b></br>
-			<input type="text" id="fullname" name="fullname"></input>
-			</br><b>Severity:</b></br>
-			<select>
-				<option value="minor">Minor</option>
-				<option value="major">Major</option>
-				<option value="urgent">Urgent</option>
-			</select>
-			</br><b>Description:</b></br>
-			<textarea id="work-desc" name="work-description"></textarea>
-			<div id="remaining-word-counter">Remaining Words: NaN</div>
-			<b>Location:</b></br>
-			Latitude : <div id="lat-field"></div>
-			</br>Longitude: <div id="lng-field"></div>
-			</p><b>Date of Creation:</b></br>
-			<div id="creation-date"></div>
-		</section>
-		<button class="red-button">
-			Submit
-		</button>
-		<button class="green-button">
-			Clear
-		</button>
+	    <form onsubmit="return saveFormData(document);">
+			<section id="form-area">
+				<b>Your Name:</b></br>
+				<input type="text" id="fullname" name="fullname" required="true"></input>
+				</br><b>Severity:</b></br>
+				<select id="severity" required="true">
+					<option value="minor">Minor</option>
+					<option value="major">Major</option>
+					<option value="urgent">Urgent</option>
+				</select>
+				</br><b>Description:</b></br>
+				<textarea id="work-desc" name="work-description" required="true"></textarea>
+				<div id="remaining-word-counter">Remaining Words: NaN</div>
+				<b>Location:</b></br>
+				Latitude : <div id="lat-field"></div>
+				</br>Longitude: <div id="lng-field"></div>
+				<input id="lng" name="lng" type="hidden"></input>
+				<input id="lat" name="lat" type="hidden"></input>
+				</p><b>Date of Creation:</b></br>
+				<div id="creation-date"></div>
+				<input id="date-c" name="date-c" type="hidden"></input>
+				<p/>
+				<button type="submit" class="green-button">
+					Submit
+				</button>
+			</section>
+		</form>
 		<footer>
 			<center>Copyright &copy; 2015 Dickson & Jones LLC.<br>All Rights Reserved.</center>
 		</footer>
     </body>
+    
     <script src="js/scripts.js"></script>
     <script>
     	initalizeWorkDescriptionWordLimiter();

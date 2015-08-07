@@ -1,4 +1,4 @@
-var wordLengthCounter = function(str){
+var wordLengthCounter = function(str) {
 	if (str === undefined)
 		return 0;
 	var words = str.split(/\S+\s*/g);
@@ -12,7 +12,7 @@ var wordLengthCounter = function(str){
 	return currentWordLength;
 }
 
-var initalizeWorkDescriptionWordLimiter = function(){
+var initalizeWorkDescriptionWordLimiter = function() {
 	var descBox = document.getElementById("work-desc");
 	var wordCounter = document.getElementById("remaining-word-counter");
 	var maxNumberOfWords = 300;
@@ -36,24 +36,26 @@ var initalizeWorkDescriptionWordLimiter = function(){
 	descBox.addEventListener('keyup', checkAndLimitLength);
 }
 
-var getCreationDate = function(){
+var getCreationDate = function() {
 	var dateField = document.getElementById("creation-date");
+	var dateInput = document.getElementById("date-c");
 	var d = new Date();
 	dateField.innerHTML = d;
+	dateInput.value = d;
 }
 
-var locationInfo = function(position){
+var locationInfo = function(position) {
 	var latitude = position.coords.latitude;
 	var longitude = position.coords.longitude;
 
-	//locationInfo.documentModifier.getElementById("lat").value = latitude;
-	//locationInfo.documentModifier.getElementById("lng").value = longitude;
+	locationInfo.documentModifier.getElementById("lat").value = latitude;
+	locationInfo.documentModifier.getElementById("lng").value = longitude;
 
 	locationInfo.documentModifier.getElementById("lng-field").innerHTML = longitude;
 	locationInfo.documentModifier.getElementById("lat-field").innerHTML = latitude;
 }
 
-var locationInfoError = function(error){
+var locationInfoError = function(error) {
 	var errorMessage =['',
 	'Permission Denied',
 	'Position Unavailable',
@@ -74,13 +76,29 @@ var initalizeLocation = function(documentModifier, nav){
 	nav.geolocation.getCurrentPosition(locationInfo, locationInfoError);
 }
 
-var invokeIfConnected = function(callback){
+var saveFormData = function(documentModifier) {
+	var orderCount = localStorage.orderCount || 0;
+	orderCount = parseInt(orderCount) + 1;
+	
+	var jsonObj = {
+		"fullname": documentModifier.getElementById("fullname").value,
+		"severity": documentModifier.getElementById("severity").value,
+		"description": documentModifier.getElementById("work-desc").value,
+		"creation_date": documentModifier.getElementById("creation-date").innerHTML,
+		"latitude": documentModifier.getElementById("lat").value,
+		"longitude": documentModifier.getElementById("lng").value	
+	};
+	localStorage.setItem('order' + orderCount, JSON.stringify(jsonObj));
+	
+	localStorage.orderCount = orderCount;
+	return false;
+}
+
+var invokeIfConnected = function(callback) {
 	var xhr = new XMLHttpRequest();
 	var handler = function() {
-		if (xhr.readyState === 4) {
-			if (xhr.status === 200) {
-				callback();
-			}
+		if (xhr.readyState === 4 && xhr.status === 200) {
+			callback();
 		}
 	}
 	xhr.onreadystatechange = handler;
