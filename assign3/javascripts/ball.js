@@ -6,7 +6,8 @@ var Ball = function(color){
 	this.nextX;
 	this.nextY;
 	this.mouseX;
-	this.dx = (0.01 * canvas.rWidth) / 10;
+	this.dx = (0.01 * canvas.rWidth) / 10
+	;
 	this.dy = this.dx;
 	this.hitCount = 0;
 	

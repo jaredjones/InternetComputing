@@ -1,11 +1,9 @@
-var Pad = function(start, end, size, mouseX, padWidth, Xbound1, Xbound2){
+var Pad = function(start, end, size, mouseX, padWidth){
 	this.start = start;
 	this.end = end;
 	this.size = size;
 	this.mouseX = mouseX;
 	this.padWidth = padWidth;
-	this.Xbound1 = Xbound1;
-	this.Xbound2 = Xbound2;
 
 }
 var collidePad = function(){
