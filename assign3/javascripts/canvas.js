@@ -53,7 +53,6 @@ var initializeCanvas = function(mouseX){
 		theWidth: 10
 		};
 }
-
 var roundRect = function(x, y, width, height, radius, color, alpha) {
 	ctx.globalAlpha=alpha;
 	ctx.fillStyle = color;
@@ -68,8 +67,7 @@ var roundRect = function(x, y, width, height, radius, color, alpha) {
 	ctx.quadraticCurveTo(x, y + height, x, y + height - radius);
 	ctx.lineTo(x, y + radius);
 	ctx.quadraticCurveTo(x, y, x + radius, y);
-	ctx.closePath();
-	
+	ctx.closePath();	
 	ctx.fill();
 	ctx.globalAlpha=1.0;
 }
@@ -98,7 +96,8 @@ var drawFrame = function(){
 		}, false);
 		
 		initPad = initializeCanvas(mouseX);
-		pad = new Pad(initPad.theStart, initPad.theEnd, initPad.theSize, initPad.theMouseX, initPad.theWidth);
+		pad = new Pad(initPad.theStart, initPad.theEnd, initPad.theSize, initPad.theMouseX, initPad.theWidth, canvas.rWidth, 0);
+		
 
 		
 		if(gameStarted && !ballsSpawned){

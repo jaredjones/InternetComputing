@@ -1,15 +1,15 @@
 var getRandomNumberWithBounds = function(min, max) {
   return Math.random() * (max - min) + min;
 }
-
 var getMousePos = function(canvas, event) {
     var rect = canvas.getBoundingClientRect();
     return {
-    	x: event.clientX - rect.left,
-		y: event.clientY - rect.top
-    };
+    		x: event.clientX - rect.left,
+			y: event.clientY - rect.top
+    	};
+    
+    
 }
-
 var getFPS = function(lastUpdate, now, fps){
 	this.lastUpdate = lastUpdate;
 	this.now = now;

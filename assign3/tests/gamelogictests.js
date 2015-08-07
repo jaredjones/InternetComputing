@@ -22,3 +22,8 @@ describe('get fps', function(){
 		expect(newTime.theFps).to.be.eql(100);
 	});
 });
+describe('balls', function(){
+	it('collision of balls', function(){
+		
+	});
+});
