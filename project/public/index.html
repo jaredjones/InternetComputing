@@ -15,7 +15,7 @@
         	</section>
 	    </header>
 	    
-	    <form onsubmit="return saveFormData(document);">
+	    <form id="work-order-form" onsubmit="return saveFormData(document);">
 			<section id="form-area">
 				<b>Your Name:</b></br>
 				<input type="text" id="fullname" name="fullname" required="true"></input>
@@ -37,7 +37,8 @@
 				<div id="creation-date"></div>
 				<input id="date-c" name="date-c" type="hidden"></input>
 				<p/>
-				<button type="submit" class="green-button">
+				<div id="message-notifier"></div>
+				<button id="submit-btn" type="submit" class="green-button">
 					Submit
 				</button>
 			</section>

@@ -76,11 +76,26 @@ var initalizeLocation = function(documentModifier, nav){
 	nav.geolocation.getCurrentPosition(locationInfo, locationInfoError);
 }
 
-var invokeIfConnected = function(callback) {
+var entryFinishedWithText = function(entryFinishedText) {
+	document.getElementById("message-notifier").innerHTML = "<b>Message:</b> " + entryFinishedText + "</p>";
+	document.getElementById("submit-btn").className = "yellow-button";
+	document.getElementById("submit-btn").innerHTML = "Submit Another Work Order";
+	document.getElementById("work-order-form").onsubmit = function() {
+		location.reload();
+		return false;
+	}
+}
+
+var invokeIfConnected = function(callback, fromSubmit) {
 	var xhr = new XMLHttpRequest();
 	var handler = function() {
 		if (xhr.readyState === 4 && xhr.status === 200) {
 			callback();
+			if(fromSubmit)
+				entryFinishedWithText("Your data was successfully submitted to the server!");
+		}else{
+			if(fromSubmit)
+				entryFinishedWithText("You are offline, your work order was added to local storage!");
 		}
 	}
 	xhr.onreadystatechange = handler;
@@ -101,8 +116,8 @@ var sendData = function() {
 	localStorage.clear();
 }
 
-var sendLocalStorageIfConnected = function() {
-	invokeIfConnected(sendData);
+var sendLocalStorageIfConnected = function(fromSubmit) {
+	invokeIfConnected(sendData, fromSubmit);
 }
 
 var saveFormData = function(documentModifier) {
@@ -120,6 +135,6 @@ var saveFormData = function(documentModifier) {
 	localStorage.setItem('order' + orderCount, JSON.stringify(jsonObj));
 	localStorage.orderCount = orderCount;
 	
-	sendLocalStorageIfConnected();
+	sendLocalStorageIfConnected(true);
 	return false;
 }

@@ -60,7 +60,7 @@ section#form-area{
 	display: inline-block;
 }
 
-.red-button{
+.yellow-button{
   display: inline-block;
   *display: inline;
   zoom: 1;
@@ -73,8 +73,8 @@ section#form-area{
   text-decoration: none;
   white-space: nowrap;
   color: #fafafa;
-  background-color: #c43c35;
-  border-color: #c43c35;
+  background-color: #efd915;
+  border-color: #efd915;
   background-image: linear-gradient(top, rgba(255,255,255,1),
                                          rgba(255,255,255,0)),
                     url(data:image/png;base64,iVBORw0KGg[...]QmCC); 
@@ -87,15 +87,15 @@ section#form-area{
   text-shadow: 0 1px 0 rgba(205,205,205, .9);  
 }
 
-.red-button:hover{
-  background-color: #ee5f5b;
+.yellow-button:hover{
+  background-color: #ccbb1a;
 }
 
-.red-button:active{
-  background: #c43c35;
+.yello-button:active{
+  background: #ccbb1a;
 }
 
-.red-button[disabled], .red-button[disabled]:hover, .red-button[disabled]:active{
+.yello-button[disabled], .red-button[disabled]:hover, .red-button[disabled]:active{
   border-color: #eaeaea;
   background: #fafafa;
   cursor: default;
