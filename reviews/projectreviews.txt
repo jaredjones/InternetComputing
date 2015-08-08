@@ -1,3 +1,12 @@
+[Venkat 08/08/15 07:51 AM CDT]
+review: Not getting any response on visiting server
+
+Started grunt from the project directory, shows the server as running.
+
+Visited http://localhost:3000
+Browser is hanging, waiting for response.
+
+------------------------------------------------------------------------------
 [Venkat 08/06/15 06:31 AM CDT]
 review: validate input
 
