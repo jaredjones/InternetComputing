@@ -77,3 +77,4 @@ var handler = function(request, response) {
 }
 
 exports.getMimeFromURLString = getMimeFromURLString;
+exports.handler = handler;
