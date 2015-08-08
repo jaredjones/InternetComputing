@@ -10,7 +10,7 @@ module.exports = function(grunt) {
     },
     exec: {
       coverage: 'node "node_modules/istanbul/lib/cli.js" cover "node_modules/nodeunit/bin/nodeunit" -- test',
-      run_driver: 'node src/workserver.js',
+      run_driver: 'node src/driver.js',
     }
   });
 

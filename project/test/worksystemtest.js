@@ -1,6 +1,6 @@
-var workserver = require('../src/workserver');
-exports.getMimeFromURLString = function(test) {
-    test.ok(true);
+//var workserver = require('../src/workserver');
+
+exports.testCanary = function(test) {
+    test.strictEqual("","");
     test.done();
 }
-

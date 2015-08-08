@@ -3,7 +3,6 @@ var http = require('http');
 var url = require('url');
 var qs = require('querystring');
 
-var port = 3000;
 var publicLocation = "public";
 
 var getMimeFromURLString = function(str) {
@@ -76,7 +75,5 @@ var handler = function(request, response) {
         grabDocument(response, request.url);    
     }
 }
-
-var server = http.createServer(handler).listen(port);
 
 exports.getMimeFromURLString = getMimeFromURLString;
