@@ -121,7 +121,25 @@ var sendLocalStorageIfConnected = function(fromSubmit) {
 	invokeIfConnected(sendData, fromSubmit);
 }
 
+var isNumber = function(obj) { 
+	return !isNaN(parseFloat(obj));
+}
+
+var checkIfFormsFilledIn = function(documentModifier) {
+	var msgBox = document.getElementById("message-notifier");
+	var isLatValid = isNumber(documentModifier.getElementById("lat").value);
+	var isLngValid = isNumber(documentModifier.getElementById("lng").value);
+	if (!(isLatValid && isLngValid)){
+		msgBox.innerHTML = "<b>Message:</b> You must have a valid latitude/longitude in order to submit this work order.</p>";
+		return false;
+	}
+	return true;
+}
+
 var saveFormData = function(documentModifier) {
+	if (!checkIfFormsFilledIn(documentModifier))
+		return false;
+		
 	var orderCount = localStorage.orderCount || 0;
 	orderCount = parseInt(orderCount) + 1;
 	
