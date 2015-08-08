@@ -38,7 +38,7 @@ var getFileContents = function(path) {
     try {
         fileContents = fs.readFileSync(publicLocation + path);
     }catch (e) {
-        console.log(e);
+        fileContents = "404 Page Not Found!";
     }
     return fileContents;
 }
@@ -77,4 +77,5 @@ var handler = function(request, response) {
 }
 
 exports.getMimeFromURLString = getMimeFromURLString;
+exports.getFileContents = getFileContents;
 exports.handler = handler;

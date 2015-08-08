@@ -35,3 +35,9 @@ exports.testMimeForRandom = function(test) {
     test.strictEqual(mime, "text/plain");
     test.done();
 }
+
+exports.testFileContentsFails = function(test) {
+	var fileContent = workserver.getFileContents("nopath");
+	test.strictEqual(fileContent, "404 Page Not Found!");
+	test.done();
+}
