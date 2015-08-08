@@ -107,11 +107,12 @@ var sendData = function() {
 	var orderCount = localStorage.orderCount || 0;
 	orderCount = parseInt(orderCount);
 	
-	for (var orderCounter = 0; orderCounter < localStorage.orderCount; orderCounter++) {
+	for (var orderCounter = 0; orderCounter <= localStorage.orderCount; orderCounter++) {
 		var xhr = new XMLHttpRequest();
 		xhr.open('POST', 'http://localhost:3000', true);
 		xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-		xhr.send(localStorage.getItem('order' + orderCount));
+		
+		xhr.send(localStorage.getItem('order' + orderCounter));
 	}
 	localStorage.clear();
 }
@@ -132,6 +133,7 @@ var saveFormData = function(documentModifier) {
 		"latitude": documentModifier.getElementById("lat").value,
 		"longitude": documentModifier.getElementById("lng").value	
 	};
+	
 	localStorage.setItem('order' + orderCount, JSON.stringify(jsonObj));
 	localStorage.orderCount = orderCount;
 	

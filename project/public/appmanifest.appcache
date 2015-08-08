@@ -1,7 +1,11 @@
 CACHE MANIFEST
-#VERSION 12
+#VERSION 14
 
 CACHE:
+index.html
+js/scripts.js
+css/style.css
+favicon.ico
 
 FALLBACK:
 
