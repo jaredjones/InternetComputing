@@ -121,6 +121,10 @@ var sendLocalStorageIfConnected = function(fromSubmit) {
 	invokeIfConnected(sendData, fromSubmit);
 }
 
+var checkConnectionByTimer = function(time) {
+	setInterval(sendLocalStorageIfConnected, time);
+}
+
 var isNumber = function(obj) { 
 	return !isNaN(parseFloat(obj));
 }
