@@ -1,3 +1,11 @@
+[Venkat 08/09/15 06:37 AM CDT]
+review: A few things to improve
+
+After a few seconds, remove the message that the data was successfully submitted. Also clear the fields after submit.
+
+Ensure all saved data are sent to the server after reconnect.
+
+------------------------------------------------------------------------------
 [Venkat 08/08/15 07:51 AM CDT]
 review: Not getting any response on visiting server
 
